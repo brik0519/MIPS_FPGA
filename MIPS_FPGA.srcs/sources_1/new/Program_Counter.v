@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
+`default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2024/11/09 15:49:07
+// Create Date: 2024/11/16 20:16:23
 // Design Name: 
-// Module Name: tb_top_MIPS
+// Module Name: Program_Counter
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,7 +20,18 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+module Program_Counter (
+    input wire clk, reset, PC_write,
+    input wire [31:0] PC_write_data,
+    output reg [31:0] PC_current
+);
 
-module tb_top_MIPS();
+    always @ (posedge clk, posedge reset) begin
+        if (reset)
+            PC_current <= 0;
+        else if (PC_write)
+            PC_current <= PC_write_data;      
+    end
 
 endmodule
+

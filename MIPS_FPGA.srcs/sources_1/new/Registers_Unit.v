@@ -25,21 +25,31 @@ module Registers_Unit (
     input wire clk, reset,
     input wire RegWrite,
     
-    input wire [4:0] read_register_1, wire [4:0] read_register_2,
+    input wire [4:0] read_register_1, read_register_2,
     input wire [4:0] write_register,
     
-    output wire [31:0] read_data_1, wire [31:0] read_data_2,
-    output reg [31:0] write_data
+    output reg [31:0] read_data_1, read_data_2,
+    input wire [31:0] write_data
 );
 
     reg [31:0] register [0:31];
     
-    assign read_data_1 = register[read_register_1];
-    assign read_data_2 = register[read_register_2]; 
+
     
+    integer i;
     always @(negedge clk) begin
-        if ( RegWrite )
+        if (reset) begin
+            for (i = 0; i < 32; i = i + 1)
+                register[i] <= 32'b0;
+        end
+        
+        else if ( RegWrite )
             register[write_register] <= write_data;
+    end
+    
+    always @(*) begin
+        read_data_1 = register[read_register_1];
+        read_data_2 = register[read_register_2];
     end
     
 endmodule

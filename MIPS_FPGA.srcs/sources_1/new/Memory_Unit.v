@@ -39,4 +39,11 @@ module Memory_Unit(
             read_data <= memory[address];      
     end
     
+    
+    initial begin
+        
+    
+    
+    end
+    
 endmodule
