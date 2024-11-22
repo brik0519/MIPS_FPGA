@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2024/10/28 09:18:40
+// Create Date: 2024/11/22 21:52:33
 // Design Name: 
-// Module Name: MUX_NtoN
+// Module Name: IF_ID_Register
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,8 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUX_Nto1 #(parameter databit = 1, incount = 2) (
-input [databit:0] I[incount],
-output [databit:0] Y
-    );
+module IF_ID_Register(
+    input wire clk, reset,
+    input wire IF_ID_Write,
+    
+    output reg IF_ID_Instruction
+);
 endmodule

@@ -41,6 +41,7 @@ module top_MIPS();
 //        .PC_current(PC_current)
 //    );
     
+    
     reg IRWrite;
     wire [5:0] op; 
     wire [4:0]rs, rt, rd;
@@ -52,8 +53,8 @@ module top_MIPS();
     );
     
     
+    // 02 Instruction Decode
     reg RegWrite;
-//    wire [4:0] read_register_1, read_register_2, 
     reg [4:0] write_register;
     reg [31:0] write_data;
     Registers_Unit REG_UNIT (
@@ -61,7 +62,7 @@ module top_MIPS();
         .RegWrite(RegWrite),
         
         .read_register_1(rs), .read_register_2(rt),
-//        .write_register(write_register),
+        .write_register(write_register),
         
         .read_data_1(Registers_Read_Data1), .read_data_2(Registers_Read_Data2),
         .write_data(write_data)
@@ -96,12 +97,15 @@ module top_MIPS();
     
     always #1 clk = ~clk;
     
+    integer i;
     initial begin
         clk = 1; reset = 1;
         RegWrite = 0;
         write_data = 32'b0;
-        #10 reset = 0; #10;
         Instruction = 32'h2108_000A; // ADDI $t0, $t0, 10;
+        
+        #10 reset = 0; #10;
+
         
         write_register = 5'b01000;   // $t0 (8번 레지스터)
         write_data = 32'd0;          // 초기 쓰기 데이터 값

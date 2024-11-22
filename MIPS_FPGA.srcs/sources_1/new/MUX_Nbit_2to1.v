@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -21,10 +22,10 @@
 
 
 module MUX_Nbit_2to1 #(parameter N = 0)(
-input [N:0] I1,I2,
-input sel,
-output reg [N:0] Y
-    );
+    input wire [N:0] I1,I2,
+    input wire sel,
+    output reg [N:0] Y
+);
     
 always @ (*) begin
     case(sel)
