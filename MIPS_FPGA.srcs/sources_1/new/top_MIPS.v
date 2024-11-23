@@ -24,39 +24,56 @@
 module top_MIPS();
     reg clk, reset;
     
-    // 00 Previous Components
-//    reg [31:0] address, write_data, read_data;
-//    Memory_Unit MEM(
-//        .clk(clk), .address(address),
-//        .MemRead(MemRead), .MemWrite(MemWrite),
-//        .write_data(write_data), .read_data(read_data),
-//    );
-
-    // 01 Instruction Fetch
-//    wire [31:0] PC_write, PC_write_data;//, PC_current;
-//    reg [31:0] PC_current, PC_write_data;
-//    Program_Counter PC (
-//        .clk(clk), .reset(reset),
-//        .PC_write(PC_write), .PC_write_data(PC_write_data),
-//        .PC_current(PC_current)
-//    );
-    
-    
-    reg IRWrite;
-    wire [5:0] op; 
-    wire [4:0]rs, rt, rd;
-    wire [15:0] imm16;
-    Instruction_Register IR (
-        .clk(clk), .reset(reset), .IRWrite(IRWrite),
-        .Instruction(Instruction), 
-        .op(op), .rs(rs), .rt(rt), .rd(rd), .imm16(imm16)
+    reg PC_write;
+    wire Branch;//, PC_write;
+    wire [31:0] PC_current, PC_write_data, PC_next, PC_branch;
+    Program_Counter PC (
+        .clk(clk), .reset(reset),
+        .PC_write(PC_write), .PC_write_data(PC_write_data),
+        .PC_current(PC_current)
     );
-    
+ 
+    Adder_Nbit #(.N(31))    PC_Adder    ( .A(PC_current), .B(32'b1), .Y(PC_next) );
+    MUX_Nbit_2to1 #(.N(31)) MUX_Branch  ( .I1(PC_next), .I2(PC_branch), .sel(Branch), .Y(PC_write_data));
+    Adder_Nbit #(.N(31))    Branch_Adder( .A(PC_next), .B(extended_imm_16<<2), .Y(PC_branch) );
+
+    wire [31:0] Instruction; 
+    Instruction_Memory_Unit INSTRUCTION_MEM(
+        .clk(clk), .reset(reset), .address(PC_current),
+        .MemRead(1'b1), .MemWrite(1'b0),
+        .write_data(), .read_data(Instruction)
+    );
+
     
     // 02 Instruction Decode
-    reg RegWrite;
-    reg [4:0] write_register;
-    reg [31:0] write_data;
+    wire [5:0]  op; 
+    wire [4:0]  rs, rt, rd;
+    wire [15:0] imm16;
+    
+    assign op    = Instruction[31:26];
+    assign rs    = Instruction[25:21];    
+    assign rt    = Instruction[20:16];
+    assign rd    = Instruction[15:11];
+    assign imm16 = Instruction[15:0];
+    
+    wire ALUSrc, RegDst, ALUOp;
+    wire RegDst, MemRead, MemWrite, RegWrite, Branch;
+    Control_Unit ControlUnit (
+        .opcode(op), .rst(reset), .brancheq(zero),
+        .ALUOp(ALUOp), .ALUSrc(ALUSrc), .RegDst(RegDst), 
+        .MemRead(MemRead), .MemWrite(MemWrite), .RegWrite(RegWrite), .Branch(Branch)
+    );
+    
+    wire [3:0] aluCtrl;
+    ALUControl ALUControl(
+        .ALUop(ALUOp), .funct(extended_imm_16[5:0]), .ALUctrl(aluCtrl)
+    );
+
+    // wire RegWrite;
+    wire [4:0]  write_register;
+    wire [31:0] Registers_Read_Data1, Registers_Read_Data2;
+    MUX_Nbit_2to1 #(4) RegistersMUX_rs_rd ( .I1(rt), .I2(rd), .sel(RegDst), .Y(write_register) );
+    
     Registers_Unit REG_UNIT (
         .clk(clk), .reset(reset),
         .RegWrite(RegWrite),
@@ -67,15 +84,8 @@ module top_MIPS();
         .read_data_1(Registers_Read_Data1), .read_data_2(Registers_Read_Data2),
         .write_data(write_data)
     );
-    
-    
-    wire [31:0]Registers_Read_Data1, Registers_Read_Data2;
-//    wire Reg_A_out, Reg_B_out;
-    Binary_32bit_Register A ( .clk(clk), .write_data(Registers_Read_Data1), .read_data(data1) );
-    Binary_32bit_Register B ( .clk(clk), .write_data(Registers_Read_Data2), .read_data(data2) );
-//    Binary_32bit_Register Memory_Data_Register ( .clk(clk), .write_data(PC_current), .read_data(PC_current) );
+        
 
-    
     wire [31:0] extended_imm_16;
     Sign_extender EXT(
         .imm_16(imm16),
@@ -83,43 +93,45 @@ module top_MIPS();
     );
     
     
-    wire [31:0]data1, data2; 
-    reg [3:0] aluctrl;
-    wire [31:0] aluresult;
+    wire [31:0] data1, data2; 
+    wire [31:0] aluResult;
     wire zero;
+    assign data1 = Registers_Read_Data1;
+    
+    MUX_Nbit_2to1 #(31) ALUMUX_ReadData2_Extenedimm16 ( 
+        .I1(Registers_Read_Data2), .I2(extended_imm_16), .sel(ALUSrc), .Y(data2) 
+    );
+    
     ALU MAIN_ALU (
-        .dataA(data1), .dataB(extended_imm_16), .aluctrl(aluctrl), .aluresult(aluresult), .zero(zero)
+        .dataA(data1), .dataB(data2), .aluctrl(aluCtrl), .aluresult(aluResult), .zero(zero)
     ); // ADD : aluctrl = 4'b0010;
     
+    wire [31:0] read_data;
+    Memory_Unit DATA_MEM(
+        .clk(clk), .reset(reset), .address(aluResult),
+        .MemRead(MemRead), .MemWrite(MemWrite),
+        .write_data(Registers_Read_Data2), .read_data(read_data)
+    );
     
-    reg init_data, MemWrite;
-    reg [31:0] Instruction;
+    wire [31:0] write_data;
+    MUX_Nbit_2to1 #(31) WriteDataMUX_aluresult_ReadData ( 
+        .I1(aluResult), .I2(extended_imm_16), .sel(ALUSrc), .Y(write_data) 
+    );
     
+        
+
     always #1 clk = ~clk;
     
-    integer i;
+    
     initial begin
         clk = 1; reset = 1;
-        RegWrite = 0;
-        write_data = 32'b0;
-        Instruction = 32'h2108_000A; // ADDI $t0, $t0, 10;
-        
+        PC_write = 0;
         #10 reset = 0; #10;
+               
+        PC_write = 1; #2 PC_write = 0;
+       
 
-        
-        write_register = 5'b01000;   // $t0 (8번 레지스터)
-        write_data = 32'd0;          // 초기 쓰기 데이터 값
-//        read_register_1 = 5'b01000;  // $t0 (8번 레지스터)
-//        read_register_2 = 5'b01001;  // $t1 (9번 레지스터)
-        
-        // 01 Instrunction Fetch
-        IRWrite = 1'b1; #5 IRWrite = 1'b0;
-        
-        // 02 Instruction Decode
-        
-        // 03 Execute Instrucion
-        aluctrl = 4'b0010;
-        #10;
+        #50 $finish;
 
     end
 

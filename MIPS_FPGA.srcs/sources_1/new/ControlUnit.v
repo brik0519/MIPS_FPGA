@@ -20,18 +20,19 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-localparam lw       = 6'b100011;
-localparam sw       = 6'b101011;
-localparam beq      = 6'b000100;
-localparam addi     = 6'b001000;
-localparam R_type   = 6'b000000;
-
 module Control_Unit(
     input wire rst, brancheq, 
     input wire [5:0] opcode,
     output reg [1:0] ALUOp,
     output reg ALUSrc, RegDst, MemRead, MemWrite, MemtoReg, RegWrite, Branch
 );
+
+localparam [5:0]
+    lw       = 6'b100011,
+    sw       = 6'b101011,
+    beq      = 6'b000100,
+    addi     = 6'b001000,
+    R_type   = 6'b000000;
 
 always @ (*) begin
     ALUSrc = 1'b0;
