@@ -24,6 +24,8 @@
 module top_MIPS();
     reg clk, reset;
     
+    
+    /*  01 Instruction Fetch  */
     reg PC_write;
     wire Branch;//, PC_write;
     wire [31:0] PC_current, PC_write_data, PC_next, PC_branch;
@@ -44,17 +46,27 @@ module top_MIPS();
         .write_data(), .read_data(Instruction)
     );
 
+//    wire IF_ID_Write;
+    wire [31:0] ID_PC, ID_Instruction;
+    IF_ID_Register IF_ID_REG (
+        .clk(clk), .reset(reset), .IF_ID_Write(1'b1),
+        .IF_PC(PC_next), .IF_Instruction(Instruction),
+        .ID_PC(ID_PC), .ID_Instruction(ID_Instruction)
+    );
+
     
     // 02 Instruction Decode
     wire [5:0]  op; 
     wire [4:0]  rs, rt, rd;
+    wire [5:0]  functn;
     wire [15:0] imm16;
     
-    assign op    = Instruction[31:26];
-    assign rs    = Instruction[25:21];    
-    assign rt    = Instruction[20:16];
-    assign rd    = Instruction[15:11];
-    assign imm16 = Instruction[15:0];
+    assign op     = Instruction[31:26];
+    assign rs     = Instruction[25:21];    
+    assign rt     = Instruction[20:16];
+    assign rd     = Instruction[15:11];
+    assign functn = Instruction[5:0];
+    assign imm16  = Instruction[15:0];
     
     wire ALUSrc, RegDst, ALUOp;
     wire RegDst, MemRead, MemWrite, RegWrite, Branch;
@@ -87,7 +99,7 @@ module top_MIPS();
         
 
     wire [31:0] extended_imm_16;
-    Sign_extender EXT(
+    Sign_extender SIGN_EXTENDER (
         .imm_16(imm16),
         .extended_imm_16(extended_imm_16)
     );

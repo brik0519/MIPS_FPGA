@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -22,8 +23,23 @@
 
 module IF_ID_Register(
     input wire clk, reset,
-    input wire IF_ID_Write,
     
-    output reg IF_ID_Instruction
+    input wire IF_ID_Write,
+    input wire [31:0] IF_PC, IF_Instruction,
+    
+    output reg [31:0] ID_PC, ID_Instruction
 );
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            ID_PC <= 32'b0;
+            ID_Instruction <= 32'b0;
+        end
+            
+        else if (IF_ID_Write) begin
+            ID_PC <= IF_PC;
+            ID_Instruction <= IF_Instruction;
+        end
+    end
+
 endmodule
