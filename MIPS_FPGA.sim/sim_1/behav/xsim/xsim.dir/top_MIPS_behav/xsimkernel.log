@@ -1,7 +1,7 @@
-Running: xsim.dir/top_MIPS_behav/xsimk.exe -simmode gui -wdb top_MIPS_behav.wdb -simrunnum 0 -socket 7944
+Running: xsim.dir/top_MIPS_behav/xsimk.exe -simmode gui -wdb top_MIPS_behav.wdb -simrunnum 0 -socket 8134
 Design successfully loaded
-Design Loading Memory Usage: 6188 KB (Peak: 6188 KB)
-Design Loading CPU Usage: 62 ms
+Design Loading Memory Usage: 6168 KB (Peak: 6168 KB)
+Design Loading CPU Usage: 78 ms
 Simulation completed
-Simulation Memory Usage: 6880 KB (Peak: 6880 KB)
-Simulation CPU Usage: 139 ms
+Simulation Memory Usage: 6868 KB (Peak: 6868 KB)
+Simulation CPU Usage: 436 ms

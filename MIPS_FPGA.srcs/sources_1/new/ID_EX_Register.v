@@ -27,7 +27,7 @@ module ID_EX_Register(
     // Control Signal
     input wire [1:0] ALUOp,
     input wire ALUSrc, RegDst, MemRead, MemWrite,
-    input wire MemtoReg, RegWrite, Brench,
+    input wire MemtoReg, RegWrite, Branch,
     
     // ID side Data
     input wire [31:0] ID_read_data1, ID_read_data2,
@@ -44,9 +44,9 @@ module ID_EX_Register(
     output reg [1:0] EX_ALUOp,
     
     output reg EX_ALUSrc, EX_RegDst, EX_MemRead, EX_MemWrite,
-    output reg EX_MemtoReg, EX_RegWrite, EX_Brench,
+    output reg EX_MemtoReg, EX_RegWrite, EX_Branch,
     
-    output reg [5:0] ALUcontrol_fn // Function code
+    output reg [5:0] EX_fn // Function code
 );
 
     always @(posedge clk or posedge reset) begin
@@ -55,6 +55,8 @@ module ID_EX_Register(
             EX_read_data2 <= 32'b0;
             EX_extended_imm_16 <= 32'b0;
             
+            EX_ALUOp <= 2'b0;
+
             EX_rt <= 5'b0;
             EX_rd <= 5'b0;
             
@@ -64,9 +66,9 @@ module ID_EX_Register(
             EX_MemWrite <= 1'b0;
             EX_MemtoReg <= 1'b0; 
             EX_RegWrite <= 1'b0; 
-            EX_Brench   <= 1'b0;
+            EX_Branch   <= 1'b0;
             
-            ALUcontrol_fn <= 6'b0;
+            EX_fn <= 6'b0;
         end
             
         else if (ID_EX_Write) begin
@@ -74,18 +76,18 @@ module ID_EX_Register(
             EX_read_data2 <= ID_read_data2;
             EX_extended_imm_16 <= ID_extended_imm_16;
             
-            EX_rt <= 5'b0;
-            EX_rd <= 5'b0;
+            EX_rt <= ID_rt;
+            EX_rd <= ID_rd;
             
-            EX_ALUSrc   <= 1'b0; 
-            EX_RegDst   <= 1'b0; 
-            EX_MemRead  <= 1'b0; 
-            EX_MemWrite <= 1'b0;
-            EX_MemtoReg <= 1'b0; 
-            EX_RegWrite <= 1'b0; 
-            EX_Brench   <= 1'b0;
+            EX_ALUSrc   <= ALUSrc; 
+            EX_RegDst   <= RegDst;
+            EX_MemRead  <= MemRead;
+            EX_MemWrite <= MemWrite;
+            EX_MemtoReg <= MemtoReg;
+            EX_RegWrite <= RegWrite;
+            EX_Branch   <= Branch;
             
-            ALUcontrol_fn <= 6'b0;
+            EX_fn <= fn;
         end
     end
 

@@ -2,11 +2,12 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Nov 22 22:13:41 2024
-# Process ID: 19656
+# Start of session at: Mon Nov 25 09:47:22 2024
+# Process ID: 6632
 # Current directory: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Mon Nov 25 09:47:23 2024...
