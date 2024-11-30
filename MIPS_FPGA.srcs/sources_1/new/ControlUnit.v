@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Control_Unit(
-    input wire rst, brancheq, 
+    input wire rst, 
     input wire [5:0] opcode,
     output reg [1:0] ALUOp,
     output reg ALUSrc, RegDst, MemRead, MemWrite, MemtoReg, RegWrite, Branch
@@ -57,7 +57,7 @@ always @ (*) begin
                  end
         beq     :begin
                  ALUOp = 2'b01;
-                 Branch = brancheq;
+                 Branch = 1'b1;
                  MemtoReg = 1'b1;
                  end
         addi    :begin
