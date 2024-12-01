@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Control_Unit(
-    input wire rst, 
+    input wire reset, 
     input wire [5:0] opcode,
     output reg [1:0] ALUOp,
     output reg ALUSrc, RegDst, MemRead, MemWrite, MemtoReg, RegWrite, Branch
@@ -43,7 +43,7 @@ always @ (*) begin
     MemtoReg = 1'b0;
     RegWrite = 1'b0;
     Branch = 1'b0;
-    if(!rst)begin
+    if(!reset)begin
         case(opcode)
         lw      :begin
                  ALUSrc = 1'b1;

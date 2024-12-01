@@ -26,20 +26,24 @@ module EX_MEM_Register(
     input wire clk, reset,
     input wire [31:0] ADD_Result, ALU_Result, EX_Read_Data_2,
     input wire [4:0] Reg_Destination,
+    input wire Zero,
 
     // Controll Signal
     input wire EX_MemWrite, EX_MemRead,
-    input wire EX_MemtoReg, EX_RegWrite,
+    input wire EX_MemtoReg, EX_RegWrite, 
+    input wire EX_Branch,
 
 
     /*  Output  */
     // Datapath
     output reg [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Read_Data_2,
     output reg [4:0] MEM_Reg_Destination,
+    output reg MEM_Zero,
 
     // Controll Signal
     output reg MEM_MemWrite, MEM_MemRead,
-    output reg MEM_MemtoReg, MEM_RegWrite
+    output reg MEM_MemtoReg, MEM_RegWrite, 
+    output reg MEM_Branch
 );
 
     always @(posedge clk, posedge reset) begin
@@ -48,27 +52,31 @@ module EX_MEM_Register(
             MEM_ADDResult <= 32'b0;
             MEM_ALUResult <= 32'b0;
             MEM_Read_Data_2 <= 32'b0;
-            MEM_Reg_Destination <= 32'b0;
+            MEM_Reg_Destination <= 5'b0;
+            MEM_Zero <=  1'b0;
 
             // Controll Signal
             MEM_MemWrite <= 1'b0;
             MEM_MemRead  <= 1'b0;
             MEM_MemtoReg <= 1'b0;
             MEM_RegWrite <= 1'b0;
+            MEM_Branch   <= 1'b0;
         end
 
         else begin
             // Datapath
             MEM_ADDResult   <= ADD_Result;
             MEM_ALUResult   <= ALU_Result;
-            MEM_Read_Data_2 <= MEM_Read_Data_2;
-            MEM_Reg_Destination <= MEM_Reg_Destination;
+            MEM_Read_Data_2 <= EX_Read_Data_2;
+            MEM_Reg_Destination <= Reg_Destination;
+            MEM_Zero        <=  Zero;
 
             // Controll Signal
             MEM_MemWrite <= EX_MemWrite;
             MEM_MemRead  <= EX_MemRead;
             MEM_MemtoReg <= EX_MemtoReg;
             MEM_RegWrite <= EX_RegWrite;
+            MEM_Branch   <= EX_Branch;
         end
 
     end

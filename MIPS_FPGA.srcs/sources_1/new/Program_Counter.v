@@ -21,16 +21,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Program_Counter (
-    input wire clk, reset, PC_write,
-    input wire [31:0] PC_write_data,
-    output reg [31:0] PC_current
+    input wire clk, reset, PCWrite,
+    input wire [31:0] PC_Write_Data,
+    output reg [31:0] PC_Current
 );
 
     always @ (posedge clk, posedge reset) begin
         if (reset)
-            PC_current <= 0;
-        else if (PC_write)
-            PC_current <= PC_write_data;      
+            PC_Current <= 0;
+        else if (PCWrite)
+            PC_Current <= PC_Write_Data;      
     end
 
 endmodule

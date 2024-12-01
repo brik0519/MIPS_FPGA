@@ -27,6 +27,7 @@ module MEM_WB_Register(
     /*  Input   */
     // Datapath
     input wire [31:0] MEM_Read_Data, MEM_ALU_Result,
+    input wire [4:0] MEM_Reg_Destination,
     
     // Control Signal
     input wire MEM_MemWrite, MEM_MemRead,
@@ -35,6 +36,7 @@ module MEM_WB_Register(
     /*  Output  */
     // Datapath
     output reg [31:0] WB_Read_Data, WB_ALU_Result,
+    output reg [4:0] WB_Reg_Destination,
     
     //Control Signal
     output reg WB_MemWrite, WB_MemRead
@@ -58,6 +60,8 @@ module MEM_WB_Register(
             
             WB_MemWrite <= MEM_MemWrite;
             WB_MemRead  <= MEM_MemRead;
+            
+            WB_Reg_Destination <= MEM_Reg_Destination;
         end
 
     end    

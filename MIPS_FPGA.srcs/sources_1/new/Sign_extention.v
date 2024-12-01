@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Sign_extender (
+module Sign_extend (
     input  wire [15:0] imm_16,
     output wire [31:0] extended_imm_16        
 );
