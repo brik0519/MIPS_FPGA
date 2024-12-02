@@ -21,8 +21,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top_MIPS();
-    reg clk, reset;
+module top_MIPS(
+    input wire clk, reset,
+    output wire LED
+);
+    assign LED = 1'b1;
+    
     
     
     /*  01 Instruction Fetch  */
@@ -234,19 +238,19 @@ module top_MIPS();
     );
     
 
-    always #1 clk = ~clk;
+//    always #1 clk = ~clk;
     
     
-    initial begin
-        clk = 1; reset = 1;
-        PCWrite = 0;
-        #3 reset = 0; #2;
+//    initial begin
+//        clk = 1; reset = 1;
+//        PCWrite = 0;
+//        #3 reset = 0; #2;
                
-        PCWrite = 1; #4 PCWrite = 0;
+//        PCWrite = 1; #4 PCWrite = 0;
        
 
-        #50 $finish;
+//        #50 $finish;
 
-    end
+//    end
 
 endmodule

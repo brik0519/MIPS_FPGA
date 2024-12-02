@@ -70,9 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param synth.incrementalSynthesisCache C:/Users/behyeon.kim/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-24152-HYEON-OdysseyLaptop/incrSyn
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -92,9 +90,11 @@ read_verilog -library xil_defaultlib {
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALUControl.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ControlUnit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/EX_MEM_Register.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ID_EX_Register.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/IF_ID_Register.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Instruction_Memory_Unit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MEM_WB_Register.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v
@@ -111,6 +111,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

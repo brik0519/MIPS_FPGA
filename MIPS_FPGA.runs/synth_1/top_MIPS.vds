@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Nov 29 21:52:31 2024
-# Process ID: 18268
+# Start of session at: Mon Dec  2 09:52:05 2024
+# Process ID: 21424
 # Current directory: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/synth_1
 # Command line: vivado.exe -log top_MIPS.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_MIPS.tcl
 # Log file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/synth_1/top_MIPS.vds
@@ -14,28 +14,27 @@ Command: synth_design -top top_MIPS -part xc7a100tcsg324-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 11204
-CRITICAL WARNING: [Synth 8-976] Branch has already been declared [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:72]
-CRITICAL WARNING: [Synth 8-2654] second declaration of Branch ignored [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:72]
-INFO: [Synth 8-994] Branch is declared here [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:30]
+INFO: [Synth 8-7075] Helper process launched with PID 14428
+WARNING: [Synth 8-6901] identifier 'MEM_Branch' is used before its declaration [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:36]
+WARNING: [Synth 8-6901] identifier 'MEM_Zero' is used before its declaration [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:36]
+WARNING: [Synth 8-6901] identifier 'WB_Reg_Destination' is used before its declaration [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:100]
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1017.539 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1016.766 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top_MIPS' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:24]
-INFO: [Synth 8-6157] synthesizing module 'Program_Counter' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'Program_Counter' (1#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v:23]
-INFO: [Synth 8-6157] synthesizing module 'Adder_Nbit' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v:23]
-	Parameter N bound to: 31 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'Adder_Nbit' (2#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v:23]
-WARNING: [Synth 8-7071] port 'cout' of module 'Adder_Nbit' is unconnected for instance 'PC_Adder' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:38]
-WARNING: [Synth 8-7023] instance 'PC_Adder' of module 'Adder_Nbit' has 4 connections declared, but only 3 given [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:38]
 INFO: [Synth 8-6157] synthesizing module 'MUX_Nbit_2to1' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v:24]
 	Parameter N bound to: 31 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'MUX_Nbit_2to1' (3#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v:24]
-WARNING: [Synth 8-7071] port 'cout' of module 'Adder_Nbit' is unconnected for instance 'Branch_Adder' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:40]
-WARNING: [Synth 8-7023] instance 'Branch_Adder' of module 'Adder_Nbit' has 4 connections declared, but only 3 given [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:40]
+INFO: [Synth 8-6155] done synthesizing module 'MUX_Nbit_2to1' (1#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v:24]
+INFO: [Synth 8-6157] synthesizing module 'Program_Counter' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Program_Counter' (2#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Adder_Nbit' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v:23]
+	Parameter N bound to: 31 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'Adder_Nbit' (3#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v:23]
+WARNING: [Synth 8-7071] port 'cout' of module 'Adder_Nbit' is unconnected for instance 'PC_Adder' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:46]
+WARNING: [Synth 8-7023] instance 'PC_Adder' of module 'Adder_Nbit' has 4 connections declared, but only 3 given [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:46]
 INFO: [Synth 8-6157] synthesizing module 'Instruction_Memory_Unit' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Instruction_Memory_Unit.v:24]
 INFO: [Synth 8-6155] done synthesizing module 'Instruction_Memory_Unit' (4#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Instruction_Memory_Unit.v:24]
 INFO: [Synth 8-6157] synthesizing module 'IF_ID_Register' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/IF_ID_Register.v:24]
@@ -49,39 +48,73 @@ INFO: [Synth 8-6157] synthesizing module 'Control_Unit' [C:/Users/behyeon.kim/Do
 INFO: [Synth 8-6155] done synthesizing module 'Control_Unit' (6#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ControlUnit.v:23]
 INFO: [Synth 8-6157] synthesizing module 'ALUControl' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALUControl.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'ALUControl' (7#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALUControl.v:23]
-INFO: [Synth 8-6157] synthesizing module 'MUX_Nbit_2to1__parameterized0' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v:24]
-	Parameter N bound to: 4 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'MUX_Nbit_2to1__parameterized0' (7#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v:24]
 INFO: [Synth 8-6157] synthesizing module 'Registers_Unit' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Registers_Unit.v:24]
 INFO: [Synth 8-6155] done synthesizing module 'Registers_Unit' (8#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Registers_Unit.v:24]
-INFO: [Synth 8-6157] synthesizing module 'Sign_extender' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Sign_extention.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'Sign_extender' (9#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Sign_extention.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Sign_extend' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Sign_extention.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Sign_extend' (9#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Sign_extention.v:23]
 INFO: [Synth 8-6157] synthesizing module 'ID_EX_Register' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ID_EX_Register.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'ID_EX_Register' (10#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ID_EX_Register.v:23]
 INFO: [Synth 8-6157] synthesizing module 'ALU' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALU.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'ALU' (11#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALU.v:23]
+INFO: [Synth 8-6157] synthesizing module 'MUX_Nbit_2to1__parameterized0' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v:24]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'MUX_Nbit_2to1__parameterized0' (11#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v:24]
+INFO: [Synth 8-6157] synthesizing module 'EX_MEM_Register' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/EX_MEM_Register.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'EX_MEM_Register' (12#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/EX_MEM_Register.v:23]
+WARNING: [Synth 8-7071] port 'cout' of module 'Adder_Nbit' is unconnected for instance 'Branch_Adder' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:205]
+WARNING: [Synth 8-7023] instance 'Branch_Adder' of module 'Adder_Nbit' has 4 connections declared, but only 3 given [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:205]
 INFO: [Synth 8-6157] synthesizing module 'Memory_Unit' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'Memory_Unit' (12#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v:24]
-WARNING: [Synth 8-85] always block has no event control specified [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:177]
-INFO: [Synth 8-6155] done synthesizing module 'top_MIPS' (13#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_Unit' (13#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v:24]
+INFO: [Synth 8-6157] synthesizing module 'MEM_WB_Register' [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MEM_WB_Register.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'MEM_WB_Register' (14#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MEM_WB_Register.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'top_MIPS' (15#1) [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:24]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1017.539 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1086.887 ; gain = 70.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1017.539 ; gain = 0.000
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1086.887 ; gain = 70.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1086.887 ; gain = 70.121
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.750 . Memory (MB): peak = 1086.887 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc]
+Finished Parsing XDC File [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_MIPS_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_MIPS_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1269.629 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.227 . Memory (MB): peak = 1269.629 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:27 ; elapsed = 00:00:27 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1017.539 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:27 ; elapsed = 00:00:27 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:17 ; elapsed = 00:01:20 . Memory (MB): peak = 1156.855 ; gain = 139.316
+Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-No constraint files found.
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:27 . Memory (MB): peak = 1269.629 ; gain = 252.863
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1269.629 ; gain = 252.863
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -91,11 +124,11 @@ Detailed RTL Component Info :
 	   2 Input   32 Bit       Adders := 1     
 	   3 Input   32 Bit       Adders := 1     
 +---Registers : 
-	               32 Bit    Registers := 1064  
+	               32 Bit    Registers := 1069  
 	                6 Bit    Registers := 1     
-	                5 Bit    Registers := 2     
+	                5 Bit    Registers := 4     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 7     
+	                1 Bit    Registers := 15    
 +---Muxes : 
 	   2 Input   32 Bit        Muxes := 530   
 	   6 Input   32 Bit        Muxes := 1     
@@ -116,25 +149,29 @@ BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:05:28 ; elapsed = 00:05:56 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:03:38 ; elapsed = 00:04:04 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
-No constraint files found.
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:48 ; elapsed = 00:04:15 . Memory (MB): peak = 1269.629 ; gain = 252.863
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:05:30 ; elapsed = 00:05:58 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Timing Optimization : Time (s): cpu = 00:03:48 ; elapsed = 00:04:15 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:05:30 ; elapsed = 00:05:58 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Technology Mapping : Time (s): cpu = 00:03:49 ; elapsed = 00:04:15 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -152,37 +189,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:05:34 ; elapsed = 00:06:03 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished IO Insertion : Time (s): cpu = 00:03:53 ; elapsed = 00:04:19 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:05:34 ; elapsed = 00:06:03 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:53 ; elapsed = 00:04:19 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:05:34 ; elapsed = 00:06:03 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:53 ; elapsed = 00:04:19 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:05:34 ; elapsed = 00:06:03 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:53 ; elapsed = 00:04:19 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:05:34 ; elapsed = 00:06:03 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:53 ; elapsed = 00:04:19 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:05:34 ; elapsed = 00:06:03 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:53 ; elapsed = 00:04:19 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -195,36 +232,29 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+-+-----+------+
-| |Cell |Count |
-+-+-----+------+
-+-+-----+------+
-
-Report Instance Areas: 
-+------+---------+-------+------+
-|      |Instance |Module |Cells |
-+------+---------+-------+------+
-|1     |top      |       |     0|
-+------+---------+-------+------+
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |OBUF |     1|
++------+-----+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:05:34 ; elapsed = 00:06:03 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:53 ; elapsed = 00:04:19 . Memory (MB): peak = 1269.629 ; gain = 252.863
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 2 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:05:34 ; elapsed = 00:06:04 . Memory (MB): peak = 1205.633 ; gain = 188.094
-Synthesis Optimization Complete : Time (s): cpu = 00:05:34 ; elapsed = 00:06:04 . Memory (MB): peak = 1205.633 ; gain = 188.094
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:31 ; elapsed = 00:04:10 . Memory (MB): peak = 1269.629 ; gain = 70.121
+Synthesis Optimization Complete : Time (s): cpu = 00:03:53 ; elapsed = 00:04:20 . Memory (MB): peak = 1269.629 ; gain = 252.863
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1205.633 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1269.629 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1205.633 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1269.629 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 5 Warnings, 2 Critical Warnings and 0 Errors encountered.
+45 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:05:39 ; elapsed = 00:06:13 . Memory (MB): peak = 1205.633 ; gain = 188.094
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+synth_design: Time (s): cpu = 00:03:59 ; elapsed = 00:04:28 . Memory (MB): peak = 1269.629 ; gain = 252.863
 INFO: [Common 17-1381] The checkpoint 'C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/synth_1/top_MIPS.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_MIPS_utilization_synth.rpt -pb top_MIPS_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Nov 29 21:58:50 2024...
+INFO: [Common 17-206] Exiting Vivado at Mon Dec  2 09:56:38 2024...
