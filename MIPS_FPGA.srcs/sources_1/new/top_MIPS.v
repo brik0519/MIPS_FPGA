@@ -22,19 +22,21 @@
 
 
 module top_MIPS(
-    input wire clk, reset,
-    output wire LED
+    //input wire clk, reset, BTN,
+
+    output wire CA, CB, CC, CD, CE, CF, CG,
+    output wire [7:0] AN,
+    output wire [15:0] LED
 );
-    assign LED = 1'b1;
-    
-    
+    assign LED = 16'b0;
     
     /*  01 Instruction Fetch  */
-    reg PCWrite;
+//    wire PCWrite;
     wire PCSrc;//, PC_write;
     wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch;
     assign PCSrc = MEM_Branch & MEM_Zero;
- 
+//    assign PCWrite = DBTN;
+    
     MUX_Nbit_2to1 #(.N(31)) MUX_Branch  ( .I1(PC_Next), .I2(PC_Branch), .sel(PCSrc), .Y(PC_Write_Data)); //!PC_Branch !PC_Write_Data
 
     Program_Counter PC (
@@ -237,20 +239,55 @@ module top_MIPS(
         .I1(WB_ALU_Result), .I2(WB_Read_Data), .sel(ALUSrc), .Y(Write_Data) 
     );
     
+    
+    /*   I/O Field   */
+    wire DBTN;
+    Debounce U0 (
+        .clk(clk), .en(eo_10M), .rstn(reset), .BTN(BTN),
+        .debounced(DBTN)
+    );
+    
+    
+    wire [3:0] D0, D1, D2, D3, D4, D5, D6, D7;
+    seven_segment_8_drv U5 (
+        .clk(clk), .reset(reset), 
+        .D0(D0),.D1(D1),.D2(D2),.D3(D3),.D4(D4),.D5(D5),.D6(D6),.D7(D7), 
+        .a(CA), .b(CB), .c(CC), .d(CD), .e(CE), .f(CF), .g(CG), .AN(AN)
+    );
 
-//    always #1 clk = ~clk;
+    wire eo_100M, eo_10M, eo_1M, eo_100K, eo_10K, eo_1K, eo_100;
+    cnt_100M DIV (
+        .clk(clk), .rstn(reset),
+        .eo_100M(eo_100M), .eo_10M(eo_10M), .eo_1M(eo_1M),
+        .eo_100K(eo_100K), .eo_10K(eo_10K), .eo_1K(eo_1K),
+        .eo_100(eo_100) 
+    );
     
+    assign D0 = PC_Current[3:0];
+    assign D1 = PC_Current[7:4];
+    assign D2 = PC_Current[11:8];
+    assign D3 = PC_Current[15:12];
+    assign D4 = PC_Current[19:16];
+    assign D5 = PC_Current[23:20];
+    assign D6 = PC_Current[27:24];
+    assign D7 = PC_Current[31:28];
     
-//    initial begin
-//        clk = 1; reset = 1;
-//        PCWrite = 0;
-//        #3 reset = 0; #2;
+
+    /*   For Simulation   */
+    reg PCWrite;
+    reg clk, reset;
+    reg BTN;
+    always #1 clk = ~clk;
+    initial begin
+        clk = 1; reset = 1;
+        PCWrite = 0;
+        #3 reset = 0; #2;
                
-//        PCWrite = 1; #4 PCWrite = 0;
+        PCWrite = 1;// #4 PCWrite = 0;
        
 
-//        #50 $finish;
+        #50 $finish;
 
-//    end
+    end
 
 endmodule
