@@ -21,13 +21,13 @@
 
 
 module BCD_cnt(
-    input inc, rstn, clk, 
+    input inc, reset, clk, 
     output TC,
     output reg [3:0] Q 
 );
                
-always @( posedge clk ) begin
-   if(rstn) Q <= 4'd0; // synchronous reset
+always @( posedge clk or posedge reset ) begin
+   if(reset) Q <= 4'd0; // synchronous reset
    else if (inc) begin
       if (TC) Q<=4'd0;
       else Q <= Q + 1;

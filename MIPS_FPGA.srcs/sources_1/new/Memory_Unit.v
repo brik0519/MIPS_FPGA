@@ -22,35 +22,46 @@
 
 
 module Memory_Unit(
-    input wire clk,
-    input wire reset,
-    input wire MemRead,
-    input wire MemWrite,
-    input wire [31:0] address,
-    input wire [31:0] write_data,
-    output reg [31:0] read_data
+    // Input
+    input wire clk, reset,
+    input wire MemRead, MemWrite,
+    input wire [31:0] address, write_data,
+    
+    output reg [31:0] read_data,
+    
+    output reg [31:0] memory0, memory1, memory2, memory3,
+    output reg [31:0] memory4, memory5, memory6, memory7
 );  
-    reg [31:0] memory [0:511];
+    reg [31:0] memory [0:31];
     
-    reg [31:0] init_address;
     integer i;
-    
-    always @(negedge clk) begin
+    always @(posedge clk or posedge reset) begin
         if (reset) begin
-            for (i = 0; i < 32'd512; i = i + 1) begin
+            for (i = 0; i < 32'd32; i = i + 1) begin
                 memory[i] <= 32'b0;
             end
         end
     
-        if ( MemWrite )
-            memory[address] <= write_data;
-        else 
-            memory[address] <= 32'b0;
-            
-        if ( MemRead )
-            read_data <= memory[address];
-        else
-            read_data <= 32'b0;      
+        else begin 
+            if ( MemWrite )
+                memory[address] <= write_data;
+            else 
+                memory[address] <= 32'b0;
+                
+            if ( MemRead )
+                read_data <= memory[address];
+            else
+                read_data <= 32'b0;      
+        end
+        
+        memory0 <= memory[0];
+        memory1 <= memory[1];
+        memory2 <= memory[2];
+        memory3 <= memory[3];
+        memory4 <= memory[4];
+        memory5 <= memory[5];
+        memory6 <= memory[6];
+        memory7 <= memory[7];
     end
     
 endmodule

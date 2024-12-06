@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Mon Dec  2 14:53:10 2024
+| Date             : Sat Dec  7 00:05:44 2024
 | Host             : HYEON-OdysseyLaptop running 64-bit major release  (build 9200)
 | Command          : report_power -file top_MIPS_power_routed.rpt -pb top_MIPS_power_summary_routed.pb -rpx top_MIPS_power_routed.rpx
 | Design           : top_MIPS
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.101        |
+| Total On-Chip Power (W)  | 0.098        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.004        |
+| Dynamic (W)              | 0.001        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
-| Max Ambient (C)          | 84.5         |
-| Junction Temperature (C) | 25.5         |
+| Max Ambient (C)          | 84.6         |
+| Junction Temperature (C) | 25.4         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      215 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       74 |     63400 |            0.12 |
+| Slice Logic    |    <0.001 |      207 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       65 |     63400 |            0.10 |
 |   CARRY4       |    <0.001 |        8 |     15850 |            0.05 |
 |   Register     |    <0.001 |       85 |    126800 |            0.07 |
 |   F7/F8 Muxes  |    <0.001 |        4 |     63400 |           <0.01 |
-|   Others       |     0.000 |        7 |       --- |             --- |
-| Signals        |    <0.001 |      148 |       --- |             --- |
-| I/O            |     0.003 |       34 |       210 |           16.19 |
+|   Others       |     0.000 |        8 |       --- |             --- |
+| Signals        |    <0.001 |      142 |       --- |             --- |
+| I/O            |    <0.001 |       34 |       210 |           16.19 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.101 |          |           |                 |
+| Total          |     0.098 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.016 |       0.001 |      0.015 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.005 |       0.001 |      0.004 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.004 |       0.000 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -141,7 +141,7 @@ Table of Contents
 +----------+-----------+
 | Name     | Power (W) |
 +----------+-----------+
-| top_MIPS |     0.004 |
+| top_MIPS |     0.001 |
 +----------+-----------+
 
 

@@ -22,21 +22,21 @@
 
 
 module top_MIPS(
-    //input wire clk, reset, BTN,
+    input wire clk, reset, BTN,
 
     output wire CA, CB, CC, CD, CE, CF, CG,
     output wire [7:0] AN,
     output wire [15:0] LED
 );
     assign LED = 16'b0;
+    assign LED[0] = 1'b1;
     
     /*  01 Instruction Fetch  */
-//    wire PCWrite;
-    wire PCSrc;//, PC_write;
+    wire PCSrc, PCWrite;
     wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch;
     assign PCSrc = MEM_Branch & MEM_Zero;
-//    assign PCWrite = DBTN;
-    
+    assign PCWrite = DBTN & eo_10M;
+//    assign PCWrite = 1'b1; // for debugging    
     MUX_Nbit_2to1 #(.N(31)) MUX_Branch  ( .I1(PC_Next), .I2(PC_Branch), .sel(PCSrc), .Y(PC_Write_Data)); //!PC_Branch !PC_Write_Data
 
     Program_Counter PC (
@@ -48,7 +48,7 @@ module top_MIPS(
     Adder_Nbit    #(.N(31)) PC_Adder    ( .A(PC_Current), .B(32'b1), .Y(PC_Next) );
 
 
-    wire [31:0] Instruction; 
+    wire [31:0] Instruction;             
     Instruction_Memory_Unit INSTRUCTION_MEM(
         .clk(clk), .reset(reset), .address(PC_Current),
         .MemRead(1'b1), .MemWrite(1'b0),
@@ -95,11 +95,32 @@ module top_MIPS(
         .ALUop(EX_ALUOp), .funct(EX_fn), .ALUctrl(ALUCtrl)
     );
 
-    // wire RegWrite;
+
     wire [4:0]  Write_Register;
     wire [31:0] Write_Data;
     wire [31:0] Registers_Read_Data_1, Registers_Read_Data_2;
+    wire [4:0] WB_Reg_Destination;
+    wire [31:0]
+            reg0,  reg1,  reg2,  reg3,  
+            reg4,  reg5,  reg6,  reg7,  
+            reg8,  reg9,  reg10, reg11, 
+            reg12, reg13, reg14, reg15,
+            reg16, reg17, reg18, reg19, 
+            reg20, reg21, reg22, reg23,
+            reg24, reg25, reg26, reg27, 
+            reg28, reg29, reg30, reg31;
+    wire [1023:0] register_wires;
     assign Write_Register = WB_Reg_Destination;
+    assign register_wires = {
+        reg0,  reg1,  reg2,  reg3,  
+        reg4,  reg5,  reg6,  reg7,  
+        reg8,  reg9,  reg10, reg11, 
+        reg12, reg13, reg14, reg15,
+        reg16, reg17, reg18, reg19, 
+        reg20, reg21, reg22, reg23,
+        reg24, reg25, reg26, reg27, 
+        reg28, reg29, reg30, reg31
+    };
     
     Registers_Unit REG_UNIT (
         .clk(clk), .reset(reset),
@@ -109,7 +130,16 @@ module top_MIPS(
         .write_register(Write_Register),
         
         .read_data_1(Registers_Read_Data_1), .read_data_2(Registers_Read_Data_2),
-        .write_data(Write_Data)
+        .write_data(Write_Data),
+        
+        .reg0(reg0),   .reg1(reg1),   .reg2(reg2),   .reg3(reg3),  
+        .reg4(reg4),   .reg5(reg5),   .reg6(reg6),   .reg7(reg7),  
+        .reg8(reg8),   .reg9(reg9),   .reg10(reg10), .reg11(reg11), 
+        .reg12(reg12), .reg13(reg13), .reg14(reg14), .reg15(reg15),
+        .reg16(reg16), .reg17(reg17), .reg18(reg18), .reg19(reg19), 
+        .reg20(reg20), .reg21(reg21), .reg22(reg22), .reg23(reg23),
+        .reg24(reg24), .reg25(reg25), .reg26(reg26), .reg27(reg27), 
+        .reg28(reg28), .reg29(reg29), .reg30(reg30), .reg31(reg31)
     );
         
 
@@ -208,15 +238,24 @@ module top_MIPS(
     
     /*  04 Memory  */
     wire [31:0] Read_Data;
+    wire [31:0] memory0, memory1, memory2, memory3;
+    wire [31:0] memory4, memory5, memory6, memory7;
+    wire [255:0] memory_wires;
+    
     Memory_Unit DATA_MEM(
         .clk(clk), .reset(reset), .address(MEM_ALUResult),
         .MemRead(MEM_MemRead), .MemWrite(MEM_MemWrite),
-        .write_data(MEM_Read_Data_2), .read_data(Read_Data)
+        .write_data(MEM_Read_Data_2), .read_data(Read_Data),
+        .memory0(memory0), .memory1(memory1), .memory2(memory2), .memory3(memory3),
+        .memory4(memory4), .memory5(memory5), .memory6(memory6), .memory7(memory7)
     );
+    
+    assign memory_wires = {
+        memory0, memory1, memory2, memory3, memory4, memory5, memory6, memory7
+    };
     
     
     wire [31:0] WB_Read_Data, WB_ALU_Result;
-    wire [4:0] WB_Reg_Destination;
     wire WB_MemWrite, WB_MemRead;
     MEM_WB_Register MEM_WB_REG(
         // Input
@@ -274,20 +313,15 @@ module top_MIPS(
     
 
     /*   For Simulation   */
-    reg PCWrite;
-    reg clk, reset;
-    reg BTN;
-    always #1 clk = ~clk;
-    initial begin
-        clk = 1; reset = 1;
-        PCWrite = 0;
-        #3 reset = 0; #2;
-               
-        PCWrite = 1;// #4 PCWrite = 0;
+//    reg clk, reset;
+//    always #1 clk = ~clk;
+//    initial begin
+//        clk = 1; reset = 1;
+//        #3 reset = 0; #2;
        
 
-        #50 $finish;
+//        #50 $finish;
 
-    end
+//    end
 
 endmodule

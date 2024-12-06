@@ -1,0 +1,33 @@
+# Vivado 자동 생성 디렉토리 및 파일
+.runs/
+.Xil/
+*.jou
+*.log
+
+# Vivado 합성 및 구현 결과
+*.bit
+*.bin
+*.dcp
+*.edf
+*.xml
+*.rpt
+
+# Vivado IP 및 자동 생성 파일
+.ip_user_files/
+.cache/
+.hw/
+.sim/
+
+# 시뮬레이션 파일
+*.wdb
+*.vcd
+*.sim
+*.fuse
+*.ucdb
+
+# 백업 및 임시 파일
+*.backup
+*.tmp
+*.swp
+*~
+
