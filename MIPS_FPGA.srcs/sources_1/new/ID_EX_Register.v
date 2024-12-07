@@ -23,37 +23,41 @@
 module ID_EX_Register(
     input wire clk, reset,    
     input wire ID_EX_Write,
+    input wire [31:0] ID_PC,
     
+    /*  Input   */
     // Control Signal
     input wire [1:0] ALUOp,
     input wire ALUSrc, RegDst, MemRead, MemWrite,
-    input wire MemtoReg, RegWrite, Branch,
+    input wire MemtoReg, RegWrite, Beq,
     
-    // ID side Data
+    // Datapath
     input wire [31:0] ID_read_data1, ID_read_data2,
-    input wire [31:0] ID_extended_imm_16,
+    input wire [31:0] ID_Extended_Imm_16,
     input wire [4:0]  ID_rt, ID_rd,
     input wire [5:0]  fn,
     
     
-    
-    output reg [31:0] EX_read_data1, EX_read_data2, 
-    output reg [31:0] EX_extended_imm_16,
-    output reg [4:0]  EX_rt, EX_rd,
-    
-    output reg [1:0] EX_ALUOp,
-    
+    /*  Output  */
+    // Controller
     output reg EX_ALUSrc, EX_RegDst, EX_MemRead, EX_MemWrite,
-    output reg EX_MemtoReg, EX_RegWrite, EX_Branch,
+    output reg EX_MemtoReg, EX_RegWrite, EX_Beq,
     
-    output reg [5:0] EX_fn // Function code
+    // Datapath
+    output reg [31:0] EX_PC,
+    output reg [31:0] EX_read_data1, EX_read_data2, 
+    output reg [31:0] EX_Extended_Imm_16,
+    output reg [4:0]  EX_rt, EX_rd,
+    output reg [1:0]  EX_ALUOp,
+    output reg [5:0]  EX_fn // Function code
 );
 
     always @(posedge clk or posedge reset) begin
         if (reset) begin
+            EX_PC <= 32'b0;
             EX_read_data1 <= 32'b0;
             EX_read_data2 <= 32'b0;
-            EX_extended_imm_16 <= 32'b0;
+            EX_Extended_Imm_16 <= 32'b0;
             
             EX_ALUOp <= 2'b0;
 
@@ -66,15 +70,16 @@ module ID_EX_Register(
             EX_MemWrite <= 1'b0;
             EX_MemtoReg <= 1'b0; 
             EX_RegWrite <= 1'b0; 
-            EX_Branch   <= 1'b0;
+            EX_Beq   <= 1'b0;
             
             EX_fn <= 6'b0;
         end
             
         else if (ID_EX_Write) begin
+            EX_PC <= ID_PC;
             EX_read_data1 <= ID_read_data1;
             EX_read_data2 <= ID_read_data2;
-            EX_extended_imm_16 <= ID_extended_imm_16;
+            EX_Extended_Imm_16 <= ID_Extended_Imm_16;
             
             EX_rt <= ID_rt;
             EX_rd <= ID_rd;
@@ -85,7 +90,7 @@ module ID_EX_Register(
             EX_MemWrite <= MemWrite;
             EX_MemtoReg <= MemtoReg;
             EX_RegWrite <= RegWrite;
-            EX_Branch   <= Branch;
+            EX_Beq   <= Beq;
             
             EX_fn <= fn;
         end
