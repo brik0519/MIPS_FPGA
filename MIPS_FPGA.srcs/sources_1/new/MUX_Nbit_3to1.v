@@ -29,8 +29,8 @@ module MUX_Nbit_3to1 #(parameter N = 0)(
     
 always @ (*) begin
     case(sel)
-        2'b0 : Y = I1;
-        2'b1 : Y = I2;
+        2'd0 : Y = I1;
+        2'd1 : Y = I2;
         default : Y = I3;
     endcase
 end
