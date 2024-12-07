@@ -35,10 +35,10 @@ module Memory_Unit(
     reg [31:0] memory [0:31];
     
     integer i;
-    always @(posedge clk or posedge reset) begin
+     always @(posedge clk or posedge reset) begin
         if (reset) begin
             for (i = 0; i < 32'd32; i = i + 1) begin
-                memory[i] <= 32'b0;
+                memory[i] <= {32'b0};
             end
         end
     
@@ -63,5 +63,43 @@ module Memory_Unit(
         memory6 <= memory[6];
         memory7 <= memory[7];
     end
+    
+    
+//    always @(posedge clk or posedge reset) begin
+//        if (reset) begin
+//            for (i = 0; i < 32'd127; i = i + 4) begin
+//                memory[i]   <= 8'b1111_1100;
+//                memory[i+1] <= 8'b0;
+//                memory[i+2] <= 8'b0;
+//                memory[i+3] <= 8'b0;
+//            end
+//        end
+    
+//        else begin 
+//            if ( MemWrite )
+//                memory[address]     <= write_data [31:]
+//                memory[address + 1] <= write_data
+//                memory[address + 2] <= write_data
+//                memory[address + 3] <= write_data
+                
+//                <= write_data;
+//            else 
+//                memory[address] <= 32'b0;
+                
+//            if ( MemRead )
+//                read_data <= memory[address];
+//            else
+//                read_data <= 32'b0;      
+//        end
+        
+//        memory0 <= memory[0];
+//        memory1 <= memory[1];
+//        memory2 <= memory[2];
+//        memory3 <= memory[3];
+//        memory4 <= memory[4];
+//        memory5 <= memory[5];
+//        memory6 <= memory[6];
+//        memory7 <= memory[7];
+//    end
     
 endmodule

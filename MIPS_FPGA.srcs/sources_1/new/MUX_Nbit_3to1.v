@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
+`default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2024/09/30 10:45:17
+// Create Date: 2024/10/28 09:39:59
 // Design Name: 
-// Module Name: mux81
+// Module Name: MUX_Nbit_2to1
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,22 +21,18 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module mux81(
-    input wire [3:0] D0, D1, D2, D3, D4, D5, D6, D7,
-    input wire [2:0] sel,
-    output reg [3:0] D
+module MUX_Nbit_3to1 #(parameter N = 0)(
+    input wire [N:0] I1, I2, I3,
+    input wire [1:0] sel,
+    output reg [N:0] Y
 );
-
-always @(*)
-    case (sel)
-        3'b000: D = D0;
-        3'b001: D = D1;
-        3'b010: D = D2;
-        3'b011: D = D3;
-        3'b100: D = D4;
-        3'b101: D = D5;
-        3'b110: D = D6;
-        default: D = D7;
+    
+always @ (*) begin
+    case(sel)
+        2'b0 : Y = I1;
+        2'b1 : Y = I2;
+        default : Y = I3;
     endcase
-
+end
+    
 endmodule
