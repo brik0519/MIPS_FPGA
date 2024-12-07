@@ -29,22 +29,17 @@ module Instruction_Memory_Unit(
 );  
     reg [7:0] memory [0:2047];
 //    reg [31:0] memory [0:511];
-    reg [31:0] Init_Inst = 32'd0;
+    
     integer i;
     always @(posedge clk) begin
         if (reset) begin
-            for (i = 0; i < 32'd2044; i = i + 4) begin
-                case (i)
-                    0   : Init_Inst = 32'd0;          // Program Start
-//                    4   : Init_Inst = 32'h0108_0020;  // ADD $s0, $t0, $zero;
-                    4   : Init_Inst = 32'h2108_000A;  // ADDI $t0, $t0, 10;
-//                    8   : Init_Inst = 32'h0000_0000;  // NOP
-//                    12  : Init_Inst = 32'h0000_0000;  // NOP
-//                    16  : Init_Inst = 32'h0108_0020;  // ADD $s0, $t0, $zero;    
-//                    20  : Init_Inst = 32'h0800_0000;  // J 0;
-                    default: Init_Inst = 32'd0;
-                endcase
-                {memory[i], memory[i+1], memory[i+2], memory[i+3]} <= Init_Inst;
+            for (i = 0; i < 32'd2047; i = i + 4) begin
+                if (i == 0)
+                    {memory[i], memory[i+1], memory[i+2], memory[i+3]} = 32'h2108_000A;  // ADDI $t0, $t0, 10; 
+                else if (i == 4)
+                    {memory[i], memory[i+1], memory[i+2], memory[i+3]} = 32'h0108_0020;  // ADD $s0, $t0, $zero;
+                else 
+                    {memory[i], memory[i+1], memory[i+2], memory[i+3]} <= {6'b111111, 26'b0};
             end
         end
     
