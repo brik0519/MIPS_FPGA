@@ -31,7 +31,7 @@ module EX_MEM_Register(
     // Controll Signal
     input wire EX_MemWrite, EX_MemRead,
     input wire EX_MemtoReg, EX_RegWrite, 
-    input wire EX_Branch,
+    input wire EX_Beq,
 
 
     /*  Output  */
@@ -43,7 +43,7 @@ module EX_MEM_Register(
     // Controll Signal
     output reg MEM_MemWrite, MEM_MemRead,
     output reg MEM_MemtoReg, MEM_RegWrite, 
-    output reg MEM_Branch
+    output reg MEM_Beq
 );
 
     always @(posedge clk, posedge reset) begin
@@ -60,7 +60,7 @@ module EX_MEM_Register(
             MEM_MemRead  <= 1'b0;
             MEM_MemtoReg <= 1'b0;
             MEM_RegWrite <= 1'b0;
-            MEM_Branch   <= 1'b0;
+            MEM_Beq   <= 1'b0;
         end
 
         else begin
@@ -76,7 +76,7 @@ module EX_MEM_Register(
             MEM_MemRead  <= EX_MemRead;
             MEM_MemtoReg <= EX_MemtoReg;
             MEM_RegWrite <= EX_RegWrite;
-            MEM_Branch   <= EX_Branch;
+            MEM_Beq   <= EX_Beq;
         end
 
     end

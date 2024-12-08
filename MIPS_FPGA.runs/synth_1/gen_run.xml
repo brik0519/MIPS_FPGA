@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1733497378">
   <File Type="PA-TCL" Name="top_MIPS.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="top_MIPS_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="top_MIPS_reports.tcl"/>
   <File Type="RDS-RDS" Name="top_MIPS.vds"/>
   <File Type="RDS-UTIL" Name="top_MIPS_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="top_MIPS_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="top_MIPS.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="top_MIPS_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="top_MIPS_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ALU.v">
@@ -197,9 +194,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

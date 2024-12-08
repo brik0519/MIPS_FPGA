@@ -21,10 +21,10 @@
 
 
 module ALUControl(
-input [1:0] ALUop,
-input [5:0] funct,
-output reg [3:0] ALUctrl
-    );
+    input [1:0] ALUop,
+    input [5:0] funct,
+    output reg [3:0] ALUctrl
+);
 
 always @ (*) begin
     case(ALUop)
