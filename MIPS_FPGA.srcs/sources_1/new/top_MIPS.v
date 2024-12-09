@@ -83,7 +83,8 @@ module top_MIPS(
     
 
     wire [1:0] ALUOp;
-    wire ALUSrc, RegDst, MemRead, MemWrite, RegWrite, MemtoReg, Beq, Jump, Jal;    
+    wire ALUSrc, RegDst, MemRead, MemWrite, RegWrite, MemtoReg; 
+    wire Beq, Jump, Jal, Lui;  
     Control_Unit CONTROLL_UNIT (
         // input
         .opcode(op), .reset(reset), .Instruction(Instruction),
@@ -91,7 +92,7 @@ module top_MIPS(
         // output
         .ALUOp(ALUOp), .ALUSrc(ALUSrc), .RegDst(RegDst), 
         .MemRead(MemRead), .MemWrite(MemWrite), .RegWrite(RegWrite), 
-        .MemtoReg(MemtoReg), .Beq(Beq), .Jump(Jump), .Jal(Jal)
+        .MemtoReg(MemtoReg), .Beq(Beq), .Jump(Jump), .Jal(Jal), .Lui(Lui)
     );
  
     wire [3:0] ALUCtrl;
@@ -157,7 +158,7 @@ module top_MIPS(
     
 
     wire [31:0] EX_Read_Data_1, EX_Read_Data_2, EX_Extended_Imm_16;
-    wire [4:0] EX_Rt, EX_Rd;
+    wire [4:0] EX_Rt, EX_Rd, EX_Shamt;
     
     wire [1:0] EX_ALUOp;
     wire EX_ALUSrc, EX_RegDst, EX_MemRead, EX_MemWrite, EX_RegWrite, EX_MemtoReg, EX_Beq;
@@ -173,13 +174,13 @@ module top_MIPS(
         
         .ID_read_data1(Registers_Read_Data_1), .ID_read_data2(Registers_Read_Data_2),
         .ID_extended_imm_16(Extended_Imm_16),
-        .ID_rt(rt), .ID_rd(rd),
+        .ID_rt(rt), .ID_rd(rd), .ID_shamt(shamt),
         .fn(fn),
         
         // Output
         .EX_read_data1(EX_Read_Data_1), .EX_read_data2(EX_Read_Data_2), 
         .EX_extended_imm_16(EX_Extended_Imm_16),
-        .EX_rt(EX_Rt), .EX_rd(EX_Rd),
+        .EX_rt(EX_Rt), .EX_rd(EX_Rd), .EX_shamt(EX_Shamt),
         .EX_ALUOp(EX_ALUOp),
         .EX_ALUSrc(EX_ALUSrc), .EX_RegDst(EX_RegDst), .EX_MemRead(EX_MemRead), .EX_MemWrite(EX_MemWrite),
         .EX_MemtoReg(EX_MemtoReg), .EX_RegWrite(EX_RegWrite), .EX_Beq(EX_Beq),
@@ -196,12 +197,22 @@ module top_MIPS(
     wire Zero;
     assign data1 = EX_Read_Data_1;
     
-    MUX_Nbit_2to1 #(31) ALUMUX_ReadData2_Extenedimm16 ( 
-        .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .sel(EX_ALUSrc), .Y(data2) 
+//    MUX_Nbit_2to1 #(31) ALUMUX_ReadData2_Extenedimm16 ( 
+//        .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .sel(EX_ALUSrc), .Y(data2) 
+//    );
+    
+    MUX_Nbit_3to1 #(.N(31)) MUX_PC_WRITE ( 
+        .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .I3(EX_Extended_Imm_16 << 16), 
+        .sel({Lui, ALUSrc}), .Y(data2) 
     );
     
     ALU MAIN_ALU (
-        .dataA(data1), .dataB(data2), .aluctrl(ALUCtrl), .aluresult(ALU_Result), .zero(Zero)
+        // Input
+        .dataA(data1), .dataB(data2), 
+        .aluctrl(ALUCtrl), .shamt(EX_Extended_Imm_16[4:0]),
+        
+        // Output 
+        .aluresult(ALU_Result), .zero(Zero)
     ); // ADD : aluctrl = 4'b0010;
     
     

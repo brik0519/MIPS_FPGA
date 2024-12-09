@@ -32,14 +32,14 @@ module ID_EX_Register(
     // ID side Data
     input wire [31:0] ID_read_data1, ID_read_data2,
     input wire [31:0] ID_extended_imm_16,
-    input wire [4:0]  ID_rt, ID_rd,
+    input wire [4:0]  ID_rt, ID_rd, ID_shamt,
     input wire [5:0]  fn,
     
     
     
     output reg [31:0] EX_read_data1, EX_read_data2, 
     output reg [31:0] EX_extended_imm_16,
-    output reg [4:0]  EX_rt, EX_rd,
+    output reg [4:0]  EX_rt, EX_rd, EX_shamt,
     
     output reg [1:0] EX_ALUOp,
     
@@ -66,9 +66,10 @@ module ID_EX_Register(
             EX_MemWrite <= 1'b0;
             EX_MemtoReg <= 1'b0; 
             EX_RegWrite <= 1'b0; 
-            EX_Beq   <= 1'b0;
+            EX_Beq      <= 1'b0;
             
-            EX_fn <= 6'b0;
+            EX_fn       <= 6'b0;
+            EX_shamt    <= 5'b0;
         end
             
         else if (ID_EX_Write) begin
@@ -89,7 +90,8 @@ module ID_EX_Register(
             EX_RegWrite <= RegWrite;
             EX_Beq   <= Beq;
             
-            EX_fn <= fn;
+            EX_fn       <= fn;
+            EX_shamt    <= ID_shamt;
         end
     end
 

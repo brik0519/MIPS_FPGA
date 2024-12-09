@@ -11,6 +11,7 @@ verilog xil_defaultlib  \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Instruction_Memory_Unit.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/MEM_WB_Register.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_3to1.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Program_Counter.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Registers_Unit.v" \
