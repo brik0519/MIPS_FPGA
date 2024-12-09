@@ -32,11 +32,8 @@ module top_MIPS(
     assign LED[0] = 1'b1;
     
     /*  01 Instruction Fetch  */
-    wire PCSrc, PCWrite;
+    wire PCWrite;
     wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch, PC_Jump;
-    wire MEM_Beq, MEM_Zero;
-    
-    assign PCSrc = MEM_Beq & MEM_Zero;
 //    assign PCWrite = DBTN & eo_10M;
   
 //    MUX_Nbit_2to1 #(.N(31)) MUX_Branch  ( .I1(PC_Next), .I2(PC_Branch), .sel(PCSrc), .Y(PC_Write_Data)); //!PC_Branch !PC_Write_Data
@@ -216,7 +213,8 @@ module top_MIPS(
     );
     
     wire [31:0] Branch_Add_Result; wire Branch;
-    assign Branch = (Bne & ~MEM_Zero) | (Beq & MEM_Zero); 
+    wire MEM_Beq, MEM_Bne, MEM_Zero;
+    assign Branch = (MEM_Bne & ~MEM_Zero) | (MEM_Beq & MEM_Zero); 
     Adder_Nbit #(.N(31)) Branch_Adder( .A(PC_Next), .B(Extended_Imm_16<<2), .Y(Branch_Add_Result) );
     
     ALU MAIN_ALU (
@@ -238,7 +236,6 @@ module top_MIPS(
     wire [31:0] MEM_ALUResult, MEM_Read_Data_2;
     wire [4:0] MEM_Reg_Destination;
     wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite;
-    wire MEM_Zero, MEM_Beq, MEM_Bne;
     EX_MEM_Register EX_MEM_REG (
         // Input
         // Datapath

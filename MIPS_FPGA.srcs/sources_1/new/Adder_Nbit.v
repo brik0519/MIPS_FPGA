@@ -22,8 +22,6 @@
 
 module Adder_Nbit #(parameter N = 0)(
     input wire [N:0] A, B,
-    // input wire cin,
-    output wire cout,
     output wire [N:0] Y
 );  
     

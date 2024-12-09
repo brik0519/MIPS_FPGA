@@ -28,13 +28,13 @@ module cnt_100M(
     wire tc0, tc1, tc2, tc3, tc4, tc5, tc6, tc7;
     wire [3:0] Q100M;
 
-    BCD_cnt u0 ( .TC(tc0), .inc(1'b1), .reset(rstn), .clk(clk) );
-    BCD_cnt u1 ( .TC(tc1), .inc(tc0),  .reset(rstn), .clk(clk) );
-    BCD_cnt u2 ( .TC(tc2), .inc(tc1),  .reset(rstn), .clk(clk) );
-    BCD_cnt u3 ( .TC(tc3), .inc(tc2),  .reset(rstn), .clk(clk) );
-    BCD_cnt u4 ( .TC(tc4), .inc(tc3),  .reset(rstn), .clk(clk) );
-    BCD_cnt u5 ( .TC(tc5), .inc(tc4),  .reset(rstn), .clk(clk) );
-    BCD_cnt u6 ( .TC(tc6), .inc(tc5),  .reset(rstn), .clk(clk) );
+    BCD_cnt u0 ( .TC(tc0), .inc(1'b1), .reset(rstn), .clk(clk), .Q() );
+    BCD_cnt u1 ( .TC(tc1), .inc(tc0),  .reset(rstn), .clk(clk), .Q() );
+    BCD_cnt u2 ( .TC(tc2), .inc(tc1),  .reset(rstn), .clk(clk), .Q() );
+    BCD_cnt u3 ( .TC(tc3), .inc(tc2),  .reset(rstn), .clk(clk), .Q() );
+    BCD_cnt u4 ( .TC(tc4), .inc(tc3),  .reset(rstn), .clk(clk), .Q() );
+    BCD_cnt u5 ( .TC(tc5), .inc(tc4),  .reset(rstn), .clk(clk), .Q() );
+    BCD_cnt u6 ( .TC(tc6), .inc(tc5),  .reset(rstn), .clk(clk), .Q() );
     BCD_cnt u7 ( .TC(tc7), .inc(tc6),  .reset(rstn), .clk(clk), .Q(Q100M) );
     
     assign eo_100M  = tc7;

@@ -43,7 +43,7 @@ module Instruction_Memory_Unit(
 //                    //8 : NOP
 //                    //12: NOP
 //                    //16: NOP
-                    20  : Init_Inst = 32'h0100_8014;  // ADD $s0, $t0, $zero;
+//                    20  : Init_Inst = 32'h0100_8014;  // ADD $s0, $t0, $zero;
 ////                    //24: NOP                    
 ////                    //28: NOP
 ////                    //32: NOP
@@ -61,16 +61,15 @@ module Instruction_Memory_Unit(
 //                    //76: NOP
 //                    //80: NOP
 //                    84  : Init_Inst = 32'h8D10_0000;  // LW $s0, 0($t0);
-                    //88: NOP
-                    //92: NOP
-                    //96: NOP
+                      //88: NOP
+                      //92: NOP
+                      //96: NOP
 //                    100 : Init_Inst = 32'h3C08_0007;  // LUI $0, $s0, 7;
-                    
-                    104 : Init_Inst = 32'h0109_4080;   // SLL $t1, $t0, 2
-                    
+//                    104 : Init_Inst = 32'h0109_4080;   // SLL $t1, $t0, 2
                     
                     
-//                    20  : Init_Inst = 32'h0800_0000;  // J 0;
+                    
+                    20  : Init_Inst = 32'h0800_0000;  // J 0;
                     default: Init_Inst = {6'b111111, 26'd0};
                 endcase
                 {memory[i], memory[i+1], memory[i+2], memory[i+3]} <= Init_Inst;
