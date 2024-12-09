@@ -23,6 +23,7 @@
 module ALU(
 input wire [31:0] dataA, dataB,
 input wire [3:0] aluctrl,
+input wire [4:0] shamt,
 output reg [31:0] aluresult,
 output reg zero
     );
@@ -39,6 +40,7 @@ output reg zero
                         if(aluctrl[0] == 1)         //slt detect
                             aluresult = {31'b0, aluresult[31]};
                      end
+            4'b0011: aluresult = dataA << shamt;
             4'b1100: aluresult = ~(dataA | dataB);  //nor
             default: aluresult = 32'd0;
         endcase

@@ -31,7 +31,8 @@ always @ (*) begin
     case(ALUop)
         2'b00: ALUctrl = 4'b0010;   //lw,sw 
         2'b01: ALUctrl = 4'b0110;   //beq(sub)
-        2'b10: if(funct == 6'b100000) ALUctrl = 4'b0010;        //add
+        2'b10: if (funct == 6'b000000) ALUctrl = 4'b0011;       //sll
+               else if(funct == 6'b100000) ALUctrl = 4'b0010;   //add
                else if(funct == 6'b100010) ALUctrl = 4'b0110;   //sub
                else if(funct == 6'b100100) ALUctrl = 4'b0000;   //and
                else if(funct == 6'b100101) ALUctrl = 4'b0001;   //or

@@ -3,7 +3,7 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Mon Dec  9 16:30:39 2024">
+<application name="pa" timeStamp="Mon Dec  9 22:05:29 2024">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="4074bc1c5a9a40deab45ee74ba9a0007" type="ProjectID"/>
 <property name="ProjectIteration" value="24" type="ProjectIteration"/>
@@ -22,7 +22,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="EditDelete" value="6" type="JavaHandler"/>
 <property name="EditPaste" value="2" type="JavaHandler"/>
 <property name="EditUndo" value="4" type="JavaHandler"/>
-<property name="ExitApp" value="18" type="JavaHandler"/>
+<property name="ExitApp" value="19" type="JavaHandler"/>
 <property name="LaunchProgramFpga" value="14" type="JavaHandler"/>
 <property name="NewProject" value="1" type="JavaHandler"/>
 <property name="OpenHardwareManager" value="7" type="JavaHandler"/>
@@ -69,7 +69,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="FPGAChooser_FPGA_TABLE" value="1" type="GuiHandlerData"/>
 <property name="FPGAChooser_PACKAGE" value="1" type="GuiHandlerData"/>
 <property name="FPGAChooser_SPEED" value="1" type="GuiHandlerData"/>
-<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="477" type="GuiHandlerData"/>
+<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="482" type="GuiHandlerData"/>
 <property name="FindAndReplaceAllDialog_CLOSE" value="1" type="GuiHandlerData"/>
 <property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="233" type="GuiHandlerData"/>
 <property name="GettingStartedView_CREATE_NEW_PROJECT" value="1" type="GuiHandlerData"/>
@@ -150,6 +150,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT" value="7" type="GuiHandlerData"/>
 <property name="SrcChooserPanel_CREATE_FILE" value="8" type="GuiHandlerData"/>
 <property name="SrcMenu_IP_HIERARCHY" value="8" type="GuiHandlerData"/>
+<property name="SyntheticaGettingStartedView_RECENT_PROJECTS" value="1" type="GuiHandlerData"/>
 <property name="SyntheticaStateMonitor_CANCEL" value="1" type="GuiHandlerData"/>
 <property name="TaskBanner_CLOSE" value="11" type="GuiHandlerData"/>
 <property name="TouchpointSurveyDialog_REMIND_ME_LATER" value="1" type="GuiHandlerData"/>
@@ -159,9 +160,9 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="WaveformView_GOTO_CURSOR" value="1" type="GuiHandlerData"/>
 </item>
 <item name="Other">
-<property name="GuiMode" value="2" type="GuiMode"/>
+<property name="GuiMode" value="64" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
-<property name="TclMode" value="1" type="TclMode"/>
+<property name="TclMode" value="51" type="TclMode"/>
 </item>
 </section>
 </application>
