@@ -33,13 +33,19 @@ module top_MIPS(
     
     /*  01 Instruction Fetch  */
     wire PCSrc, PCWrite;
-    wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch;
+    wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch, PC_Jump;
     wire MEM_Beq, MEM_Zero;
     
     assign PCSrc = MEM_Beq & MEM_Zero;
 //    assign PCWrite = DBTN & eo_10M;
   
     MUX_Nbit_2to1 #(.N(31)) MUX_Branch  ( .I1(PC_Next), .I2(PC_Branch), .sel(PCSrc), .Y(PC_Write_Data)); //!PC_Branch !PC_Write_Data
+
+    MUX_Nbit_3to1 #(.N(31)) MUX_JUMP_BRANCH ( 
+        .I1(PC_Next), .I2(PC_Jump), .I3(PC_Branch), 
+        .sel({Branch, Jump}), .Y(data2) 
+    );
+
 
     Program_Counter PC (
         .clk(clk), .reset(reset),
@@ -227,7 +233,7 @@ module top_MIPS(
     wire [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Read_Data_2;
     wire [4:0] MEM_Reg_Destination;
     wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite;
-    wire MEM_Beq, MEM_Bne;
+    wire MEM_Zero, MEM_Beq, MEM_Bne;
     EX_MEM_Register EX_MEM_REG (
         // Input
         // Datapath
@@ -253,7 +259,9 @@ module top_MIPS(
         .MEM_MemtoReg(MEM_MemtoReg), .MEM_RegWrite(MEM_RegWrite),
         .MEM_Beq(MEM_Beq), .MEM_Bne(MEM_Bne)
     );
-
+    
+    wire Branch;
+    assign Branch = (Bne & ~MEM_Zero) | (Beq & MEM_Zero); 
     Adder_Nbit #(.N(31)) Branch_Adder( .A(PC_Next), .B(Extended_Imm_16<<2), .Y(PC_Branch) );
     
     /*  04 Memory  */
