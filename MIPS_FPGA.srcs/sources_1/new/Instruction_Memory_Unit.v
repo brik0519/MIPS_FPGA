@@ -38,7 +38,7 @@ module Instruction_Memory_Unit(
         if (reset) begin
             for (i = 0; i < 32'd2044; i = i + 4) begin
                 case (i)
-//                    0   : Init_Inst = {6'b111111, 26'd0};  // Program Start
+                    0   : Init_Inst = {6'b111111, 26'd0};  // Program Start
                     4   : Init_Inst = 32'h2108_000A;  // ADDI $t0, $t0, 10;
 //                    //8 : NOP
 //                    //12: NOP
@@ -47,6 +47,7 @@ module Instruction_Memory_Unit(
 //                    //24: NOP                    
 //                    //28: NOP
 //                    //32: NOP
+                    36  : Init_Inst = 32'h3C08_0007; //  LUI $0, $s0, 
 //                    36  : Init_Inst = 32'hAD10_0000;  // SW $s0, 0($t0);
                     //40: NOP    
                     //44: NOP    

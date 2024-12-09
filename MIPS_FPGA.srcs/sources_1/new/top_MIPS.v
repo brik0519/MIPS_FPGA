@@ -203,7 +203,7 @@ module top_MIPS(
     
     MUX_Nbit_3to1 #(.N(31)) MUX_PC_WRITE ( 
         .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .I3(EX_Extended_Imm_16 << 16), 
-        .sel({Lui, ALUSrc}), .Y(data2) 
+        .sel({Lui, EX_ALUSrc}), .Y(data2) 
     );
     
     ALU MAIN_ALU (

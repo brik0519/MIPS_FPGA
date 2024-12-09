@@ -37,9 +37,9 @@ module Memory_Unit(
     integer i;
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            for (i = 0; i < 32'd32; i = i + 1) begin
+            read_data <= 32'b0;
+            for (i = 0; i < 32'd32; i = i + 1)
                 memory[i] <= 32'b0;
-            end
         end
     
         else begin 
