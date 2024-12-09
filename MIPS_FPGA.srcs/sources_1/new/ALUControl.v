@@ -43,6 +43,7 @@ always @ (*) begin
                         jump = 1'b1;
                     end
                else ALUctrl = 4'b0010;                          //add
+        2'b11: ALUctrl = 4'b0111;   //slti
         default: ALUctrl = 4'b0000;
     endcase
 end    

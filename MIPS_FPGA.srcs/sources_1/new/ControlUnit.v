@@ -38,6 +38,7 @@ localparam jump     = 6'b000010;
 localparam jal      = 6'b000011;
 localparam addi     = 6'b001000;
 localparam subi     = 6'b001010;
+localparam slti     = 6'b001010;
 localparam R_type   = 6'b000000;
 
 
@@ -84,6 +85,12 @@ always @ (*) begin
         subi    :begin
                  ALUSrc = 1'b1;
                  ALUOp = 2'b01;
+                 RegWrite = 1'b1;
+                 MemtoReg = 1'b1;
+                 end
+        slti    :begin
+                 ALUSrc = 1'b1;
+                 ALUOp = 2'b11;
                  RegWrite = 1'b1;
                  MemtoReg = 1'b1;
                  end
