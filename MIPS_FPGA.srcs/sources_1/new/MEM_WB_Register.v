@@ -45,8 +45,9 @@ module MEM_WB_Register(
     always @(posedge clk, posedge reset) begin
         if (reset) begin
             // Datapath
-            WB_Read_Data  <= 32'b0;
-            WB_ALU_Result <= 32'b0;
+            WB_Read_Data        <= 32'b0;
+            WB_ALU_Result       <= 32'b0;
+            WB_Reg_Destination  <= 5'b0;
             
             // Control Signal
             WB_MemWrite <= 1'b0;
