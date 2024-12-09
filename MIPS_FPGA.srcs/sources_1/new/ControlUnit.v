@@ -27,7 +27,7 @@ module Control_Unit(
     input wire [5:0]  opcode,
     
     output reg [1:0]  ALUOp,
-    output reg ALUSrc, MemRead, RegDst, MemWrite, MemtoReg, RegWrite, Beq, Jump, Bne, Jal
+    output reg ALUSrc, MemRead, RegDst, MemWrite, MemtoReg, RegWrite, Beq, Jump, Bne, Jal, Lui
 );
 
 localparam lw       = 6'b100011;
@@ -39,6 +39,7 @@ localparam jal      = 6'b000011;
 localparam addi     = 6'b001000;
 localparam subi     = 6'b001010;
 localparam slti     = 6'b001010;
+localparam lui      = 6'b001111;
 localparam R_type   = 6'b000000;
 
 
@@ -54,13 +55,14 @@ always @ (*) begin
     Bne = 1'b0;
     Jump = 1'b0;
     Jal = 1'b0;
+    Lui = 1'b0;
     if(!reset)begin // Reset or All Instruction bits are 0
         case(opcode)
         lw      :begin
                  ALUSrc = 1'b1;
                  MemRead = 1'b1;
                  RegWrite = 1'b1;
-                 MemtoReg = 1'b1;
+                 MemtoReg = 1'b0;
                  end
         sw      :begin
                  ALUSrc = 1'b1;
@@ -94,6 +96,11 @@ always @ (*) begin
                  RegWrite = 1'b1;
                  MemtoReg = 1'b1;
                  end
+        lui     :begin
+                 RegWrite = 1'b1;
+                 MemtoReg = 1'b1;
+                 Lui = 1'b1;
+                 end
         R_type  :begin
                  ALUOp = 2'b10;
                  RegDst = 1'b1;
@@ -108,6 +115,7 @@ always @ (*) begin
                  RegWrite = 1'b1;
                  RegDst = 1'b0;
                  Jal = 1'b1;
+                 MemtoReg = 1'b0;
                  end
         default :begin
                  ALUSrc = 1'b0;
