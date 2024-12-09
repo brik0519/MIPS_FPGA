@@ -23,10 +23,11 @@
 module ALUControl(
     input [1:0] ALUop,
     input [5:0] funct,
-    output reg [3:0] ALUctrl
+    output reg [3:0] ALUctrl,
+    output reg jump
 );
-
 always @ (*) begin
+    jump = 1'b0;
     case(ALUop)
         2'b00: ALUctrl = 4'b0010;   //lw,sw 
         2'b01: ALUctrl = 4'b0110;   //beq(sub)
@@ -36,6 +37,10 @@ always @ (*) begin
                else if(funct == 6'b100101) ALUctrl = 4'b0001;   //or
                else if(funct == 6'b101010) ALUctrl = 4'b0111;   //slt
                else if(funct == 6'b100111) ALUctrl = 4'b1100;   //nor
+               else if(funct == 6'b001000) begin 
+                        ALUctrl = 4'b0000;   //jr(and)
+                        jump = 1'b1;
+                    end
                else ALUctrl = 4'b0010;                          //add
         default: ALUctrl = 4'b0000;
     endcase
