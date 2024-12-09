@@ -24,7 +24,8 @@ module EX_MEM_Register(
     /*  Input   */
     // Datapath
     input wire clk, reset,
-    input wire [31:0] ADD_Result, ALU_Result, EX_Read_Data_2,
+    input wire [31:0] Branch_Add_Result, ALU_Result, 
+    input wire [31:0] EX_Read_Data_2, PC_Branch,
     input wire [4:0] Reg_Destination,
     input wire Zero,
 
@@ -36,7 +37,8 @@ module EX_MEM_Register(
 
     /*  Output  */
     // Datapath
-    output reg [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Read_Data_2,
+    output reg [31:0] MEM_Branch_Add_Result, MEM_ALUResult, 
+    output reg [31:0] MEM_Read_Data_2, MEM_PC_Branch,
     output reg [4:0] MEM_Reg_Destination,
     output reg MEM_Zero,
 
@@ -49,10 +51,11 @@ module EX_MEM_Register(
     always @(posedge clk, posedge reset) begin
         if (reset) begin
             // Datapath
-            MEM_ADDResult <= 32'b0;
-            MEM_ALUResult <= 32'b0;
-            MEM_Read_Data_2 <= 32'b0;
-            MEM_Reg_Destination <= 5'b0;
+            MEM_Branch_Add_Result   <= 32'b0;
+            MEM_ALUResult           <= 32'b0;
+            MEM_Read_Data_2         <= 32'b0;
+            MEM_PC_Branch           <= 32'b0;
+            MEM_Reg_Destination     <= 5'b0;
             MEM_Zero <=  1'b0;
 
             // Controll Signal
@@ -67,11 +70,12 @@ module EX_MEM_Register(
 
         else begin
             // Datapath
-            MEM_ADDResult       <= ADD_Result;
-            MEM_ALUResult       <= ALU_Result;
-            MEM_Read_Data_2     <= EX_Read_Data_2;
-            MEM_Reg_Destination <= Reg_Destination;
-            MEM_Zero            <= Zero;
+            MEM_Branch_Add_Result       <= Branch_Add_Result;
+            MEM_ALUResult               <= ALU_Result;
+            MEM_Read_Data_2             <= EX_Read_Data_2;
+            MEM_Reg_Destination         <= Reg_Destination;
+            MEM_PC_Branch               <= PC_Branch;
+            MEM_Zero                    <= Zero;
 
             // Controll Signal
             MEM_MemWrite <= EX_MemWrite;

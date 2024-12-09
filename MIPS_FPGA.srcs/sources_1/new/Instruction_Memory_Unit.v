@@ -64,7 +64,9 @@ module Instruction_Memory_Unit(
                     //88: NOP
                     //92: NOP
                     //96: NOP
-                    100 : Init_Inst = 32'h3C08_0007;  // LUI $0, $s0, 7;
+//                    100 : Init_Inst = 32'h3C08_0007;  // LUI $0, $s0, 7;
+                    
+                    104 : Init_Inst = 32'h0109_4080;   // SLL $t1, $t0, 2
                     
                     
                     

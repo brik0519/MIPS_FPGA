@@ -42,5 +42,5 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/behyeon.kim/Documents/proj
 INFO: [VRFC 10-311] analyzing module seven_segment_8_drv
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module top_MIPS
-WARNING: [VRFC 10-3248] data object 'MEM_Beq' is already declared [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:230]
-WARNING: [VRFC 10-3703] second declaration of 'MEM_Beq' ignored [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:230]
+WARNING: [VRFC 10-3248] data object 'MEM_Zero' is already declared [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:241]
+WARNING: [VRFC 10-3703] second declaration of 'MEM_Zero' ignored [C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v:241]
