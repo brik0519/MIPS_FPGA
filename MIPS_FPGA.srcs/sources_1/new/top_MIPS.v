@@ -40,7 +40,7 @@ module top_MIPS(
     
     MUX_Nbit_3to1 #(.N(31)) MUX_JUMP_BRANCH ( 
         .I1(PC_Next), .I2(PC_Jump), .I3(PC_Branch), 
-        .sel({Branch, Jump}), .Y(PC_Write_Data) 
+        .sel({Branch, Jump|Jr}), .Y(PC_Write_Data) 
     );
 
 
@@ -239,8 +239,13 @@ module top_MIPS(
     
     
     wire [4:0] Reg_Destination;
-    MUX_Nbit_2to1 #(4) MUX_EX_rt_rd ( 
-        .I1(EX_Rt), .I2(EX_Rd), .sel(EX_RegDst), .Y(Reg_Destination) 
+//    MUX_Nbit_2to1 #(4) MUX_EX_rt_rd ( 
+//        .I1(EX_Rt), .I2(EX_Rd), .sel(EX_RegDst), .Y(Reg_Destination) 
+//    );
+    
+    MUX_Nbit_3to1 #(.N(4)) MUX_EX_rt_rd ( 
+        .I1(EX_Rt), .I2(EX_Rd), .I3(5'd31), 
+        .sel({EX_Jal, EX_RegDst}), .Y(Reg_Destination) 
     );
     
     
