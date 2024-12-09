@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Mon Dec  9 21:38:58 2024" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Mon Dec  9 22:58:46 2024" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2020.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "3064766" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "7cd45e1f-4ee7-4b9e-9be3-aa45e976ac72" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "702f99ced88741a8a8afeb2bf1be03d3" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "223" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "249" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Windows Server 2016 or Windows 10" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz" -context "user_environment"
@@ -36,7 +36,7 @@ webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Processes -value "251" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "42" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip unimacro_ver unisims_ver " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "2.20_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "73784_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 1343569467 -regid "" -xml C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Time -value "2.14_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "74152_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 4001284572 -regid "" -xml C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

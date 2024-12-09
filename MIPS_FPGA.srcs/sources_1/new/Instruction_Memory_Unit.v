@@ -47,7 +47,7 @@ module Instruction_Memory_Unit(
 //                    //24: NOP                    
 //                    //28: NOP
 //                    //32: NOP
-                    36  : Init_Inst = 32'h6D10_0000;
+//                    36  : Init_Inst = 32'hAD10_0000;  // SW $s0, 0($t0);
                     //40: NOP    
                     //44: NOP    
                     //48: NOP    

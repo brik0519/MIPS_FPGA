@@ -211,7 +211,7 @@ module top_MIPS(
     );
     
     
-    wire [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Read_Data_2;
+    wire [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Data_2;
     wire [4:0] MEM_Reg_Destination;
     wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite;
     EX_MEM_Register EX_MEM_REG (
@@ -219,7 +219,7 @@ module top_MIPS(
         // Datapath
         .clk(clk), .reset(reset),
         .ADD_Result(PC_Branch), .ALU_Result(ALU_Result), .Zero(Zero), 
-        .EX_Read_Data_2(EX_Read_Data_2),
+        .Data_2(data2),
         .Reg_Destination(Reg_Destination),
     
         // Controll Signal
@@ -231,7 +231,7 @@ module top_MIPS(
         // Output
         // Datapath
         .MEM_ADDResult(MEM_ADDResult), .MEM_ALUResult(MEM_ALUResult), .MEM_Zero(MEM_Zero),
-        .MEM_Read_Data_2(MEM_Read_Data_2),
+        .MEM_Data_2(MEM_Data_2),
         .MEM_Reg_Destination(MEM_Reg_Destination),
     
         // Controll Signal
@@ -251,7 +251,7 @@ module top_MIPS(
     Memory_Unit DATA_MEM(
         .clk(clk), .reset(reset), .address(MEM_ALUResult),
         .MemRead(MEM_MemRead), .MemWrite(MEM_MemWrite),
-        .write_data(MEM_Read_Data_2), .read_data(Read_Data),
+        .write_data(MEM_Data_2), .read_data(Read_Data),
         .memory0(memory0), .memory1(memory1), .memory2(memory2), .memory3(memory3),
         .memory4(memory4), .memory5(memory5), .memory6(memory6), .memory7(memory7)
     );
