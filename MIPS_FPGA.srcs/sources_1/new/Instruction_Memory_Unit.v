@@ -38,20 +38,24 @@ module Instruction_Memory_Unit(
         if (reset) begin
             for (i = 0; i < 32'd2044; i = i + 4) begin
                 case (i)
-//                    0   : Init_Inst = {6'b111111, 26'd0};  // Program Start
+                    0   : Init_Inst = {6'b111111, 26'd0};  // Program Start
                     4   : Init_Inst = 32'h2108_000A;  // ADDI $t0, $t0, 10;
 //                    //8 : NOP
 //                    //12: NOP
 //                    //16: NOP
-//                    20  : Init_Inst = 32'h0100_8014;  // ADD $s0, $t0, $zero;
+                    20  : Init_Inst = 32'h0100_8014;  // ADD $s0, $t0, $zero;
 //                    //24: NOP                    
 //                    //28: NOP
 //                    //32: NOP
-                    36  : Init_Inst = 32'h0208_8016;  // SUB $s0, $s0, $t0;
+                    36  : Init_Inst = 32'h6D10_0000;
                     //40: NOP    
                     //44: NOP    
                     //48: NOP    
-//                    52  : Init_Inst = 32'h2A10_000A;  // SUBI $s0, $s0, 10;
+//                    52  : Init_Inst = 32'h0208_8022;  // SUB $s0, $s0, $t0;
+//                    //56: NOP
+//                    //60: NOP
+//                    //64: NOP
+//                    68  : Init_Inst = 32'h2A10_000A;  // SUBI $s0, $s0, 10;
 //                    20  : Init_Inst = 32'h0800_0000;  // J 0;
                     default: Init_Inst = {6'b111111, 26'd0};
                 endcase

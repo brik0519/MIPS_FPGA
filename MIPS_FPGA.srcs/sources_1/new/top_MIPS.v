@@ -70,12 +70,14 @@ module top_MIPS(
     wire [5:0]  op; 
     wire [4:0]  rs, rt, rd;
     wire [5:0]  fn;
+    wire [10:6] shamt;
     wire [15:0] imm16;
     
     assign op     = ID_Instruction[31:26];
     assign rs     = ID_Instruction[25:21];    
     assign rt     = ID_Instruction[20:16];
     assign rd     = ID_Instruction[15:11];
+    assign shamt  = ID_Instruction[10:6]; 
     assign fn     = ID_Instruction[5:0];
     assign imm16  = ID_Instruction[15:0];
     

@@ -51,7 +51,7 @@ module Registers_Unit (
                 register[i] <= 32'b0;
         end
         
-        else if ( RegWrite )
+        else if ( RegWrite & write_register )
             register[write_register] <= write_data;
     end
     
