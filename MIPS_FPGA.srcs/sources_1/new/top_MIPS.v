@@ -94,7 +94,7 @@ module top_MIPS(
     wire Beq, Bne, Jump, Jal, Lui;  
     Control_Unit CONTROLL_UNIT (
         // input
-        .opcode(op), .reset(reset), .Instruction(Instruction),
+        .opcode(op), .reset(reset),
         
         // output
         .ALUOp(ALUOp), .ALUSrc(ALUSrc), .RegDst(RegDst), 
@@ -365,10 +365,10 @@ module top_MIPS(
     always #1 clk = ~clk;
     initial begin
         clk = 1; reset = 1;
-        #3 reset = 0; #2;
+        #2 reset = 0; #1;
        
 
-        #100 $finish;
+        #10 $finish;
 
     end
 
