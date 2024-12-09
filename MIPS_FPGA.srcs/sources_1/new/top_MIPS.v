@@ -84,7 +84,7 @@ module top_MIPS(
 
     wire [1:0] ALUOp;
     wire ALUSrc, RegDst, MemRead, MemWrite, RegWrite, MemtoReg; 
-    wire Beq, Jump, Jal, Lui;  
+    wire Beq, Bne, Jump, Jal, Lui;  
     Control_Unit CONTROLL_UNIT (
         // input
         .opcode(op), .reset(reset), .Instruction(Instruction),
@@ -92,7 +92,7 @@ module top_MIPS(
         // output
         .ALUOp(ALUOp), .ALUSrc(ALUSrc), .RegDst(RegDst), 
         .MemRead(MemRead), .MemWrite(MemWrite), .RegWrite(RegWrite), 
-        .MemtoReg(MemtoReg), .Beq(Beq), .Jump(Jump), .Jal(Jal), .Lui(Lui)
+        .MemtoReg(MemtoReg), .Beq(Beq), .Bne(Bne), .Jump(Jump), .Jal(Jal), .Lui(Lui)
     );
  
     wire [3:0] ALUCtrl;
@@ -161,7 +161,8 @@ module top_MIPS(
     wire [4:0] EX_Rt, EX_Rd, EX_Shamt;
     
     wire [1:0] EX_ALUOp;
-    wire EX_ALUSrc, EX_RegDst, EX_MemRead, EX_MemWrite, EX_RegWrite, EX_MemtoReg, EX_Beq;
+    wire EX_ALUSrc, EX_RegDst, EX_MemRead, EX_MemWrite, EX_RegWrite, EX_MemtoReg; 
+    wire EX_Beq, EX_Bne, EX_Jal, EX_Lui;
     wire [5:0] EX_fn;
     
     ID_EX_Register ID_EX_REG (
@@ -170,7 +171,7 @@ module top_MIPS(
         // Input
         .ALUOp(ALUOp), .ALUSrc(ALUSrc), .RegDst(RegDst), 
         .MemRead(MemRead), .MemWrite(MemWrite), .MemtoReg(MemtoReg), 
-        .RegWrite(RegWrite), .Beq(Beq),
+        .RegWrite(RegWrite), .Beq(Beq), .Bne(Bne), .Jal(Jal), .Lui(Lui),
         
         .ID_read_data1(Registers_Read_Data_1), .ID_read_data2(Registers_Read_Data_2),
         .ID_extended_imm_16(Extended_Imm_16),
@@ -183,7 +184,8 @@ module top_MIPS(
         .EX_rt(EX_Rt), .EX_rd(EX_Rd), .EX_shamt(EX_Shamt),
         .EX_ALUOp(EX_ALUOp),
         .EX_ALUSrc(EX_ALUSrc), .EX_RegDst(EX_RegDst), .EX_MemRead(EX_MemRead), .EX_MemWrite(EX_MemWrite),
-        .EX_MemtoReg(EX_MemtoReg), .EX_RegWrite(EX_RegWrite), .EX_Beq(EX_Beq),
+        .EX_MemtoReg(EX_MemtoReg), .EX_RegWrite(EX_RegWrite), 
+        .EX_Beq(EX_Beq), .EX_Bne(EX_Bne), .EX_Jal(EX_Jal), .EX_Lui(EX_Lui),
          
          // Function code
         .EX_fn(EX_fn)
@@ -195,7 +197,7 @@ module top_MIPS(
     wire [31:0] data1, data2; 
     wire [31:0] ALU_Result;
     wire Zero;
-    assign data1 = EX_Read_Data_1;
+    assign data1 = EX_Read_Data_1; 
     
 //    MUX_Nbit_2to1 #(31) ALUMUX_ReadData2_Extenedimm16 ( 
 //        .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .sel(EX_ALUSrc), .Y(data2) 
@@ -225,6 +227,7 @@ module top_MIPS(
     wire [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Data_2;
     wire [4:0] MEM_Reg_Destination;
     wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite;
+    wire MEM_Beq, MEM_Bne;
     EX_MEM_Register EX_MEM_REG (
         // Input
         // Datapath
@@ -236,7 +239,7 @@ module top_MIPS(
         // Controll Signal
         .EX_MemWrite(EX_MemWrite), .EX_MemRead(EX_MemRead),
         .EX_MemtoReg(EX_MemtoReg), .EX_RegWrite(EX_RegWrite),
-        .EX_Beq(EX_Beq),
+        .EX_Beq(EX_Beq), .EX_Bne(EX_Bne),
     
     
         // Output
@@ -248,7 +251,7 @@ module top_MIPS(
         // Controll Signal
         .MEM_MemWrite(MEM_MemWrite), .MEM_MemRead(MEM_MemRead),
         .MEM_MemtoReg(MEM_MemtoReg), .MEM_RegWrite(MEM_RegWrite),
-        .MEM_Beq(MEM_Beq)
+        .MEM_Beq(MEM_Beq), .MEM_Bne(MEM_Bne)
     );
 
     Adder_Nbit #(.N(31)) Branch_Adder( .A(PC_Next), .B(Extended_Imm_16<<2), .Y(PC_Branch) );

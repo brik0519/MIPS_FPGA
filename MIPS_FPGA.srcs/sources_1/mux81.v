@@ -22,7 +22,7 @@
 
 module mux81(
     input wire [3:0] D0, D1, D2, D3, D4, D5, D6, D7,
-    input wire [3:0] sel,
+    input wire [2:0] sel,
     output reg [3:0] D
 );
 

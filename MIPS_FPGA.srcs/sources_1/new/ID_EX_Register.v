@@ -27,7 +27,7 @@ module ID_EX_Register(
     // Control Signal
     input wire [1:0] ALUOp,
     input wire ALUSrc, RegDst, MemRead, MemWrite,
-    input wire MemtoReg, RegWrite, Beq,
+    input wire MemtoReg, RegWrite, Beq, Bne, Jal, Lui,
     
     // ID side Data
     input wire [31:0] ID_read_data1, ID_read_data2,
@@ -44,7 +44,8 @@ module ID_EX_Register(
     output reg [1:0] EX_ALUOp,
     
     output reg EX_ALUSrc, EX_RegDst, EX_MemRead, EX_MemWrite,
-    output reg EX_MemtoReg, EX_RegWrite, EX_Beq,
+    output reg EX_MemtoReg, EX_RegWrite, 
+    output reg EX_Beq, EX_Bne, EX_Jal, EX_Lui,
     
     output reg [5:0] EX_fn // Function code
 );
@@ -66,7 +67,11 @@ module ID_EX_Register(
             EX_MemWrite <= 1'b0;
             EX_MemtoReg <= 1'b0; 
             EX_RegWrite <= 1'b0; 
+            
             EX_Beq      <= 1'b0;
+            EX_Bne      <= 1'b0;
+            EX_Jal      <= 1'b0;
+            EX_Lui      <= 1'b0;
             
             EX_fn       <= 6'b0;
             EX_shamt    <= 5'b0;
@@ -88,7 +93,11 @@ module ID_EX_Register(
             EX_MemWrite <= MemWrite;
             EX_MemtoReg <= MemtoReg;
             EX_RegWrite <= RegWrite;
-            EX_Beq   <= Beq;
+
+            EX_Beq      <= Beq;
+            EX_Bne      <= Bne;
+            EX_Jal      <= Jal;
+            EX_Lui      <= Lui;
             
             EX_fn       <= fn;
             EX_shamt    <= ID_shamt;
