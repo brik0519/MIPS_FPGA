@@ -30,7 +30,7 @@ module MEM_WB_Register(
     input wire [4:0] MEM_Reg_Destination,
     
     // Control Signal
-    input wire MEM_MemWrite, MEM_MemRead, MEM_RegWrite, MEM_MemtoReg,
+    input wire MEM_RegWrite, MEM_MemtoReg,
     
     
     /*  Output  */
@@ -39,7 +39,7 @@ module MEM_WB_Register(
     output reg [4:0] WB_Reg_Destination,
     
     //Control Signal
-    output reg WB_MemWrite, WB_MemRead, WB_RegWrite, WB_MemtoReg
+    output reg WB_RegWrite, WB_MemtoReg
 );
     
     always @(posedge clk, posedge reset) begin
@@ -50,19 +50,16 @@ module MEM_WB_Register(
             WB_Reg_Destination  <= 5'b0;
             
             // Control Signal
-            WB_MemWrite <= 1'b0;
-            WB_MemRead  <= 1'b0;
             WB_RegWrite <= 1'b0;
             WB_MemtoReg <= 1'b0;
         end
     
         else begin
-        
+            // Datapathz    
             WB_Read_Data  <= MEM_Read_Data;
             WB_ALU_Result <= MEM_ALU_Result;
-            
-            WB_MemWrite <= MEM_MemWrite;
-            WB_MemRead  <= MEM_MemRead;
+                        
+            // Control Signal
             WB_RegWrite <= MEM_RegWrite;
             WB_MemtoReg <= MEM_MemtoReg;
             

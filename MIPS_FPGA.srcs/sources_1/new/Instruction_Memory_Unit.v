@@ -32,7 +32,7 @@ module Instruction_Memory_Unit(
     
     integer i;
     reg [31:0] Init_Inst;
-     always @(posedge clk) begin
+     always @(posedge clk or posedge reset) begin
         Init_Inst = {6'b111111, 26'd0};
         
         if (reset) begin
@@ -44,19 +44,30 @@ module Instruction_Memory_Unit(
 //                    //12: NOP
 //                    //16: NOP
                     20  : Init_Inst = 32'h0100_8014;  // ADD $s0, $t0, $zero;
-//                    //24: NOP                    
-//                    //28: NOP
-//                    //32: NOP
-                    36  : Init_Inst = 32'h3C08_0007; //  LUI $0, $s0, 
+////                    //24: NOP                    
+////                    //28: NOP
+////                    //32: NOP
+////                    36  : Init_Inst = 32'h3C08_0007; //  LUI $0, $s0, 
 //                    36  : Init_Inst = 32'hAD10_0000;  // SW $s0, 0($t0);
-                    //40: NOP    
-                    //44: NOP    
-                    //48: NOP    
+//                    //40: NOP    
+//                    //44: NOP    
+//                    //48: NOP    
 //                    52  : Init_Inst = 32'h0208_8022;  // SUB $s0, $s0, $t0;
 //                    //56: NOP
 //                    //60: NOP
 //                    //64: NOP
 //                    68  : Init_Inst = 32'h2A10_000A;  // SUBI $s0, $s0, 10;
+//                    //72: NOP
+//                    //76: NOP
+//                    //80: NOP
+//                    84  : Init_Inst = 32'h8D10_0000;  // LW $s0, 0($t0);
+                    //88: NOP
+                    //92: NOP
+                    //96: NOP
+                    100 : Init_Inst = 32'h3C08_0007;  // LUI $0, $s0, 7;
+                    
+                    
+                    
 //                    20  : Init_Inst = 32'h0800_0000;  // J 0;
                     default: Init_Inst = {6'b111111, 26'd0};
                 endcase

@@ -203,9 +203,9 @@ module top_MIPS(
 //        .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .sel(EX_ALUSrc), .Y(data2) 
 //    );
     
-    MUX_Nbit_3to1 #(.N(31)) MUX_PC_WRITE ( 
+    MUX_Nbit_3to1 #(.N(31)) ALUMUX_ReadData2_Extenedimm16 ( 
         .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .I3(EX_Extended_Imm_16 << 16), 
-        .sel({Lui, EX_ALUSrc}), .Y(data2) 
+        .sel({EX_Lui, EX_ALUSrc}), .Y(data2) 
     );
     
     ALU MAIN_ALU (
@@ -224,7 +224,7 @@ module top_MIPS(
     );
     
     
-    wire [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Data_2;
+    wire [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Read_Data_2;
     wire [4:0] MEM_Reg_Destination;
     wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite;
     wire MEM_Beq, MEM_Bne;
@@ -233,7 +233,7 @@ module top_MIPS(
         // Datapath
         .clk(clk), .reset(reset),
         .ADD_Result(PC_Branch), .ALU_Result(ALU_Result), .Zero(Zero), 
-        .Data_2(data2),
+        .EX_Read_Data_2(EX_Read_Data_2),
         .Reg_Destination(Reg_Destination),
     
         // Controll Signal
@@ -245,7 +245,7 @@ module top_MIPS(
         // Output
         // Datapath
         .MEM_ADDResult(MEM_ADDResult), .MEM_ALUResult(MEM_ALUResult), .MEM_Zero(MEM_Zero),
-        .MEM_Data_2(MEM_Data_2),
+        .MEM_Read_Data_2(MEM_Read_Data_2),
         .MEM_Reg_Destination(MEM_Reg_Destination),
     
         // Controll Signal
@@ -258,16 +258,18 @@ module top_MIPS(
     
     /*  04 Memory  */
     wire [31:0] Read_Data;
-    wire [31:0] memory0, memory1, memory2, memory3;
-    wire [31:0] memory4, memory5, memory6, memory7;
-    wire [255:0] memory_wires;
+    wire [31:0] memory0, memory1, memory2,  memory3;
+    wire [31:0] memory4, memory5, memory6,  memory7;
+    wire [31:0] memory8, memory9, memory10, memory11;
+    wire [383:0] memory_wires;
     
     Memory_Unit DATA_MEM(
         .clk(clk), .reset(reset), .address(MEM_ALUResult),
         .MemRead(MEM_MemRead), .MemWrite(MEM_MemWrite),
-        .write_data(MEM_Data_2), .read_data(Read_Data),
-        .memory0(memory0), .memory1(memory1), .memory2(memory2), .memory3(memory3),
-        .memory4(memory4), .memory5(memory5), .memory6(memory6), .memory7(memory7)
+        .write_data(MEM_Read_Data_2), .read_data(Read_Data),
+        .memory0(memory0), .memory1(memory1), .memory2(memory2),  .memory3(memory3),
+        .memory4(memory4), .memory5(memory5), .memory6(memory6),  .memory7(memory7),
+        .memory8(memory8), .memory9(memory9), .memory10(memory10), .memory11(memory11)
     );
     
     assign memory_wires = {
@@ -276,22 +278,19 @@ module top_MIPS(
     
     
     wire [31:0] WB_Read_Data, WB_ALU_Result;
-    wire WB_MemWrite, WB_MemRead, WB_MemtoReg;
+    wire WB_MemtoReg;
     MEM_WB_Register MEM_WB_REG(
         // Input
         .clk(clk), .reset(reset), 
         .MEM_WB_Write(1'b1),
         .MEM_Read_Data(Read_Data), 
         .MEM_ALU_Result(MEM_ALUResult),
-        .MEM_MemWrite(MEM_MemWrite), 
-        .MEM_MemRead(MEM_MemRead),
         .MEM_RegWrite(MEM_RegWrite),
         .MEM_MemtoReg(MEM_MemtoReg),
         .MEM_Reg_Destination(MEM_Reg_Destination),
         
         // Output
         .WB_Read_Data(WB_Read_Data), .WB_ALU_Result(WB_ALU_Result),
-        .WB_MemWrite(WB_MemWrite), .WB_MemRead(WB_MemRead),
         .WB_RegWrite(WB_RegWrite), .WB_Reg_Destination(WB_Reg_Destination),
         .WB_MemtoReg(WB_MemtoReg)
     );
@@ -334,7 +333,7 @@ module top_MIPS(
     assign D6 = PC_Current[27:24];
     assign D7 = PC_Current[31:28];
     
-
+    
     /*   For Simulation   */
     reg clk, reset;
     assign PCWrite = 1'b1; // for debugging  
@@ -344,7 +343,7 @@ module top_MIPS(
         #3 reset = 0; #2;
        
 
-        #50 $finish;
+        #100 $finish;
 
     end
 

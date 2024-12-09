@@ -24,7 +24,7 @@ module EX_MEM_Register(
     /*  Input   */
     // Datapath
     input wire clk, reset,
-    input wire [31:0] ADD_Result, ALU_Result, Data_2,
+    input wire [31:0] ADD_Result, ALU_Result, EX_Read_Data_2,
     input wire [4:0] Reg_Destination,
     input wire Zero,
 
@@ -36,7 +36,7 @@ module EX_MEM_Register(
 
     /*  Output  */
     // Datapath
-    output reg [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Data_2,
+    output reg [31:0] MEM_ADDResult, MEM_ALUResult, MEM_Read_Data_2,
     output reg [4:0] MEM_Reg_Destination,
     output reg MEM_Zero,
 
@@ -51,7 +51,7 @@ module EX_MEM_Register(
             // Datapath
             MEM_ADDResult <= 32'b0;
             MEM_ALUResult <= 32'b0;
-            MEM_Data_2 <= 32'b0;
+            MEM_Read_Data_2 <= 32'b0;
             MEM_Reg_Destination <= 5'b0;
             MEM_Zero <=  1'b0;
 
@@ -69,9 +69,9 @@ module EX_MEM_Register(
             // Datapath
             MEM_ADDResult       <= ADD_Result;
             MEM_ALUResult       <= ALU_Result;
-            MEM_Data_2          <= Data_2;
+            MEM_Read_Data_2     <= EX_Read_Data_2;
             MEM_Reg_Destination <= Reg_Destination;
-            MEM_Zero            <=  Zero;
+            MEM_Zero            <= Zero;
 
             // Controll Signal
             MEM_MemWrite <= EX_MemWrite;

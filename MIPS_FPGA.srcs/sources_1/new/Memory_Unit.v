@@ -30,12 +30,13 @@ module Memory_Unit(
     output reg [31:0] read_data,
     
     output reg [31:0] memory0, memory1, memory2, memory3,
-    output reg [31:0] memory4, memory5, memory6, memory7
+    output reg [31:0] memory4, memory5, memory6, memory7,
+    output reg [31:0] memory8, memory9, memory10, memory11
 );  
     reg [31:0] memory [0:31];
     
     integer i;
-    always @(posedge clk or posedge reset) begin
+    always @(negedge clk or posedge reset) begin
         if (reset) begin
             read_data <= 32'b0;
             for (i = 0; i < 32'd32; i = i + 1)
@@ -54,14 +55,18 @@ module Memory_Unit(
                 read_data <= 32'b0;      
         end
         
-        memory0 <= memory[0];
-        memory1 <= memory[1];
-        memory2 <= memory[2];
-        memory3 <= memory[3];
-        memory4 <= memory[4];
-        memory5 <= memory[5];
-        memory6 <= memory[6];
-        memory7 <= memory[7];
+        memory0  <= memory[0];
+        memory1  <= memory[1];
+        memory2  <= memory[2];
+        memory3  <= memory[3];
+        memory4  <= memory[4];
+        memory5  <= memory[5];
+        memory6  <= memory[6];
+        memory7  <= memory[7];
+        memory8  <= memory[8];
+        memory9  <= memory[9];
+        memory10 <= memory[10];
+        memory11 <= memory[11];
     end
     
 endmodule
