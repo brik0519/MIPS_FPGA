@@ -38,7 +38,6 @@ module top_MIPS(
   
 //    MUX_Nbit_2to1 #(.N(31)) MUX_Branch  ( .I1(PC_Next), .I2(PC_Branch), .sel(PCSrc), .Y(PC_Write_Data)); //!PC_Branch !PC_Write_Data
     
-    assign PC_Jump = 32'b0;
     MUX_Nbit_3to1 #(.N(31)) MUX_JUMP_BRANCH ( 
         .I1(PC_Next), .I2(PC_Jump), .I3(PC_Branch), 
         .sel({Branch, Jump}), .Y(PC_Write_Data) 
@@ -77,13 +76,17 @@ module top_MIPS(
     wire [10:6] shamt;
     wire [15:0] imm16;
     
-    assign op     = ID_Instruction[31:26];
-    assign rs     = ID_Instruction[25:21];    
-    assign rt     = ID_Instruction[20:16];
-    assign rd     = ID_Instruction[15:11];
-    assign shamt  = ID_Instruction[10:6]; 
-    assign fn     = ID_Instruction[5:0];
-    assign imm16  = ID_Instruction[15:0];
+    assign op      = ID_Instruction[31:26];
+    assign rs      = ID_Instruction[25:21];    
+    assign rt      = ID_Instruction[20:16];
+    assign rd      = ID_Instruction[15:11];
+    
+    assign shamt   = ID_Instruction[10:6]; 
+    assign fn      = ID_Instruction[5:0];
+    assign imm16   = ID_Instruction[15:0];
+    
+    assign PC_Jump = {ID_PC[31:28], ID_Instruction[25:0] << 2};
+
     
 
     wire [1:0] ALUOp;
@@ -99,10 +102,8 @@ module top_MIPS(
         .MemtoReg(MemtoReg), .Beq(Beq), .Bne(Bne), .Jump(Jump), .Jal(Jal), .Lui(Lui)
     );
  
-    wire [3:0] ALUCtrl;
-    ALUControl ALUControl(
-        .ALUop(EX_ALUOp), .funct(EX_fn), .ALUctrl(ALUCtrl)
-    );
+    wire [3:0] ALUCtrl; wire Jr;
+    ALUControl ALUControl( .ALUop(EX_ALUOp), .funct(EX_fn), .ALUctrl(ALUCtrl), .Jr(Jr) );
 
 
     wire [4:0]  Write_Register;
@@ -161,7 +162,7 @@ module top_MIPS(
     );
     
 
-    wire [31:0] EX_Read_Data_1, EX_Read_Data_2, EX_Extended_Imm_16;
+    wire [31:0] EX_PC, EX_Read_Data_1, EX_Read_Data_2, EX_Extended_Imm_16;
     wire [4:0] EX_Rt, EX_Rd, EX_Shamt;
     
     wire [1:0] EX_ALUOp;
@@ -177,12 +178,14 @@ module top_MIPS(
         .MemRead(MemRead), .MemWrite(MemWrite), .MemtoReg(MemtoReg), 
         .RegWrite(RegWrite), .Beq(Beq), .Bne(Bne), .Jal(Jal), .Lui(Lui),
         
+        .ID_PC(ID_PC),
         .ID_read_data1(Registers_Read_Data_1), .ID_read_data2(Registers_Read_Data_2),
         .ID_extended_imm_16(Extended_Imm_16),
         .ID_rt(rt), .ID_rd(rd), .ID_shamt(shamt),
         .fn(fn),
         
         // Output
+        .EX_PC(EX_PC),
         .EX_read_data1(EX_Read_Data_1), .EX_read_data2(EX_Read_Data_2), 
         .EX_extended_imm_16(EX_Extended_Imm_16),
         .EX_rt(EX_Rt), .EX_rd(EX_Rd), .EX_shamt(EX_Shamt),
@@ -212,10 +215,18 @@ module top_MIPS(
         .sel({EX_Lui, EX_ALUSrc}), .Y(data2) 
     );
     
-    wire [31:0] Branch_Add_Result; wire Branch;
+    wire [31:0] Branch_Add_Result, Jump_Address;
     wire MEM_Beq, MEM_Bne, MEM_Zero;
-    assign Branch = (MEM_Bne & ~MEM_Zero) | (MEM_Beq & MEM_Zero); 
-    Adder_Nbit #(.N(31)) Branch_Adder( .A(PC_Next), .B(Extended_Imm_16<<2), .Y(Branch_Add_Result) );
+    wire Branch;
+    assign Branch = (MEM_Bne & ~MEM_Zero) | (MEM_Beq & MEM_Zero);
+    
+    Adder_Nbit #(.N(31)) Branch_Adder( 
+        .A(EX_PC), .B(EX_Extended_Imm_16<<2), .Y(Branch_Add_Result) 
+    );
+
+    MUX_Nbit_2to1 #(31) MUX_BRANCH_JR ( 
+            .I1(Branch_Add_Result), .I2(data1), .sel(Jr), .Y(Jump_Address) 
+    );
     
     ALU MAIN_ALU (
         // Input
@@ -240,7 +251,7 @@ module top_MIPS(
         // Input
         // Datapath
         .clk(clk), .reset(reset),
-        .Branch_Add_Result(Branch_Add_Result), .ALU_Result(ALU_Result), .Zero(Zero), 
+        .Branch_Add_Result(Jump_Address), .ALU_Result(ALU_Result), .Zero(Zero), 
         .EX_Read_Data_2(EX_Read_Data_2),
         .Reg_Destination(Reg_Destination),
     

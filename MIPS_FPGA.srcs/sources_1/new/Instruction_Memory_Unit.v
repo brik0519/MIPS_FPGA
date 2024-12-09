@@ -69,7 +69,8 @@ module Instruction_Memory_Unit(
                     
                     
                     
-                    20  : Init_Inst = 32'h0800_0000;  // J 0;
+//                    20  : Init_Inst = 32'h0800_0000;  // J 0;
+                     20  : Init_Inst = 32'h1000_0004;  // BEQ $Zero, $Zero, 2 -> 8 means.
                     default: Init_Inst = {6'b111111, 26'd0};
                 endcase
                 {memory[i], memory[i+1], memory[i+2], memory[i+3]} <= Init_Inst;
