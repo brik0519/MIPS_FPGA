@@ -43,7 +43,7 @@ module Instruction_Memory_Unit(
 //                    //8 : NOP
 //                    //12: NOP
 //                    //16: NOP
-//                    20  : Init_Inst = 32'h0100_8014;  // ADD $s0, $t0, $zero;
+                    20  : Init_Inst = 32'h0C00_0003;  // ADD $s0, $t0, $zero;
 ////                    //24: NOP                    
 ////                    //28: NOP
 ////                    //32: NOP
