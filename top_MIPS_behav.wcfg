@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="13000fs"></ZoomEndTime>
-      <Cursor1Time time="2969fs"></Cursor1Time>
+      <ZoomStartTime time="13740fs"></ZoomStartTime>
+      <ZoomEndTime time="20756fs"></ZoomEndTime>
+      <Cursor1Time time="18000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="340"></NameColumnWidth>
-      <ValueColumnWidth column_width="145"></ValueColumnWidth>
+      <ValueColumnWidth column_width="125"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="12" />
+   <WVObjectSize size="16" />
    <wvobject fp_name="/top_MIPS/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -32,6 +32,14 @@
       <obj_property name="ElementShortName">PC_Current[31:0]</obj_property>
       <obj_property name="ObjectShortName">PC_Current[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/top_MIPS/PC_Branch" type="array">
+      <obj_property name="ElementShortName">PC_Branch[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_Branch[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/PC_Jump" type="array">
+      <obj_property name="ElementShortName">PC_Jump[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_Jump[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/top_MIPS/Instruction" type="array">
       <obj_property name="ElementShortName">Instruction[31:0]</obj_property>
       <obj_property name="ObjectShortName">Instruction[31:0]</obj_property>
@@ -39,17 +47,14 @@
    <wvobject fp_name="/top_MIPS/op" type="array">
       <obj_property name="ElementShortName">op[5:0]</obj_property>
       <obj_property name="ObjectShortName">op[5:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/rs" type="array">
       <obj_property name="ElementShortName">rs[4:0]</obj_property>
       <obj_property name="ObjectShortName">rs[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/rt" type="array">
       <obj_property name="ElementShortName">rt[4:0]</obj_property>
       <obj_property name="ObjectShortName">rt[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/rd" type="array">
       <obj_property name="ElementShortName">rd[4:0]</obj_property>
@@ -58,7 +63,6 @@
    <wvobject fp_name="/top_MIPS/fn" type="array">
       <obj_property name="ElementShortName">fn[5:0]</obj_property>
       <obj_property name="ObjectShortName">fn[5:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/shamt" type="array">
       <obj_property name="ElementShortName">shamt[10:6]</obj_property>
@@ -67,10 +71,17 @@
    <wvobject fp_name="/top_MIPS/imm16" type="array">
       <obj_property name="ElementShortName">imm16[15:0]</obj_property>
       <obj_property name="ObjectShortName">imm16[15:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/reg8" type="array">
       <obj_property name="ElementShortName">reg8[31:0]</obj_property>
       <obj_property name="ObjectShortName">reg8[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg16" type="array">
+      <obj_property name="ElementShortName">reg16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg16[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg31" type="array">
+      <obj_property name="ElementShortName">reg31[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
    </wvobject>
 </wave_config>

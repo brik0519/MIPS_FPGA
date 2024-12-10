@@ -40,7 +40,7 @@ module top_MIPS(
     
     MUX_Nbit_3to1 #(.N(31)) MUX_JUMP_BRANCH ( 
         .I1(PC_Next), .I2(PC_Jump), .I3(PC_Branch), 
-        .sel({Branch, Jump|Jr}), .Y(PC_Write_Data) 
+        .sel({Branch, Jump|Jr | PC_Current == 32'd32}), .Y(PC_Write_Data) 
     );
 
 
@@ -249,13 +249,14 @@ module top_MIPS(
     );
     
     
-    wire [31:0] MEM_ALUResult, MEM_Read_Data_2;
+    wire [31:0] MEM_ALUResult, MEM_Read_Data_2, MEM_PC, MEM_Jal;
     wire [4:0] MEM_Reg_Destination;
     wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite;
     EX_MEM_Register EX_MEM_REG (
         // Input
         // Datapath
         .clk(clk), .reset(reset),
+        .EX_PC(EX_PC),
         .Branch_Add_Result(Jump_Address), .ALU_Result(ALU_Result), .Zero(Zero), 
         .EX_Read_Data_2(EX_Read_Data_2),
         .Reg_Destination(Reg_Destination),
@@ -263,7 +264,7 @@ module top_MIPS(
         // Controll Signal
         .EX_MemWrite(EX_MemWrite), .EX_MemRead(EX_MemRead),
         .EX_MemtoReg(EX_MemtoReg), .EX_RegWrite(EX_RegWrite),
-        .EX_Beq(EX_Beq), .EX_Bne(EX_Bne),
+        .EX_Beq(EX_Beq), .EX_Bne(EX_Bne), .EX_Jal(EX_Jal),
     
     
         // Output
@@ -276,7 +277,7 @@ module top_MIPS(
         // Controll Signal
         .MEM_MemWrite(MEM_MemWrite), .MEM_MemRead(MEM_MemRead),
         .MEM_MemtoReg(MEM_MemtoReg), .MEM_RegWrite(MEM_RegWrite),
-        .MEM_Beq(MEM_Beq), .MEM_Bne(MEM_Bne)
+        .MEM_Beq(MEM_Beq), .MEM_Bne(MEM_Bne), .MEM_PC(MEM_PC), .MEM_Jal(MEM_Jal)
     );
     
 
@@ -302,7 +303,8 @@ module top_MIPS(
     };
     
     
-    wire [31:0] WB_Read_Data, WB_ALU_Result;
+    wire [31:0] WB_Read_Data, WB_ALU_Result, WB_PC; 
+    wire WB_Jal;
     wire WB_MemtoReg;
     MEM_WB_Register MEM_WB_REG(
         // Input
@@ -313,16 +315,22 @@ module top_MIPS(
         .MEM_RegWrite(MEM_RegWrite),
         .MEM_MemtoReg(MEM_MemtoReg),
         .MEM_Reg_Destination(MEM_Reg_Destination),
+        .MEM_PC(MEM_PC), .MEM_Jal(MEM_Jal),
         
         // Output
         .WB_Read_Data(WB_Read_Data), .WB_ALU_Result(WB_ALU_Result),
         .WB_RegWrite(WB_RegWrite), .WB_Reg_Destination(WB_Reg_Destination),
-        .WB_MemtoReg(WB_MemtoReg)
+        .WB_MemtoReg(WB_MemtoReg), .WB_PC(WB_PC), .WB_Jal(WB_Jal)
     );
     
     /*   05 Write Back   */
-    MUX_Nbit_2to1 #(31) WriteDataMUX_aluresult_ReadData ( 
-        .I1(WB_Read_Data), .I2(WB_ALU_Result), .sel(WB_MemtoReg), .Y(Write_Data) 
+//    MUX_Nbit_2to1 #(31) WriteDataMUX_aluresult_ReadData ( 
+//        .I1(WB_Read_Data), .I2(WB_ALU_Result), .sel(WB_MemtoReg), .Y(Write_Data) 
+//    );
+    
+    MUX_Nbit_3to1 #(.N(31)) WriteDataMUX_aluresult_ReadData ( 
+        .I1(WB_Read_Data), .I2(WB_ALU_Result), .I3(WB_PC), 
+        .sel({WB_Jal, WB_MemtoReg}), .Y(Write_Data) 
     );
     
     

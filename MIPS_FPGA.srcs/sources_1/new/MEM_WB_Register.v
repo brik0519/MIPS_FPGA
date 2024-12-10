@@ -26,16 +26,16 @@ module MEM_WB_Register(
     
     /*  Input   */
     // Datapath
-    input wire [31:0] MEM_Read_Data, MEM_ALU_Result,
+    input wire [31:0] MEM_Read_Data, MEM_ALU_Result, MEM_PC,
     input wire [4:0] MEM_Reg_Destination,
     
     // Control Signal
-    input wire MEM_RegWrite, MEM_MemtoReg,
+    input wire MEM_RegWrite, MEM_MemtoReg, MEM_Jal,
     
     
     /*  Output  */
     // Datapath
-    output reg [31:0] WB_Read_Data, WB_ALU_Result,
+    output reg [31:0] WB_Read_Data, WB_ALU_Result, WB_PC, WB_Jal,
     output reg [4:0] WB_Reg_Destination,
     
     //Control Signal
@@ -48,10 +48,12 @@ module MEM_WB_Register(
             WB_Read_Data        <= 32'b0;
             WB_ALU_Result       <= 32'b0;
             WB_Reg_Destination  <= 5'b0;
+            WB_PC <= 32'b0;
             
             // Control Signal
             WB_RegWrite <= 1'b0;
             WB_MemtoReg <= 1'b0;
+            WB_Jal <= 1'b0;
         end
     
         else begin
@@ -64,6 +66,8 @@ module MEM_WB_Register(
             WB_MemtoReg <= MEM_MemtoReg;
             
             WB_Reg_Destination <= MEM_Reg_Destination;
+            WB_PC <= MEM_PC;
+            WB_Jal <= MEM_Jal;
         end
 
     end    

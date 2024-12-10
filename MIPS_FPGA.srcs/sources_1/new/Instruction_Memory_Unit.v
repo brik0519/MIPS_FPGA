@@ -39,7 +39,7 @@ module Instruction_Memory_Unit(
             for (i = 0; i < 32'd2044; i = i + 4) begin
                 case (i)
 //                    0   : Init_Inst = {6'b111111, 26'd0};  // Program Start
-                    0   : Init_Inst = 32'h2108_000A;  // ADDI $t0, $t0, 10;
+//                    12   : Init_Inst = 32'h0C00_0003;  // ADDI $t0, $t0, 10;
 //                    //8 : NOP
 //                    //12: NOP
 //                    //16: NOP
@@ -69,11 +69,11 @@ module Instruction_Memory_Unit(
                     
                     
                     
-//                    20  : Init_Inst = 32'h0800_0000;  // J 0;
+                    20  : Init_Inst = 32'h0800_0000;  // J 0;
 //                     20  : Init_Inst = 32'h1000_0004;  // BEQ $Zero, $Zero, 2 -> 8 means.
 //                      20 : Init_Inst = 32'h1408_0002;  // BNE $t0, $0, 2
-//                        100 : Init_Inst = 32'h0C00_0000; // JAL 3
-//                        200 : Init_Inst = 32'h03F0_0008; // JR $0, $0, $ra
+//                        0 : Init_Inst = 32'h0C00_0003; // JAL 3
+//                        32 : Init_Inst = 32'h03F0_0008; // JR $0, $0, $ra
 
                     default: Init_Inst = {6'b111111, 26'd0};
                 endcase
