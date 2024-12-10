@@ -84,8 +84,6 @@ module Instruction_Memory_Unit(
         else begin
             if ( MemWrite )
                 memory[address] <= write_data;
-            else
-                memory[address] <= 32'b0;
             if ( MemRead )
                 read_data <= {
                     memory[address], memory[address+1], memory[address+2], memory[address+3]

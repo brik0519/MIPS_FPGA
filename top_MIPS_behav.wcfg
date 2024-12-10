@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="23001fs"></ZoomEndTime>
-      <Cursor1Time time="5857fs"></Cursor1Time>
+      <ZoomStartTime time="6221fs"></ZoomStartTime>
+      <ZoomEndTime time="20971fs"></ZoomEndTime>
+      <Cursor1Time time="14921fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="340"></NameColumnWidth>
@@ -25,9 +25,21 @@
       <obj_property name="ObjectShortName">PC_Current[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
+   <wvobject fp_name="/top_MIPS/Instruction" type="array">
+      <obj_property name="ElementShortName">Instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Instruction[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/ID_Instruction" type="array">
+      <obj_property name="ElementShortName">ID_Instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ID_Instruction[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/top_MIPS/PC_Write_Data" type="array">
       <obj_property name="ElementShortName">PC_Write_Data[31:0]</obj_property>
       <obj_property name="ObjectShortName">PC_Write_Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Jump_Address" type="array">
+      <obj_property name="ElementShortName">Jump_Address[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Jump_Address[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/PC_Next" type="array">
       <obj_property name="ElementShortName">PC_Next[31:0]</obj_property>
@@ -41,17 +53,9 @@
       <obj_property name="ElementShortName">PC_Jump[31:0]</obj_property>
       <obj_property name="ObjectShortName">PC_Jump[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_MIPS/Instruction" type="array">
-      <obj_property name="ElementShortName">Instruction[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Instruction[31:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/top_MIPS/ID_PC" type="array">
       <obj_property name="ElementShortName">ID_PC[31:0]</obj_property>
       <obj_property name="ObjectShortName">ID_PC[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/ID_Instruction" type="array">
-      <obj_property name="ElementShortName">ID_Instruction[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ID_Instruction[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/op" type="array">
       <obj_property name="ElementShortName">op[5:0]</obj_property>
@@ -284,6 +288,7 @@
    <wvobject fp_name="/top_MIPS/reg31" type="array">
       <obj_property name="ElementShortName">reg31[31:0]</obj_property>
       <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/register_wires" type="array">
       <obj_property name="ElementShortName">register_wires[1023:0]</obj_property>
@@ -392,10 +397,6 @@
    <wvobject fp_name="/top_MIPS/Branch_Add_Result" type="array">
       <obj_property name="ElementShortName">Branch_Add_Result[31:0]</obj_property>
       <obj_property name="ObjectShortName">Branch_Add_Result[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/Jump_Address" type="array">
-      <obj_property name="ElementShortName">Jump_Address[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Jump_Address[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/MEM_Beq" type="logic">
       <obj_property name="ElementShortName">MEM_Beq</obj_property>

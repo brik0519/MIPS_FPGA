@@ -2,20 +2,11 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-<<<<<<< HEAD
-# Start of session at: Tue Dec 10 20:53:30 2024
-# Process ID: 29872
-# Current directory: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim
-# Command line: wbtcv.exe -mode batch -source C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/xsim_webtalk.tcl -notrace
-# Log file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/webtalk.log
-# Journal file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim\webtalk.jou
-=======
-# Start of session at: Tue Dec 10 20:50:37 2024
-# Process ID: 16668
+# Start of session at: Tue Dec 10 20:45:26 2024
+# Process ID: 26236
 # Current directory: D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim\webtalk.jou
->>>>>>> 31b88410a1bc23ecc2d3b201ebf2c6173ed01c5a
 #-----------------------------------------------------------
 source D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/xsim_webtalk.tcl -notrace
