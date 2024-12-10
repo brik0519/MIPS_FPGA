@@ -38,7 +38,8 @@ output reg zero
             4'b011x: begin
                         aluresult = dataA - dataB;  //sub
                         if(aluctrl[0] == 1)         //slt detect
-                            aluresult = {31'b0, aluresult[31]};
+                            if(dataA < dataB) aluresult = 32'd1;
+                            else aluresult = 32'd0;
                      end
             4'b0011: aluresult = dataA << shamt;
             4'b1100: aluresult = ~(dataA | dataB);  //nor
