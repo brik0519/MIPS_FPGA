@@ -69,11 +69,11 @@ module Instruction_Memory_Unit(
                     
                     
                     
-                    20  : Init_Inst = 32'h0800_0000;  // J 0;
+//                    20  : Init_Inst = 32'h0800_0000;  // J 0;
 //                     20  : Init_Inst = 32'h1000_0004;  // BEQ $Zero, $Zero, 2 -> 8 means.
 //                      20 : Init_Inst = 32'h1408_0002;  // BNE $t0, $0, 2
-//                        0 : Init_Inst = 32'h0C00_0003; // JAL 3
-//                        32 : Init_Inst = 32'h03F0_0008; // JR $0, $0, $ra
+                        0 : Init_Inst = 32'h0C00_0003; // JAL 3
+                        32 : Init_Inst = 32'h03F0_0008; // JR $0, $0, $ra
 
                     default: Init_Inst = {6'b111111, 26'd0};
                 endcase

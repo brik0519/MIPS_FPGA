@@ -11,26 +11,27 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="13740fs"></ZoomStartTime>
-      <ZoomEndTime time="20756fs"></ZoomEndTime>
-      <Cursor1Time time="18000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="23001fs"></ZoomEndTime>
+      <Cursor1Time time="5857fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="340"></NameColumnWidth>
-      <ValueColumnWidth column_width="125"></ValueColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="16" />
-   <wvobject fp_name="/top_MIPS/clk" type="logic">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reset" type="logic">
-      <obj_property name="ElementShortName">reset</obj_property>
-      <obj_property name="ObjectShortName">reset</obj_property>
-   </wvobject>
+   <WVObjectSize size="144" />
    <wvobject fp_name="/top_MIPS/PC_Current" type="array">
       <obj_property name="ElementShortName">PC_Current[31:0]</obj_property>
       <obj_property name="ObjectShortName">PC_Current[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/PC_Write_Data" type="array">
+      <obj_property name="ElementShortName">PC_Write_Data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_Write_Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/PC_Next" type="array">
+      <obj_property name="ElementShortName">PC_Next[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_Next[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/PC_Branch" type="array">
       <obj_property name="ElementShortName">PC_Branch[31:0]</obj_property>
@@ -43,6 +44,14 @@
    <wvobject fp_name="/top_MIPS/Instruction" type="array">
       <obj_property name="ElementShortName">Instruction[31:0]</obj_property>
       <obj_property name="ObjectShortName">Instruction[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/ID_PC" type="array">
+      <obj_property name="ElementShortName">ID_PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ID_PC[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/ID_Instruction" type="array">
+      <obj_property name="ElementShortName">ID_Instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ID_Instruction[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/op" type="array">
       <obj_property name="ElementShortName">op[5:0]</obj_property>
@@ -72,16 +81,520 @@
       <obj_property name="ElementShortName">imm16[15:0]</obj_property>
       <obj_property name="ObjectShortName">imm16[15:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/top_MIPS/ALUOp" type="array">
+      <obj_property name="ElementShortName">ALUOp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUOp[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/ALUSrc" type="logic">
+      <obj_property name="ElementShortName">ALUSrc</obj_property>
+      <obj_property name="ObjectShortName">ALUSrc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/RegDst" type="logic">
+      <obj_property name="ElementShortName">RegDst</obj_property>
+      <obj_property name="ObjectShortName">RegDst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MemRead" type="logic">
+      <obj_property name="ElementShortName">MemRead</obj_property>
+      <obj_property name="ObjectShortName">MemRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MemWrite" type="logic">
+      <obj_property name="ElementShortName">MemWrite</obj_property>
+      <obj_property name="ObjectShortName">MemWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/RegWrite" type="logic">
+      <obj_property name="ElementShortName">RegWrite</obj_property>
+      <obj_property name="ObjectShortName">RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MemtoReg" type="logic">
+      <obj_property name="ElementShortName">MemtoReg</obj_property>
+      <obj_property name="ObjectShortName">MemtoReg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Beq" type="logic">
+      <obj_property name="ElementShortName">Beq</obj_property>
+      <obj_property name="ObjectShortName">Beq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Bne" type="logic">
+      <obj_property name="ElementShortName">Bne</obj_property>
+      <obj_property name="ObjectShortName">Bne</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Jump" type="logic">
+      <obj_property name="ElementShortName">Jump</obj_property>
+      <obj_property name="ObjectShortName">Jump</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Jal" type="logic">
+      <obj_property name="ElementShortName">Jal</obj_property>
+      <obj_property name="ObjectShortName">Jal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Lui" type="logic">
+      <obj_property name="ElementShortName">Lui</obj_property>
+      <obj_property name="ObjectShortName">Lui</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/ALUCtrl" type="array">
+      <obj_property name="ElementShortName">ALUCtrl[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUCtrl[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Jr" type="logic">
+      <obj_property name="ElementShortName">Jr</obj_property>
+      <obj_property name="ObjectShortName">Jr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Write_Register" type="array">
+      <obj_property name="ElementShortName">Write_Register[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Write_Register[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Write_Data" type="array">
+      <obj_property name="ElementShortName">Write_Data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Write_Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Registers_Read_Data_1" type="array">
+      <obj_property name="ElementShortName">Registers_Read_Data_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Registers_Read_Data_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Registers_Read_Data_2" type="array">
+      <obj_property name="ElementShortName">Registers_Read_Data_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Registers_Read_Data_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/WB_Reg_Destination" type="array">
+      <obj_property name="ElementShortName">WB_Reg_Destination[4:0]</obj_property>
+      <obj_property name="ObjectShortName">WB_Reg_Destination[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg0" type="array">
+      <obj_property name="ElementShortName">reg0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg1" type="array">
+      <obj_property name="ElementShortName">reg1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg2" type="array">
+      <obj_property name="ElementShortName">reg2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg3" type="array">
+      <obj_property name="ElementShortName">reg3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg3[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg4" type="array">
+      <obj_property name="ElementShortName">reg4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg5" type="array">
+      <obj_property name="ElementShortName">reg5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg5[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg6" type="array">
+      <obj_property name="ElementShortName">reg6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg6[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg7" type="array">
+      <obj_property name="ElementShortName">reg7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg7[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/top_MIPS/reg8" type="array">
       <obj_property name="ElementShortName">reg8[31:0]</obj_property>
       <obj_property name="ObjectShortName">reg8[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg9" type="array">
+      <obj_property name="ElementShortName">reg9[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg9[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg10" type="array">
+      <obj_property name="ElementShortName">reg10[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg10[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg11" type="array">
+      <obj_property name="ElementShortName">reg11[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg11[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg12" type="array">
+      <obj_property name="ElementShortName">reg12[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg12[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg13" type="array">
+      <obj_property name="ElementShortName">reg13[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg13[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg14" type="array">
+      <obj_property name="ElementShortName">reg14[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg14[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg15" type="array">
+      <obj_property name="ElementShortName">reg15[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg15[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/reg16" type="array">
       <obj_property name="ElementShortName">reg16[31:0]</obj_property>
       <obj_property name="ObjectShortName">reg16[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/top_MIPS/reg17" type="array">
+      <obj_property name="ElementShortName">reg17[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg17[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg18" type="array">
+      <obj_property name="ElementShortName">reg18[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg18[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg19" type="array">
+      <obj_property name="ElementShortName">reg19[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg19[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg20" type="array">
+      <obj_property name="ElementShortName">reg20[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg20[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg21" type="array">
+      <obj_property name="ElementShortName">reg21[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg21[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg22" type="array">
+      <obj_property name="ElementShortName">reg22[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg22[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg23" type="array">
+      <obj_property name="ElementShortName">reg23[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg23[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg24" type="array">
+      <obj_property name="ElementShortName">reg24[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg24[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg25" type="array">
+      <obj_property name="ElementShortName">reg25[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg25[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg26" type="array">
+      <obj_property name="ElementShortName">reg26[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg26[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg27" type="array">
+      <obj_property name="ElementShortName">reg27[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg27[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg28" type="array">
+      <obj_property name="ElementShortName">reg28[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg28[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg29" type="array">
+      <obj_property name="ElementShortName">reg29[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg29[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg30" type="array">
+      <obj_property name="ElementShortName">reg30[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg30[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/top_MIPS/reg31" type="array">
       <obj_property name="ElementShortName">reg31[31:0]</obj_property>
       <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/register_wires" type="array">
+      <obj_property name="ElementShortName">register_wires[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">register_wires[1023:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/WB_RegWrite" type="logic">
+      <obj_property name="ElementShortName">WB_RegWrite</obj_property>
+      <obj_property name="ObjectShortName">WB_RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Extended_Imm_16" type="array">
+      <obj_property name="ElementShortName">Extended_Imm_16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Extended_Imm_16[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_PC" type="array">
+      <obj_property name="ElementShortName">EX_PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_PC[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Read_Data_1" type="array">
+      <obj_property name="ElementShortName">EX_Read_Data_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_Read_Data_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Read_Data_2" type="array">
+      <obj_property name="ElementShortName">EX_Read_Data_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_Read_Data_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Extended_Imm_16" type="array">
+      <obj_property name="ElementShortName">EX_Extended_Imm_16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_Extended_Imm_16[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Rt" type="array">
+      <obj_property name="ElementShortName">EX_Rt[4:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_Rt[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Rd" type="array">
+      <obj_property name="ElementShortName">EX_Rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_Rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Shamt" type="array">
+      <obj_property name="ElementShortName">EX_Shamt[4:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_Shamt[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_ALUOp" type="array">
+      <obj_property name="ElementShortName">EX_ALUOp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_ALUOp[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_ALUSrc" type="logic">
+      <obj_property name="ElementShortName">EX_ALUSrc</obj_property>
+      <obj_property name="ObjectShortName">EX_ALUSrc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_RegDst" type="logic">
+      <obj_property name="ElementShortName">EX_RegDst</obj_property>
+      <obj_property name="ObjectShortName">EX_RegDst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_MemRead" type="logic">
+      <obj_property name="ElementShortName">EX_MemRead</obj_property>
+      <obj_property name="ObjectShortName">EX_MemRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_MemWrite" type="logic">
+      <obj_property name="ElementShortName">EX_MemWrite</obj_property>
+      <obj_property name="ObjectShortName">EX_MemWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_RegWrite" type="logic">
+      <obj_property name="ElementShortName">EX_RegWrite</obj_property>
+      <obj_property name="ObjectShortName">EX_RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_MemtoReg" type="logic">
+      <obj_property name="ElementShortName">EX_MemtoReg</obj_property>
+      <obj_property name="ObjectShortName">EX_MemtoReg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Beq" type="logic">
+      <obj_property name="ElementShortName">EX_Beq</obj_property>
+      <obj_property name="ObjectShortName">EX_Beq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Bne" type="logic">
+      <obj_property name="ElementShortName">EX_Bne</obj_property>
+      <obj_property name="ObjectShortName">EX_Bne</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Jal" type="logic">
+      <obj_property name="ElementShortName">EX_Jal</obj_property>
+      <obj_property name="ObjectShortName">EX_Jal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_Lui" type="logic">
+      <obj_property name="ElementShortName">EX_Lui</obj_property>
+      <obj_property name="ObjectShortName">EX_Lui</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/EX_fn" type="array">
+      <obj_property name="ElementShortName">EX_fn[5:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_fn[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/data1" type="array">
+      <obj_property name="ElementShortName">data1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/data2" type="array">
+      <obj_property name="ElementShortName">data2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/ALU_Result" type="array">
+      <obj_property name="ElementShortName">ALU_Result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ALU_Result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Zero" type="logic">
+      <obj_property name="ElementShortName">Zero</obj_property>
+      <obj_property name="ObjectShortName">Zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Branch_Add_Result" type="array">
+      <obj_property name="ElementShortName">Branch_Add_Result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Branch_Add_Result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Jump_Address" type="array">
+      <obj_property name="ElementShortName">Jump_Address[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Jump_Address[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_Beq" type="logic">
+      <obj_property name="ElementShortName">MEM_Beq</obj_property>
+      <obj_property name="ObjectShortName">MEM_Beq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_Bne" type="logic">
+      <obj_property name="ElementShortName">MEM_Bne</obj_property>
+      <obj_property name="ObjectShortName">MEM_Bne</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_Zero" type="logic">
+      <obj_property name="ElementShortName">MEM_Zero</obj_property>
+      <obj_property name="ObjectShortName">MEM_Zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Branch" type="logic">
+      <obj_property name="ElementShortName">Branch</obj_property>
+      <obj_property name="ObjectShortName">Branch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Reg_Destination" type="array">
+      <obj_property name="ElementShortName">Reg_Destination[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Reg_Destination[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_ALUResult" type="array">
+      <obj_property name="ElementShortName">MEM_ALUResult[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_ALUResult[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_Read_Data_2" type="array">
+      <obj_property name="ElementShortName">MEM_Read_Data_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_Read_Data_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_PC" type="array">
+      <obj_property name="ElementShortName">MEM_PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_PC[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_Jal" type="array">
+      <obj_property name="ElementShortName">MEM_Jal[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_Jal[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_Reg_Destination" type="array">
+      <obj_property name="ElementShortName">MEM_Reg_Destination[4:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_Reg_Destination[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_MemWrite" type="logic">
+      <obj_property name="ElementShortName">MEM_MemWrite</obj_property>
+      <obj_property name="ObjectShortName">MEM_MemWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_MemRead" type="logic">
+      <obj_property name="ElementShortName">MEM_MemRead</obj_property>
+      <obj_property name="ObjectShortName">MEM_MemRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_MemtoReg" type="logic">
+      <obj_property name="ElementShortName">MEM_MemtoReg</obj_property>
+      <obj_property name="ObjectShortName">MEM_MemtoReg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/MEM_RegWrite" type="logic">
+      <obj_property name="ElementShortName">MEM_RegWrite</obj_property>
+      <obj_property name="ObjectShortName">MEM_RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/Read_Data" type="array">
+      <obj_property name="ElementShortName">Read_Data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Read_Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory0" type="array">
+      <obj_property name="ElementShortName">memory0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory1" type="array">
+      <obj_property name="ElementShortName">memory1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory2" type="array">
+      <obj_property name="ElementShortName">memory2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory3" type="array">
+      <obj_property name="ElementShortName">memory3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory3[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory4" type="array">
+      <obj_property name="ElementShortName">memory4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory5" type="array">
+      <obj_property name="ElementShortName">memory5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory5[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory6" type="array">
+      <obj_property name="ElementShortName">memory6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory6[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory7" type="array">
+      <obj_property name="ElementShortName">memory7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory7[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory8" type="array">
+      <obj_property name="ElementShortName">memory8[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory8[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory9" type="array">
+      <obj_property name="ElementShortName">memory9[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory9[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory10" type="array">
+      <obj_property name="ElementShortName">memory10[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory10[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory11" type="array">
+      <obj_property name="ElementShortName">memory11[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory11[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory_wires" type="array">
+      <obj_property name="ElementShortName">memory_wires[383:0]</obj_property>
+      <obj_property name="ObjectShortName">memory_wires[383:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/WB_Read_Data" type="array">
+      <obj_property name="ElementShortName">WB_Read_Data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WB_Read_Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/WB_ALU_Result" type="array">
+      <obj_property name="ElementShortName">WB_ALU_Result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WB_ALU_Result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/WB_PC" type="array">
+      <obj_property name="ElementShortName">WB_PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WB_PC[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/WB_Jal" type="logic">
+      <obj_property name="ElementShortName">WB_Jal</obj_property>
+      <obj_property name="ObjectShortName">WB_Jal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/WB_MemtoReg" type="logic">
+      <obj_property name="ElementShortName">WB_MemtoReg</obj_property>
+      <obj_property name="ObjectShortName">WB_MemtoReg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D0" type="array">
+      <obj_property name="ElementShortName">D0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D0[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D1" type="array">
+      <obj_property name="ElementShortName">D1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D1[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D2" type="array">
+      <obj_property name="ElementShortName">D2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D2[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D3" type="array">
+      <obj_property name="ElementShortName">D3[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D3[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D4" type="array">
+      <obj_property name="ElementShortName">D4[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D4[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D5" type="array">
+      <obj_property name="ElementShortName">D5[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D5[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D6" type="array">
+      <obj_property name="ElementShortName">D6[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D6[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/D7" type="array">
+      <obj_property name="ElementShortName">D7[3:0]</obj_property>
+      <obj_property name="ObjectShortName">D7[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/eo_100M" type="logic">
+      <obj_property name="ElementShortName">eo_100M</obj_property>
+      <obj_property name="ObjectShortName">eo_100M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/eo_10M" type="logic">
+      <obj_property name="ElementShortName">eo_10M</obj_property>
+      <obj_property name="ObjectShortName">eo_10M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/eo_1M" type="logic">
+      <obj_property name="ElementShortName">eo_1M</obj_property>
+      <obj_property name="ObjectShortName">eo_1M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/eo_100K" type="logic">
+      <obj_property name="ElementShortName">eo_100K</obj_property>
+      <obj_property name="ObjectShortName">eo_100K</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/eo_10K" type="logic">
+      <obj_property name="ElementShortName">eo_10K</obj_property>
+      <obj_property name="ObjectShortName">eo_10K</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/eo_1K" type="logic">
+      <obj_property name="ElementShortName">eo_1K</obj_property>
+      <obj_property name="ObjectShortName">eo_1K</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/eo_100" type="logic">
+      <obj_property name="ElementShortName">eo_100</obj_property>
+      <obj_property name="ObjectShortName">eo_100</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
    </wvobject>
 </wave_config>
