@@ -36,11 +36,11 @@ module top_MIPS(
     wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch, PC_Jump;
 //    assign PCWrite = DBTN & eo_10M;
   
-//    MUX_Nbit_2to1 #(.N(31)) MUX_Branch  ( .I1(PC_Next), .I2(PC_Branch), .sel(PCSrc), .Y(PC_Write_Data)); //!PC_Branch !PC_Write_Data
+
     
     MUX_Nbit_3to1 #(.N(31)) MUX_JUMP_BRANCH ( 
         .I1(PC_Next), .I2(PC_Jump), .I3(PC_Branch), 
-        .sel({Branch, Jump|Jr | PC_Current == 32'd32}), .Y(PC_Write_Data) 
+        .sel({Branch, Jump|Jr}), .Y(PC_Write_Data) 
     );
 
 
@@ -55,17 +55,16 @@ module top_MIPS(
 
     wire [31:0] Instruction;             
     Instruction_Memory_Unit INSTRUCTION_MEM(
-        .clk(clk), .reset(reset), .address(PC_Current),
-        .MemRead(1'b1), .MemWrite(1'b0),
-        .write_data(), .read_data(Instruction)
+        .clk(clk), .address(PC_Current),
+        .read_data(Instruction)
     );
 
 
     /* 02 Instruction Decode */
     wire [31:0] ID_PC, ID_Instruction;
     IF_ID_Register IF_ID_REG (
-        .clk(clk), .reset(reset), .IF_ID_Write( |PC_Current ),
-        .IF_PC(PC_Next), .IF_Instruction(Instruction),
+        .clk(clk), .reset(reset), .IF_ID_Write(1'b1),
+        .IF_PC(PC_Current), .IF_Instruction(Instruction),
         .ID_PC(ID_PC), .ID_Instruction(ID_Instruction)
     );
 
@@ -206,10 +205,6 @@ module top_MIPS(
     wire Zero;
     assign data1 = EX_Read_Data_1; 
     
-//    MUX_Nbit_2to1 #(31) ALUMUX_ReadData2_Extenedimm16 ( 
-//        .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .sel(EX_ALUSrc), .Y(data2) 
-//    );
-    
     MUX_Nbit_3to1 #(.N(31)) ALUMUX_ReadData2_Extenedimm16 ( 
         .I1(EX_Read_Data_2), .I2(EX_Extended_Imm_16), .I3(EX_Extended_Imm_16 << 16), 
         .sel({EX_Lui, EX_ALUSrc}), .Y(data2) 
@@ -239,9 +234,6 @@ module top_MIPS(
     
     
     wire [4:0] Reg_Destination;
-//    MUX_Nbit_2to1 #(4) MUX_EX_rt_rd ( 
-//        .I1(EX_Rt), .I2(EX_Rd), .sel(EX_RegDst), .Y(Reg_Destination) 
-//    );
     
     MUX_Nbit_3to1 #(.N(4)) MUX_EX_rt_rd ( 
         .I1(EX_Rt), .I2(EX_Rd), .I3(5'd31), 
@@ -249,9 +241,9 @@ module top_MIPS(
     );
     
     
-    wire [31:0] MEM_ALUResult, MEM_Read_Data_2, MEM_PC, MEM_Jal;
+    wire [31:0] MEM_ALUResult, MEM_Read_Data_2, MEM_PC;
     wire [4:0] MEM_Reg_Destination;
-    wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite;
+    wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite, MEM_Jal;
     EX_MEM_Register EX_MEM_REG (
         // Input
         // Datapath
@@ -324,10 +316,6 @@ module top_MIPS(
     );
     
     /*   05 Write Back   */
-//    MUX_Nbit_2to1 #(31) WriteDataMUX_aluresult_ReadData ( 
-//        .I1(WB_Read_Data), .I2(WB_ALU_Result), .sel(WB_MemtoReg), .Y(Write_Data) 
-//    );
-    
     MUX_Nbit_3to1 #(.N(31)) WriteDataMUX_aluresult_ReadData ( 
         .I1(WB_Read_Data), .I2(WB_ALU_Result), .I3(WB_PC), 
         .sel({WB_Jal, WB_MemtoReg}), .Y(Write_Data) 
@@ -372,11 +360,11 @@ module top_MIPS(
     assign PCWrite = 1'b1; // for debugging  
     always #1 clk = ~clk;
     initial begin
-        clk = 1; reset = 1;
+        clk = 0; reset = 1;
         #2 reset = 0; #1;
        
 
-        #10 $finish;
+        #100 $finish;
 
     end
 

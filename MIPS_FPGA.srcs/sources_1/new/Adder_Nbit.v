@@ -25,6 +25,6 @@ module Adder_Nbit #(parameter N = 0)(
     output wire [N:0] Y
 );  
     
- assign {cout, Y} = A + B;
+ assign Y = A + B;
  
 endmodule

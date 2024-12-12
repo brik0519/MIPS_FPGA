@@ -1,0 +1,237 @@
+[33mcommit b82d956bb679f9a871693a656e82827de2d4a83c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 21:15:29 2024 +0900
+
+    Update
+
+[33mcommit c5de8f654fdd3e18d5398fdc81125d0c4be67bab[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 21:04:16 2024 +0900
+
+    [Update] Support J Instruction
+
+[33mcommit c8479695eee355ddefc8bcf859695e2c80837011[m
+Merge: 95fe33c f5f4f06
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 20:27:57 2024 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 95fe33cc315e3e3398a1198f02d066e831e8ff87[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 20:20:01 2024 +0900
+
+    Save changes before merging
+
+[33mcommit f5f4f06612f793da1025ef8de70a800f652267e6[m
+Author: Gamdict_zombie <rlawncks0103@naver.com>
+Date:   Tue Dec 10 20:00:44 2024 +0900
+
+    [fix] sub opcode, slt fix
+
+[33mcommit 76f139f44f575bc308c5de77bbbdd97bce635081[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 10:19:43 2024 +0900
+
+    Add PNG for DOC
+
+[33mcommit d52b81d81798ee64ad764e6ffecdc3f200671d4f[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 08:11:56 2024 +0900
+
+    Fix Unused Wire In Controller
+
+[33mcommit a484e6f85a7405aaf98e61ac395f9abe2e81472c[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 07:47:47 2024 +0900
+
+    MIPS PIPELINE FINAL : COMPUTER ARCHITECTURE
+
+[33mcommit 1befe8769a4d5a423d3d9d53e634c16cc0879559[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 07:05:08 2024 +0900
+
+    [Update] Add PC_Jump
+
+[33mcommit 7cce4e7ad9eef4c71277f24da76b6415a22f6f5a[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 04:22:45 2024 +0900
+
+    [BackUp] Before Adding J Type Datapath
+
+[33mcommit ad995cadd47b225a23107aacabb01c0323f14b76[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 04:00:20 2024 +0900
+
+    [Fix] Support SLL
+
+[33mcommit 253ffc069dea3a1dac4f128478c82a4d923b80a2[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 03:19:44 2024 +0900
+
+    [Update] Support BEQ/BNE
+
+[33mcommit b0b8a55a30ab9cc3099c94e4c23d9b3b90de297f[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 02:41:19 2024 +0900
+
+    [Update] Support SW/LW
+
+[33mcommit 41beed584a6bf5034f53f022308dda064b113ecd[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 01:18:47 2024 +0900
+
+    [Update] Support LUI Inst
+
+[33mcommit bd236d34aefdf6c8e01e704a38c51fe3fbb89f61[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 00:53:41 2024 +0900
+
+    [Update] Fix 3to1MUX
+
+[33mcommit 9762dc827d2ab9e509dac127d99d977d46db8e68[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Tue Dec 10 00:14:55 2024 +0900
+
+    [Update] Fixed XXXX Problem
+
+[33mcommit 7323257b7684323bb9c6e7b0fcba82f4bf0afff5[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Mon Dec 9 23:41:19 2024 +0900
+
+    Need To FIX Bug
+
+[33mcommit 4036e73a7c0b05d2bcf5f1c2a77b7efa9365316d[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Mon Dec 9 23:08:22 2024 +0900
+
+    Need to Fix
+
+[33mcommit d0a1d925e6036546d4cc89346b75d5663a23532e[m
+Author: Gamdict_zombie <rlawncks0103@naver.com>
+Date:   Mon Dec 9 22:44:47 2024 +0900
+
+    [update] control lui
+
+[33mcommit 2564b8ef22fa81a8670877d24422b1215a1b5da3[m
+Author: Gamdict_zombie <rlawncks0103@naver.com>
+Date:   Mon Dec 9 22:19:55 2024 +0900
+
+    [update] control slti add
+
+[33mcommit ee687923305f8e7f9e6d714016eedbb40d07ea6b[m
+Author: Gamdict_zombie <rlawncks0103@naver.com>
+Date:   Mon Dec 9 22:05:44 2024 +0900
+
+    [update] alu sll add
+
+[33mcommit b94fe0eab45d6e0e9dcd1fee77ce4b325d6a29ba[m
+Merge: d9d5635 1b08820
+Author: Gamdict-Zombie <54741024+Gamdict-Zombie@users.noreply.github.com>
+Date:   Mon Dec 9 21:44:23 2024 +0900
+
+    Merge pull request #3 from brik0519/sll
+    
+    [update] alucontrol jump(jr)
+
+[33mcommit d9d5635e11e1e4b870cdb0265d351fb3193259d0[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Mon Dec 9 21:42:16 2024 +0900
+
+    BAK before MARGE
+
+[33mcommit 1b088205fce77e73b4ea753fb7136b14559beffc[m[33m ([m[1;31morigin/sll[m[33m)[m
+Author: Gamdict_zombie <rlawncks0103@naver.com>
+Date:   Mon Dec 9 21:39:46 2024 +0900
+
+    [update] alucontrol jump(jr)
+
+[33mcommit f51ddab4d6a8a82d2fc1aa335e7d48500aae42bc[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Mon Dec 9 19:48:16 2024 +0900
+
+    Backup RI Instruction Running
+
+[33mcommit 22a6249eb5b35fb4193d00266c6c402acf84a0eb[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sun Dec 8 12:21:44 2024 +0900
+
+    After FIN ADD ADDI
+
+[33mcommit 45609903b7e4f993b02c3f6411db4dfafc2e029e[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sat Dec 7 00:09:13 2024 +0900
+
+    After Adding Wires for IO (registers_wires and memory_wires)
+
+[33mcommit d1a00ffc849bb9cdc1d8b76a89c6d79eb35e56c6[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Mon Dec 2 18:06:39 2024 +0900
+
+    MIPS_FPGA with 7Seg Display
+
+[33mcommit 61bd67056409e76acbdb757716f030e20be36af6[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Mon Dec 2 10:20:22 2024 +0900
+
+    Update Board Uploadable Pipeline Code
+
+[33mcommit 96a94af17a40474a4f8dbb59406652142a778250[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sun Dec 1 22:49:42 2024 +0900
+
+    Backup Finishing Pipeline Debug
+
+[33mcommit 600a2ddcf2f5bf44d2f7bb4f2340fd7e08686c62[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sat Nov 30 19:20:06 2024 +0900
+
+    Update Controller Branch Signal -> AND GATE
+
+[33mcommit 51593e22f432e41cff87101a2486a99a54725d16[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sat Nov 30 19:09:07 2024 +0900
+
+    Update Adding All Components
+
+[33mcommit f07ea96dc955643a8a504be39d2a3e6dea46d0b8[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Fri Nov 29 21:03:32 2024 +0900
+
+    Backup Before add ID EX Register
+
+[33mcommit 61ebf6e005fc8a251be6631cd26ba9f282b50c29[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sat Nov 23 21:54:48 2024 +0900
+
+    MIPS Single Cycle with Jump Implementation
+
+[33mcommit 039b2127143efaf466f1123370ad20b544cdb691[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Fri Nov 22 21:59:46 2024 +0900
+
+    Bakcup Before Change Single Cycle
+
+[33mcommit 49c76300cdd061c2cbe949aa7e1cb52fd092ef55[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sun Nov 17 01:05:16 2024 +0900
+
+    Update 12w contents
+
+[33mcommit e78b2d20e7fc088e1117f3fd30a48d35fed21c64[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sat Nov 9 19:32:08 2024 +0900
+
+    Fix typo README.md
+
+[33mcommit d8ea0d110a7e23155fc953b1b82c77289513b19c[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sat Nov 9 19:31:08 2024 +0900
+
+    Add README.md file
+
+[33mcommit a1f79cec1773b6a4df6b4d4ec2ea67c3bd048573[m
+Author: Brian Kim <brik0519@gmail.com>
+Date:   Sat Nov 9 19:30:01 2024 +0900
+
+    Initial commit

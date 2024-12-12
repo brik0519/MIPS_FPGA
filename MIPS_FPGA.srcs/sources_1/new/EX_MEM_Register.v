@@ -48,7 +48,7 @@ module EX_MEM_Register(
     output reg MEM_Beq, MEM_Bne, MEM_Jal
 );
 
-    always @(posedge clk, posedge reset) begin
+    always @(posedge clk or posedge reset) begin
         if (reset) begin
             // Datapath
             MEM_PC <= 32'b0;
