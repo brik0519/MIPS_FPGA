@@ -35,11 +35,11 @@ module MEM_WB_Register(
     
     /*  Output  */
     // Datapath
-    output reg [31:0] WB_Read_Data, WB_ALU_Result, WB_PC, WB_Jal,
+    output reg [31:0] WB_Read_Data, WB_ALU_Result, WB_PC, 
     output reg [4:0] WB_Reg_Destination,
     
     //Control Signal
-    output reg WB_RegWrite, WB_MemtoReg
+    output reg WB_RegWrite, WB_MemtoReg, WB_Jal
 );
     
     always @(posedge clk, posedge reset) begin

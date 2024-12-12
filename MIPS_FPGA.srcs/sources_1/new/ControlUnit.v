@@ -21,10 +21,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Control_Unit(
-    input wire reset,
-    
-    input wire [31:0] Instruction,
+    input wire reset,    
     input wire [5:0]  opcode,
+    input wire [31:0] Instruction,
     
     output reg [1:0]  ALUOp,
     output reg ALUSrc, MemRead, RegDst, MemWrite, MemtoReg, RegWrite, Beq, Jump, Bne, Jal, Lui
@@ -56,7 +55,8 @@ always @ (*) begin
     Jump = 1'b0;
     Jal = 1'b0;
     Lui = 1'b0;
-    if(!reset)begin // Reset or All Instruction bits are 0
+    
+    if(!reset || |Instruction)begin // Reset or All Instruction bits are 0
         case(opcode)
         lw      :begin
                  ALUSrc = 1'b1;

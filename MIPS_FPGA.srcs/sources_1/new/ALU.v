@@ -27,7 +27,7 @@ input wire [4:0] shamt,
 output reg [31:0] aluresult,
 output reg zero
     );
-    always @ (dataA or dataB or aluctrl) begin
+    always @(*) begin
         zero = 1'd0;                                //default zero
         aluresult = 32'd0;                          //default aluresult
         

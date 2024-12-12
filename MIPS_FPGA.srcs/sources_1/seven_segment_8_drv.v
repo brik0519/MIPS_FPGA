@@ -23,8 +23,10 @@
 module seven_segment_8_drv (
         input wire clk, reset,
         input wire [3:0] D0, D1, D2, D3, D4, D5, D6, D7,//, DP,
-        output reg a, b, c, d, e, f, g,
-        output wire [7:0] AN
+        
+        output wire [7:0] AN,
+        output reg a, b, c, d, e, f, g
+        
 );
     
     wire [3:0] Y;
@@ -35,7 +37,7 @@ module seven_segment_8_drv (
         .D0(D0), .D1(D1), .D2(D2), .D3(D3), .D4(D4),
         .D5(D5), .D6(D6), .D7(D7), .sel(sel), .D(Y)
     );
-    cnt3 Seg_U1 ( .clk(clk), .en(en_cnt3), .rstn(reset), .Q(sel) );
+    cnt3 Seg_U1 ( .clk(clk), .en(en_cnt3), .rstn(reset), .Q(sel), .TC() );
     decoder Seg_U3 ( .sel(sel), .enable(AN) );
     cnt_100M Seg_U4 (.clk(clk), .rstn(reset), .eo_100K(en_cnt3), .eo_1K());
     

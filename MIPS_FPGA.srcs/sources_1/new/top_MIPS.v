@@ -22,19 +22,20 @@
 
 
 module top_MIPS(
-//    input wire clk, reset, BTN,
-
+    input wire clk, reset, BTN,
+    input wire RxD,
+    
     output wire CA, CB, CC, CD, CE, CF, CG,
     output wire [7:0] AN,
-    output wire [15:0] LED
+    output wire [15:0] LED,
+    output wire TxD
 );
-    assign LED = 16'b0;
-    assign LED[0] = 1'b1;
+    assign LED = {15'b0, 1'b1};
     
     /*  01 Instruction Fetch  */
-    wire PCWrite;
+    wire PCWrite, eo_10M, DBTN;
     wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch, PC_Jump;
-//    assign PCWrite = DBTN & eo_10M;
+    assign PCWrite = DBTN & eo_10M;
   
 
     
@@ -94,6 +95,7 @@ module top_MIPS(
     Control_Unit CONTROLL_UNIT (
         // input
         .opcode(op), .reset(reset),
+        .Instruction(ID_Instruction),
         
         // output
         .ALUOp(ALUOp), .ALUSrc(ALUSrc), .RegDst(RegDst), 
@@ -105,33 +107,14 @@ module top_MIPS(
     ALUControl ALUControl( .ALUop(EX_ALUOp), .funct(EX_fn), .ALUctrl(ALUCtrl), .Jr(Jr) );
 
 
+    wire [1023:0] Register_Wires;
     wire [4:0]  Write_Register;
     wire [31:0] Write_Data;
     wire [31:0] Registers_Read_Data_1, Registers_Read_Data_2;
     wire [4:0] WB_Reg_Destination;
-    wire [31:0]
-            reg0,  reg1,  reg2,  reg3,  
-            reg4,  reg5,  reg6,  reg7,  
-            reg8,  reg9,  reg10, reg11, 
-            reg12, reg13, reg14, reg15,
-            reg16, reg17, reg18, reg19, 
-            reg20, reg21, reg22, reg23,
-            reg24, reg25, reg26, reg27, 
-            reg28, reg29, reg30, reg31;
-    wire [1023:0] register_wires;
     wire WB_RegWrite;
     
     assign Write_Register = WB_Reg_Destination;
-    assign register_wires = {
-        reg0,  reg1,  reg2,  reg3,  
-        reg4,  reg5,  reg6,  reg7,  
-        reg8,  reg9,  reg10, reg11, 
-        reg12, reg13, reg14, reg15,
-        reg16, reg17, reg18, reg19, 
-        reg20, reg21, reg22, reg23,
-        reg24, reg25, reg26, reg27, 
-        reg28, reg29, reg30, reg31
-    };
     
     Registers_Unit REG_UNIT (
         .clk(clk), .reset(reset),
@@ -143,14 +126,22 @@ module top_MIPS(
         .read_data_1(Registers_Read_Data_1), .read_data_2(Registers_Read_Data_2),
         .write_data(Write_Data),
         
-        .reg0(reg0),   .reg1(reg1),   .reg2(reg2),   .reg3(reg3),  
-        .reg4(reg4),   .reg5(reg5),   .reg6(reg6),   .reg7(reg7),  
-        .reg8(reg8),   .reg9(reg9),   .reg10(reg10), .reg11(reg11), 
-        .reg12(reg12), .reg13(reg13), .reg14(reg14), .reg15(reg15),
-        .reg16(reg16), .reg17(reg17), .reg18(reg18), .reg19(reg19), 
-        .reg20(reg20), .reg21(reg21), .reg22(reg22), .reg23(reg23),
-        .reg24(reg24), .reg25(reg25), .reg26(reg26), .reg27(reg27), 
-        .reg28(reg28), .reg29(reg29), .reg30(reg30), .reg31(reg31)
+        .reg0(Register_Wires[31:0]),      .reg1(Register_Wires[63:32]), 
+        .reg2(Register_Wires[95:64]),     .reg3(Register_Wires[127:96]),  
+        .reg4(Register_Wires[159:128]),   .reg5(Register_Wires[191:160]),  
+        .reg6(Register_Wires[223:192]),   .reg7(Register_Wires[255:224]),  
+        .reg8(Register_Wires[287:256]),   .reg9(Register_Wires[319:288]), 
+        .reg10(Register_Wires[351:320]),  .reg11(Register_Wires[383:352]), 
+        .reg12(Register_Wires[415:384]),  .reg13(Register_Wires[447:416]), 
+        .reg14(Register_Wires[479:448]),  .reg15(Register_Wires[511:480]),
+        .reg16(Register_Wires[543:512]),  .reg17(Register_Wires[575:544]),  
+        .reg18(Register_Wires[607:576]),  .reg19(Register_Wires[639:608]),
+        .reg20(Register_Wires[671:640]),  .reg21(Register_Wires[703:672]), 
+        .reg22(Register_Wires[735:704]),  .reg23(Register_Wires[767:736]),
+        .reg24(Register_Wires[799:768]),  .reg25(Register_Wires[831:800]),  
+        .reg26(Register_Wires[863:832]),  .reg27(Register_Wires[895:864]),  
+        .reg28(Register_Wires[927:896]),  .reg29(Register_Wires[959:928]), 
+        .reg30(Register_Wires[991:960]),  .reg31(Register_Wires[1023:992])
     );
         
 
@@ -275,24 +266,18 @@ module top_MIPS(
 
     
     /*  04 Memory  */
-    wire [31:0] Read_Data;
-    wire [31:0] memory0, memory1, memory2,  memory3;
-    wire [31:0] memory4, memory5, memory6,  memory7;
-    wire [31:0] memory8, memory9, memory10, memory11;
-    wire [383:0] memory_wires;
+    wire [31:0] Read_Data;  
+    wire [383:0] Memory_Wires;
     
     Memory_Unit DATA_MEM(
         .clk(clk), .reset(reset), .address(MEM_ALUResult),
         .MemRead(MEM_MemRead), .MemWrite(MEM_MemWrite),
         .write_data(MEM_Read_Data_2), .read_data(Read_Data),
-        .memory0(memory0), .memory1(memory1), .memory2(memory2),  .memory3(memory3),
-        .memory4(memory4), .memory5(memory5), .memory6(memory6),  .memory7(memory7),
-        .memory8(memory8), .memory9(memory9), .memory10(memory10), .memory11(memory11)
+        .memory0(Memory_Wires[31:0]   ), .memory1(Memory_Wires[63:32]  ),  .memory2(Memory_Wires[95:64]  ),  
+        .memory3(Memory_Wires[127:96] ), .memory4(Memory_Wires[159:128]),  .memory5(Memory_Wires[191:160]), 
+        .memory6(Memory_Wires[223:192]), .memory7(Memory_Wires[255:224]),  .memory8(Memory_Wires[287:256]), 
+        .memory9(Memory_Wires[319:288]), .memory10(Memory_Wires[351:320]), .memory11(Memory_Wires[383:352])
     );
-    
-    assign memory_wires = {
-        memory0, memory1, memory2, memory3, memory4, memory5, memory6, memory7
-    };
     
     
     wire [31:0] WB_Read_Data, WB_ALU_Result, WB_PC; 
@@ -323,11 +308,10 @@ module top_MIPS(
     
     
     /*   I/O Field   */
-//    wire DBTN;
-//    Debounce U0 (
-//        .clk(clk), .en(eo_10M), .rstn(reset), .BTN(BTN),
-//        .debounced(DBTN)
-//    );
+    Debounce U0 (
+        .clk(clk), .en(eo_10M), .rstn(reset), .BTN(BTN),
+        .debounced(DBTN)
+    );
     
     
     wire [3:0] D0, D1, D2, D3, D4, D5, D6, D7;
@@ -337,12 +321,27 @@ module top_MIPS(
         .a(CA), .b(CB), .c(CC), .d(CD), .e(CE), .f(CF), .g(CG), .AN(AN)
     );
 
-    wire eo_100M, eo_10M, eo_1M, eo_100K, eo_10K, eo_1K, eo_100;
+    wire eo_100M, eo_1M, eo_100K, eo_10K, eo_1K, eo_100;
     cnt_100M DIV (
         .clk(clk), .rstn(reset),
         .eo_100M(eo_100M), .eo_10M(eo_10M), .eo_1M(eo_1M),
         .eo_100K(eo_100K), .eo_10K(eo_10K), .eo_1K(eo_1K),
         .eo_100(eo_100) 
+    );
+    
+    wire man_clk, error, dout;
+    UART_Top_Buffer UART(
+        /*  Input  */
+        .clk(clk), .rst(reset), .din(BTN),
+        .RxD(RxD),
+        
+        // Data
+        .registor_in(Register_Wires),
+        .memory_in(Memory_Wires),
+        
+        /*  Output  */
+        .TxD(TxD), .man_clk(man_clk), 
+        .error(error), .dout(dout)
     );
     
     assign D0 = PC_Current[3:0];
@@ -356,16 +355,16 @@ module top_MIPS(
     
     
     /*   For Simulation   */
-    reg clk, reset;
-    assign PCWrite = 1'b1; // for debugging  
-    always #1 clk = ~clk;
-    initial begin
-        clk = 0; reset = 1;
-        #2 reset = 0; #1;
+//    reg clk, reset;
+//    assign PCWrite = 1'b1; // for debugging  
+//    always #1 clk = ~clk;
+//    initial begin
+//        clk = 0; reset = 1;
+//        #2 reset = 0; #1;
        
 
-        #100 $finish;
+//        #100 $finish;
 
-    end
+//    end
 
 endmodule
