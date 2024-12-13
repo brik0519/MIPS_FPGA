@@ -35,7 +35,7 @@ module top_MIPS(
     /*  01 Instruction Fetch  */
     wire PCWrite, eo_10M, DBTN;
     wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch, PC_Jump;
-    assign PCWrite = DBTN & eo_10M;
+//    assign PCWrite = DBTN & eo_10M;
   
 
     
@@ -329,20 +329,20 @@ module top_MIPS(
         .eo_100(eo_100) 
     );
     
-    wire man_clk, error, dout;
-    UART_Top_Buffer UART(
-        /*  Input  */
-        .clk(clk), .rst(reset), .din(BTN),
-        .RxD(RxD),
+//    wire man_clk, error, dout;
+//    UART_Top_Buffer UART(
+//        /*  Input  */
+//        .clk(clk), .rst(reset), .din(BTN),
+//        .RxD(RxD),
         
-        // Data
-        .registor_in(Register_Wires),
-        .memory_in(Memory_Wires),
+//        // Data
+//        .registor_in(Register_Wires),
+//        .memory_in(Memory_Wires),
         
-        /*  Output  */
-        .TxD(TxD), .man_clk(man_clk), 
-        .error(error), .dout(dout)
-    );
+//        /*  Output  */
+//        .TxD(TxD), .man_clk(man_clk), 
+//        .error(error), .dout(dout)
+//    );
     
     assign D0 = PC_Current[3:0];
     assign D1 = PC_Current[7:4];
@@ -355,12 +355,12 @@ module top_MIPS(
     
     
     /*   For Simulation   */
-//    reg clk, reset;
-//    assign PCWrite = 1'b1; // for debugging  
-//    always #1 clk = ~clk;
-//    initial begin
-//        clk = 0; reset = 1;
-//        #2 reset = 0; #1;
+    reg clk, reset;
+    assign PCWrite = 1'b1; // for debugging  
+    always #1 clk = ~clk;
+    initial begin
+        clk = 0; reset = 1;
+        #2 reset = 0; #1;
        
 
 //        #100 $finish;
