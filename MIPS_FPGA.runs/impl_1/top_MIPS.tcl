@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/impl_1/top_MIPS.tcl"
+  variable script "D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.runs/impl_1/top_MIPS.tcl"
   variable category "vivado_impl"
 }
 
@@ -115,6 +115,7 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -122,22 +123,23 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 2
+  set_param chipscope.maxJobs 8
+  set_param xicom.use_bs_reader 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.cache/wt [current_project]
-  set_property parent.project_path C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.xpr [current_project]
-  set_property ip_output_repo C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.cache/ip [current_project]
+  set_property webtalk.parent_dir D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.cache/wt [current_project]
+  set_property parent.project_path D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.xpr [current_project]
+  set_property ip_output_repo D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/synth_1/top_MIPS.dcp
+  add_files -quiet D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.runs/synth_1/top_MIPS.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc
+  read_xdc D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/Nexys-A7-100T-Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -1,0 +1,145 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Fri Dec 13 11:49:40 2024
+| Host         : GamdictZombie running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_MIPS_control_sets_placed.rpt
+| Design       : top_MIPS
+| Device       : xc7a100t
+-------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    67 |
+|    Minimum number of control sets                        |    67 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   130 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    67 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |    20 |
+| >= 6 to < 8        |     5 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    34 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               4 |            3 |
+| No           | No                    | Yes                    |             455 |          143 |
+| No           | Yes                   | No                     |              13 |            5 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             161 |           49 |
+| Yes          | Yes                   | No                     |            1053 |          525 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+-------------------------------------------------+------------------+------------------+----------------+--------------+
+|  Clock Signal  |                  Enable Signal                  | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+-------------------------------------------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | DIV/u6/eo_10M                                   | reset_IBUF       |                1 |              1 |         1.00 |
+|  UART/CLK/CLK  |                                                 | reset_IBUF       |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG | DIV/u1/E[0]                                     | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG |                                                 |                  |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG | DIV/u5/Q_reg[3]_0                               | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | DIV/u4/E[0]                                     | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | U5/Seg_U4/u2/E[0]                               | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/UART/CORE/RX/BitCnt[3]_i_1_n_0             | reset_IBUF       |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | U5/Seg_U4/u0/E[0]                               | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/UART/CORE/TX/BitCnt[3]_i_1__0_n_0          | reset_IBUF       |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | UART/DBNC0/X0/U1/E[0]                           | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | U5/Seg_U4/u1/E[0]                               | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | U5/Seg_U4/u3/E[0]                               | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/DBNC0/X0/U4/E[0]                           | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/DBNC0/X0/U2/E[0]                           | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/DBNC0/X0/U2/Q_reg[3]_0[0]                  | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/DBNC2/X0/U1/E[0]                           | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/DBNC2/X0/U2/Q_reg[3]_0[0]                  | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | UART/DBNC2/X0/U2/E[0]                           | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | DIV/u0/E[0]                                     | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | DIV/u2/E[0]                                     | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | DIV/u3/E[0]                                     | reset_IBUF       |                1 |              4 |         4.00 |
+|  sig2          | UART/STR/index_data                             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG | UART/UART/CORE/CLK/CO[0]                        | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG | UART/UART/UP/FSM_sequential_curr_st_reg[1]_0[0] | reset_IBUF       |                1 |              7 |         7.00 |
+|  clk_IBUF_BUFG | UART/UART/UP/FSM_sequential_curr_st_reg[1]_0[1] | reset_IBUF       |                1 |              7 |         7.00 |
+|  clk_IBUF_BUFG | sig2                                            | reset_IBUF       |                2 |              7 |         3.50 |
+|  sig2          | UART/STR/cnt_data[7]_i_1_n_0                    | reset_IBUF       |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | UART/UART/CORE/RX/shift_RSR                     | reset_IBUF       |                3 |              9 |         3.00 |
+|  clk_IBUF_BUFG | UART/UART/UP/E[0]                               | reset_IBUF       |                3 |              9 |         3.00 |
+|  UART/CLK/CLK  | UART/CNT/char_cnt_0                             | reset_IBUF       |                4 |             11 |         2.75 |
+|  clk_IBUF_BUFG | UART/UART/CORE/CLK/E[0]                         | reset_IBUF       |                2 |             11 |         5.50 |
+|  sig2          |                                                 | reset_IBUF       |                4 |             11 |         2.75 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_24[0]                | reset_IBUF       |               16 |             32 |         2.00 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_3[0]                 | reset_IBUF       |               16 |             32 |         2.00 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_14[0]                | reset_IBUF       |               13 |             32 |         2.46 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_22[0]                | reset_IBUF       |               12 |             32 |         2.67 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_16[0]                | reset_IBUF       |               15 |             32 |         2.13 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_13[0]                | reset_IBUF       |               17 |             32 |         1.88 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_1[0]                 | reset_IBUF       |               13 |             32 |         2.46 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_15[0]                | reset_IBUF       |               19 |             32 |         1.68 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_9[0]                 | reset_IBUF       |               11 |             32 |         2.91 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_18[0]                | reset_IBUF       |               18 |             32 |         1.78 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_12[0]                | reset_IBUF       |               12 |             32 |         2.67 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_2[0]                 | reset_IBUF       |               17 |             32 |         1.88 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_29[0]                | reset_IBUF       |               22 |             32 |         1.45 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_5[0]                 | reset_IBUF       |               24 |             32 |         1.33 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_8[0]                 | reset_IBUF       |               29 |             32 |         1.10 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_7[0]                 | reset_IBUF       |               11 |             32 |         2.91 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_17[0]                | reset_IBUF       |                9 |             32 |         3.56 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_23[0]                | reset_IBUF       |               13 |             32 |         2.46 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_25[0]                | reset_IBUF       |               15 |             32 |         2.13 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_0[0]                 | reset_IBUF       |               18 |             32 |         1.78 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_30[0]                | reset_IBUF       |               17 |             32 |         1.88 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_11[0]                | reset_IBUF       |               15 |             32 |         2.13 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_21[0]                | reset_IBUF       |               21 |             32 |         1.52 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_4[0]                 | reset_IBUF       |               12 |             32 |         2.67 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_28[0]                | reset_IBUF       |               10 |             32 |         3.20 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_6[0]                 | reset_IBUF       |               20 |             32 |         1.60 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_19[0]                | reset_IBUF       |               24 |             32 |         1.33 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_20[0]                | reset_IBUF       |               17 |             32 |         1.88 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_10[0]                | reset_IBUF       |               14 |             32 |         2.29 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_26[0]                | reset_IBUF       |               16 |             32 |         2.00 |
+|  clk_IBUF_BUFG | DIV/u6/E[0]                                     | reset_IBUF       |               10 |             32 |         3.20 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/E[0]                                 | reset_IBUF       |               13 |             32 |         2.46 |
+| ~clk_IBUF_BUFG | MEM_WB_REG/WB_RegWrite_reg_27[0]                | reset_IBUF       |               18 |             32 |         1.78 |
+|  clk_IBUF_BUFG |                                                 | reset_IBUF       |              143 |            455 |         3.18 |
++----------------+-------------------------------------------------+------------------+------------------+----------------+--------------+
+
+

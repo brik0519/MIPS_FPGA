@@ -22,15 +22,18 @@
 
 
 module top_MIPS(
-    input wire clk, reset, BTN,
+    input wire clk, reset, BTN, BTN2,
     input wire RxD,
     
     output wire CA, CB, CC, CD, CE, CF, CG,
     output wire [7:0] AN,
     output wire [15:0] LED,
-    output wire TxD
+    output wire TxD,
+    
+    output wire sound
 );
-    assign LED = {15'b0, 1'b1};
+    wire dout;
+    assign LED = {15'b0, dout};
     
     /*  01 Instruction Fetch  */
     wire PCWrite, eo_10M, DBTN;
@@ -308,19 +311,21 @@ module top_MIPS(
     
     
     /*   I/O Field   */
+    //Button
     Debounce U0 (
         .clk(clk), .en(eo_10M), .rstn(reset), .BTN(BTN),
         .debounced(DBTN)
     );
     
-    
+    //Seven segment
     wire [3:0] D0, D1, D2, D3, D4, D5, D6, D7;
     seven_segment_8_drv U5 (
         .clk(clk), .reset(reset), 
         .D0(D0),.D1(D1),.D2(D2),.D3(D3),.D4(D4),.D5(D5),.D6(D6),.D7(D7), 
         .a(CA), .b(CB), .c(CC), .d(CD), .e(CE), .f(CF), .g(CG), .AN(AN)
     );
-
+    
+    //Clock divider for sampling
     wire eo_100M, eo_1M, eo_100K, eo_10K, eo_1K, eo_100;
     cnt_100M DIV (
         .clk(clk), .rstn(reset),
@@ -329,10 +334,11 @@ module top_MIPS(
         .eo_100(eo_100) 
     );
     
-    wire man_clk, error, dout;
+    //UART
+    wire man_clk, error;
     UART_Top_Buffer UART(
         /*  Input  */
-        .clk(clk), .rst(reset), .din(BTN),
+        .clk(clk), .rst(reset), .din(BTN2),
         .RxD(RxD),
         
         // Data
@@ -342,6 +348,14 @@ module top_MIPS(
         /*  Output  */
         .TxD(TxD), .man_clk(man_clk), 
         .error(error), .dout(dout)
+    );
+    
+    //
+    sound_gen speaker(
+        //input
+        .clk(clk), .ev(Branch||Jump||Jr), .rst(reset),
+        //output
+        .pwm_sound(sound)
     );
     
     assign D0 = PC_Current[3:0];

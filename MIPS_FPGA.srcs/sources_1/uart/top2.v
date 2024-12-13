@@ -57,8 +57,8 @@ module UART_Top_Buffer(
     string_gen STR (
         .clk(sig2),
         .rst(rst),
-        .registor_in(1024'd0),
-        .memory_in(1024'd0),
+        .registor_in(registor_in),
+        .memory_in(memory_in),
         .new(new),
         .char(data)
     ); 

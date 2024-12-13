@@ -64,6 +64,6 @@ end
  end
  
 assign sig = (current_state != INIT) && (current_state != CNT) && (current_state == SIG || current_state == COMP);
-assign tc = (char_cnt == 1103);
+assign tc = (char_cnt == 1111);
 
 endmodule

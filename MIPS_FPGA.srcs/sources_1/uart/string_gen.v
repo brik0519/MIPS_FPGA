@@ -34,8 +34,8 @@ wire [31:0] memory [0:31];
 genvar i;
 generate
     for (i = 0; i < 32; i = i + 1) begin : split_logic
-        assign registor[i] = registor_in[1023 - i*32 -: 32];
-        assign memory[i] = memory_in[1023 - i*32 -: 32];
+        assign registor[i] = registor_in[i*32 +: 32];
+        assign memory[i] = memory_in[i*32 +: 32];
     end
 endgenerate
 
@@ -80,7 +80,7 @@ localparam STATE_CHAR = 0, STATE_TAB = 1, STATE_NEW = 2, STATE_MEM = 3, STATE_RE
 localparam MAX_DATA = 32, MAX_LINE = 4;
 
 reg is_new, is_mem;
-reg [1:0] state;
+reg [2:0] state;
 reg [5:0] index_data;
 reg [7:0] cnt_data;
 
@@ -89,7 +89,7 @@ always @(posedge clk, posedge rst) begin
         char <= 8'h0;
         index_data <= 0;
         cnt_data <= 0;
-        state <= STATE_CHAR;
+        state <= STATE_RESET;
         is_mem <= 1'b0;
         is_new <= 1'b0;
     end else begin
@@ -105,11 +105,20 @@ always @(posedge clk, posedge rst) begin
             end
             STATE_TAB: begin
                 char <= "\t";
-                if (index_data == MAX_DATA) begin
+                if (index_data == MAX_DATA && !is_mem) begin
                     is_mem <= 1'b1;
                     index_data <= 0;
+                    state <= STATE_CHAR;
                 end
-                state <= STATE_CHAR;
+                else if (index_data == MAX_DATA && is_mem) begin
+                    is_mem <= 1'b0;
+                    index_data <= 0;
+                    cnt_data <= 0;
+                    state <= STATE_RESET;
+                end
+                else begin
+                    state <= STATE_CHAR;
+                end
             end
             STATE_NEW: begin
                 char <= is_new ? "\n" : "\r";
@@ -133,6 +142,7 @@ always @(posedge clk, posedge rst) begin
                 else state <= STATE_NEW;
             end
             STATE_RESET: begin
+                state <= STATE_RESET;
                 case(cnt_data)
                 0: begin
                     char <= 8'h1B;
@@ -143,10 +153,26 @@ always @(posedge clk, posedge rst) begin
                     cnt_data <= cnt_data + 1;
                 end
                 2: begin
-                    char <= 8'h48;
+                    char <= 8'h32;
                     cnt_data <= cnt_data + 1;
                 end
                 3: begin
+                    char <= 8'h4A;
+                    cnt_data <= cnt_data + 1;
+                end
+                4: begin
+                    char <= 8'h1B;
+                    cnt_data <= cnt_data + 1;
+                end
+                5: begin
+                    char <= 8'h5B;
+                    cnt_data <= cnt_data + 1;
+                end
+                6: begin
+                    char <= 8'h48;
+                    cnt_data <= cnt_data + 1;
+                end
+                default : begin
                     char <= 8'h0;
                     index_data <= 0;
                     cnt_data <= 0;

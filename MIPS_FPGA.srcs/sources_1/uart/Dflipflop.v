@@ -25,7 +25,7 @@ module Dflipflop(
     input wire D, en, clk, rstn
 );
 
-always@(posedge clk or posedge rstn)
+always@(posedge clk or negedge  rstn)
     if(!rstn) Q <= 1'b0;
     else if(en) Q <= D;
 
