@@ -70,7 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -91,8 +91,6 @@ read_verilog -library xil_defaultlib {
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/BCD_cnt.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ControlUnit.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/Debounce.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Dflipflop.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/EX_MEM_Register.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ID_EX_Register.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/IF_ID_Register.v
@@ -103,22 +101,12 @@ read_verilog -library xil_defaultlib {
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Registers_Unit.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Sampling.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Sign_extention.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Tflipflop.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Tpalse.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/UART_top.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/clk_gen.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/cnt3.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/cnt_100M.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/count_char.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/debounce.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/decoder.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/dff.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/mux81.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/seven_segment_8_drv.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/string_gen.v
-  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/top2.v
   C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v
 }
 OPTRACE "Adding files" END { }

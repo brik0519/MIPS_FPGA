@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="280600fs"></ZoomStartTime>
-      <ZoomEndTime time="335401fs"></ZoomEndTime>
-      <Cursor1Time time="360100fs"></Cursor1Time>
+      <ZoomStartTime time="5000fs"></ZoomStartTime>
+      <ZoomEndTime time="15136fs"></ZoomEndTime>
+      <Cursor1Time time="5000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="340"></NameColumnWidth>
-      <ValueColumnWidth column_width="100"></ValueColumnWidth>
+      <NameColumnWidth column_width="225"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="33" />
+   <WVObjectSize size="24" />
    <wvobject fp_name="/top_MIPS/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -28,43 +28,18 @@
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_MIPS/PC_Current" type="array">
-      <obj_property name="ElementShortName">PC_Current[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PC_Current[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/Instruction" type="array">
-      <obj_property name="ElementShortName">Instruction[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Instruction[31:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/top_MIPS/ID_PC" type="array">
       <obj_property name="ElementShortName">ID_PC[31:0]</obj_property>
       <obj_property name="ObjectShortName">ID_PC[31:0]</obj_property>
-      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/ID_Instruction" type="array">
       <obj_property name="ElementShortName">ID_Instruction[31:0]</obj_property>
       <obj_property name="ObjectShortName">ID_Instruction[31:0]</obj_property>
-      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/PC_Next" type="array">
-      <obj_property name="ElementShortName">PC_Next[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PC_Next[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/PC_Branch" type="array">
-      <obj_property name="ElementShortName">PC_Branch[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PC_Branch[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/Jump_Address" type="array">
-      <obj_property name="ElementShortName">Jump_Address[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Jump_Address[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/PC_Jump" type="array">
-      <obj_property name="ElementShortName">PC_Jump[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PC_Jump[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/op" type="array">
       <obj_property name="ElementShortName">op[5:0]</obj_property>
@@ -100,22 +75,21 @@
    <wvobject fp_name="/top_MIPS/ALUCtrl" type="array">
       <obj_property name="ElementShortName">ALUCtrl[3:0]</obj_property>
       <obj_property name="ObjectShortName">ALUCtrl[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_MIPS/Registers_Read_Data_1" type="array">
-      <obj_property name="ElementShortName">Registers_Read_Data_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Registers_Read_Data_1[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/Registers_Read_Data_2" type="array">
-      <obj_property name="ElementShortName">Registers_Read_Data_2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Registers_Read_Data_2[31:0]</obj_property>
+   <wvobject fp_name="/top_MIPS/MEM_ALUResult" type="array">
+      <obj_property name="ElementShortName">MEM_ALUResult[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_ALUResult[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/Write_Data" type="array">
       <obj_property name="ElementShortName">Write_Data[31:0]</obj_property>
       <obj_property name="ObjectShortName">Write_Data[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/Write_Register" type="array">
       <obj_property name="ElementShortName">Write_Register[4:0]</obj_property>
       <obj_property name="ObjectShortName">Write_Register[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/reg4" type="array">
       <obj_property name="ElementShortName">reg4[31:0]</obj_property>
@@ -146,18 +120,6 @@
       <obj_property name="ElementShortName">reg31[31:0]</obj_property>
       <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/Extended_Imm_16" type="array">
-      <obj_property name="ElementShortName">Extended_Imm_16[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Extended_Imm_16[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/Reg_Destination" type="array">
-      <obj_property name="ElementShortName">Reg_Destination[4:0]</obj_property>
-      <obj_property name="ObjectShortName">Reg_Destination[4:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/Branch_Add_Result" type="array">
-      <obj_property name="ElementShortName">Branch_Add_Result[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Branch_Add_Result[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="group5877" type="group">
       <obj_property name="label">Control Signal</obj_property>
@@ -310,6 +272,48 @@
       <wvobject fp_name="/top_MIPS/Jr" type="logic">
          <obj_property name="ElementShortName">Jr</obj_property>
          <obj_property name="ObjectShortName">Jr</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group422" type="group">
+      <obj_property name="label">Hidden</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/top_MIPS/PC_Next" type="array">
+         <obj_property name="ElementShortName">PC_Next[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_Next[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/PC_Branch" type="array">
+         <obj_property name="ElementShortName">PC_Branch[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_Branch[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/Jump_Address" type="array">
+         <obj_property name="ElementShortName">Jump_Address[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Jump_Address[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/Registers_Read_Data_1" type="array">
+         <obj_property name="ElementShortName">Registers_Read_Data_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Registers_Read_Data_1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/Registers_Read_Data_2" type="array">
+         <obj_property name="ElementShortName">Registers_Read_Data_2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Registers_Read_Data_2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/Branch_Add_Result" type="array">
+         <obj_property name="ElementShortName">Branch_Add_Result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Branch_Add_Result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/Extended_Imm_16" type="array">
+         <obj_property name="ElementShortName">Extended_Imm_16[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Extended_Imm_16[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/PC_Jump" type="array">
+         <obj_property name="ElementShortName">PC_Jump[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_Jump[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_MIPS/PC_Write_Data" type="array">
+         <obj_property name="ElementShortName">PC_Write_Data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_Write_Data[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

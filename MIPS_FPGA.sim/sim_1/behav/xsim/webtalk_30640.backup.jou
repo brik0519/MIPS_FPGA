@@ -2,21 +2,11 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-<<<<<<<< HEAD:MIPS_FPGA.sim/sim_1/behav/xsim/webtalk_10992.backup.log
-# Start of session at: Tue Dec 10 20:53:20 2024
-# Process ID: 10992
-========
-# Start of session at: Mon Dec  9 14:05:45 2024
-# Process ID: 24088
->>>>>>>> 31b88410a1bc23ecc2d3b201ebf2c6173ed01c5a:MIPS_FPGA.sim/sim_1/behav/xsim/webtalk_24088.backup.log
+# Start of session at: Thu Dec 12 14:55:55 2024
+# Process ID: 30640
 # Current directory: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.sim/sim_1/behav/xsim/xsim.dir/top_MIPS_behav/webtalk/xsim_webtalk.tcl -notrace
-<<<<<<<< HEAD:MIPS_FPGA.sim/sim_1/behav/xsim/webtalk_10992.backup.log
-INFO: [Common 17-206] Exiting Webtalk at Tue Dec 10 20:53:21 2024...
-========
-INFO: [Common 17-206] Exiting Webtalk at Mon Dec  9 14:05:46 2024...
->>>>>>>> 31b88410a1bc23ecc2d3b201ebf2c6173ed01c5a:MIPS_FPGA.sim/sim_1/behav/xsim/webtalk_24088.backup.log
