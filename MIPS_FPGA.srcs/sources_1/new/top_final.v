@@ -21,7 +21,7 @@
 
 
 module top_final(
-    input wire clk, reset, BTN, BTN2, SW,
+    input wire clk, reset, BTN, BTN2, SW, Select_clk,
     
     input wire RxD,
     output wire TxD,
@@ -42,12 +42,17 @@ module top_final(
         .toggle()
     );
     
+    wire clk_mips;
+    MUX_Nbit_2to1 #(0) MUX_CLK ( 
+            .I1(BTN_clk), .I2(clk), .sel(Select_clk), .Y(clk_mips) 
+    );
+    
     wire sound_ev; 
     wire [1023:0] Register_Wires, Memory_Wires;
     wire [31:0] ID_Instruction, PC_Current;
     top_MIPS    MIPS(
         //input
-        .clk(BTN_clk), .reset(reset),
+        .clk(clk_mips), .reset(reset),
         //output
 
         .sound(sound_ev),
