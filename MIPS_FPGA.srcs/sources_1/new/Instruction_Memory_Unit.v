@@ -31,9 +31,9 @@ module Instruction_Memory_Unit(
     integer i;
     reg [31:0] Init_Inst;
      always @(*) begin
-        Init_Inst = {6'b111111, 26'd0};
+        Init_Inst = 32'b0;//{6'b111111, 26'd0};
                 case (address)
-                    0   : Init_Inst = {6'b111111, 26'd0};      // Program Start
+                    0   : Init_Inst = 32'b0;//{6'b111111, 26'd0};      // Program Start
                     4   : Init_Inst = 32'h2010_0003;           // ADDI $s0 $0 3
                     //8 : NOP
                     //12: NOP
@@ -50,7 +50,7 @@ module Instruction_Memory_Unit(
                     96  : Init_Inst = 32'h2908_0005;           // SLTI $t0 $t0 5 
                     //100
                     //104
-                    108  : Init_Inst = 32'h214A_0003;           // ADDI $t2 $t2 3
+                    108  : Init_Inst = 32'h216B_0003;           // ADDI $t2 $t2 3
                     112  : Init_Inst = 32'h1120_0015;           // BEQ $t1 $0 9  
                     //104
                     //104
@@ -59,7 +59,7 @@ module Instruction_Memory_Unit(
                     //192
                     200  : Init_Inst = 32'h03E0_0008;           // JR
                                                                                                     //32: NOP   
-                    default: Init_Inst = {6'b111111, 26'd0};
+                    default: Init_Inst = 32'b0;//{6'b111111, 26'd0};
                 endcase
     end
     assign read_data = Init_Inst;

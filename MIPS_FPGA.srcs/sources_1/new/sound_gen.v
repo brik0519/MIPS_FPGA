@@ -35,7 +35,7 @@ module sound_gen(
             pwm_sound <= 0;
         end
         else begin
-            if(counter >= ((100_000_000 / tone_freq)/(dutycycle/100))) begin
+            if(counter == 113632) begin
                 counter <= 0;
                 if(ev) pwm_sound <= ~pwm_sound;
             end

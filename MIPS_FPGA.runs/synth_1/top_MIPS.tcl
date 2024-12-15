@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.runs/synth_1/top_MIPS.tcl"
+  variable script "C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/synth_1/top_MIPS.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,66 +70,65 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 8
+set_param chipscope.maxJobs 2
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.cache/wt [current_project]
-set_property parent.project_path D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.cache/wt [current_project]
+set_property parent.project_path C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo d:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.cache/ip [current_project]
+set_property ip_output_repo c:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALU.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALUControl.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/BCD_cnt.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/BSDcnt_cas.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ControlUnit.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/Debounce.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Dflipflop.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/EX_MEM_Register.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ID_EX_Register.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/IF_ID_Register.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Instruction_Memory_Unit.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MEM_WB_Register.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_3to1.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Registers_Unit.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Sampling.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Sign_extention.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Tflipflop.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Tpalse.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/UART.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/UART_top.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/clk_gen.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/clkdiv.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/clkgen.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/cnt3.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/cnt_100M.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/count_char.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/debounce.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/decoder.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/dff.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/interface.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/mux81.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/receiver.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/seven_segment_8_drv.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/sound_gen.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/string_gen.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/top2.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/transmit.v
-  D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALU.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ALUControl.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/BCD_cnt.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/BSDcnt_cas.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ControlUnit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/Debounce.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Dflipflop.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/EX_MEM_Register.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/ID_EX_Register.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/IF_ID_Register.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Instruction_Memory_Unit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MEM_WB_Register.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_2to1.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/MUX_Nbit_3to1.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Program_Counter.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Registers_Unit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Sampling.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/Sign_extention.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Tflipflop.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/Tpalse.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/UART.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/UART_top.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/clk_gen.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/clkdiv.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/clkgen.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/cnt3.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/cnt_100M.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/count_char.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/debounce.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/decoder.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/dff.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/interface.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/mux81.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/receiver.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/seven_segment_8_drv.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/sound_gen.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/string_gen.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/top2.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/uart/transmit.v
+  C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.srcs/sources_1/new/top_MIPS.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -140,8 +139,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/Nexys-A7-100T-Master.xdc
-set_property used_in_implementation false [get_files D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/Nexys-A7-100T-Master.xdc]
+read_xdc C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/Nexys-A7-100T-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

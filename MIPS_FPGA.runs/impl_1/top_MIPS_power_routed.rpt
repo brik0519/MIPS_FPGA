@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Fri Dec 13 11:49:57 2024
-| Host             : GamdictZombie running 64-bit major release  (build 9200)
+| Date             : Sun Dec 15 18:39:40 2024
+| Host             : HYEON-OdysseyLaptop running 64-bit major release  (build 9200)
 | Command          : report_power -file top_MIPS_power_routed.rpt -pb top_MIPS_power_summary_routed.pb -rpx top_MIPS_power_routed.rpx
 | Design           : top_MIPS
 | Device           : xc7a100tcsg324-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.106        |
+| Total On-Chip Power (W)  | 0.116        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.009        |
+| Dynamic (W)              | 0.019        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.5         |
@@ -53,17 +53,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.006 |        3 |       --- |             --- |
-| Slice Logic    |     0.001 |     3888 |       --- |             --- |
-|   LUT as Logic |     0.001 |     1526 |     63400 |            2.41 |
-|   Register     |    <0.001 |     1686 |    126800 |            1.33 |
-|   CARRY4       |    <0.001 |       54 |     15850 |            0.34 |
-|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   F7/F8 Muxes  |    <0.001 |      418 |     63400 |            0.66 |
-|   Others       |     0.000 |       38 |       --- |             --- |
-| Signals        |     0.001 |     2639 |       --- |             --- |
-| I/O            |    <0.001 |       38 |       210 |           18.10 |
+| Slice Logic    |     0.003 |     4141 |       --- |             --- |
+|   LUT as Logic |     0.003 |     1679 |     63400 |            2.65 |
+|   CARRY4       |    <0.001 |       62 |     15850 |            0.39 |
+|   Register     |    <0.001 |     1724 |    126800 |            1.36 |
+|   F7/F8 Muxes  |    <0.001 |      452 |     63400 |            0.71 |
+|   Others       |     0.000 |       39 |       --- |             --- |
+|   BUFG         |     0.000 |        1 |        32 |            3.13 |
+| Signals        |     0.004 |     2856 |       --- |             --- |
+| I/O            |     0.006 |       39 |       210 |           18.57 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.106 |          |           |                 |
+| Total          |     0.116 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.024 |       0.009 |      0.015 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.029 |       0.014 |      0.015 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.004 |       0.000 |      0.004 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.006 |       0.002 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -139,12 +139,14 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------+-----------+
-| Name       | Power (W) |
-+------------+-----------+
-| top_MIPS   |     0.009 |
-|   REG_UNIT |     0.004 |
-|   UART     |     0.002 |
-+------------+-----------+
++-----------------------------------+-----------+
+| Name                              | Power (W) |
++-----------------------------------+-----------+
+| top_MIPS                          |     0.019 |
+|   ID_EX_REG                       |     0.002 |
+|   REG_UNIT                        |     0.004 |
+|   UART                            |     0.002 |
+|   WriteDataMUX_aluresult_ReadData |     0.001 |
++-----------------------------------+-----------+
 
 

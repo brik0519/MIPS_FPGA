@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1734058127">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1734255425">
   <File Type="PA-TCL" Name="top_MIPS.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="top_MIPS_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="top_MIPS_reports.tcl"/>
@@ -346,7 +346,9 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

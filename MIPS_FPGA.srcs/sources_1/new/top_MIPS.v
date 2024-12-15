@@ -23,9 +23,9 @@
 
 module top_MIPS(
     input wire clk, reset, BTN, BTN2,
-    input wire RxD,
+    input wire RxD, SW,
     
-    output wire CA, CB, CC, CD, CE, CF, CG,
+    output wire CA, CB, CC, CD, CE, CF, CG, 
     output wire [7:0] AN,
     output wire [15:0] LED,
     output wire TxD,
@@ -33,7 +33,7 @@ module top_MIPS(
     output wire sound
 );
     wire dout;
-    assign LED = {15'b0, dout};
+    assign LED = {14'b0, dout, SW};
     
     /*  01 Instruction Fetch  */
     wire PCWrite, eo_10M, DBTN;
@@ -44,7 +44,7 @@ module top_MIPS(
     
     MUX_Nbit_3to1 #(.N(31)) MUX_JUMP_BRANCH ( 
         .I1(PC_Next), .I2(PC_Jump), .I3(PC_Branch), 
-        .sel({Branch, Jump|Jr}), .Y(PC_Write_Data) 
+        .sel({Branch | MEM_Jr, Jump}), .Y(PC_Write_Data) 
     );
 
 
@@ -237,7 +237,7 @@ module top_MIPS(
     
     wire [31:0] MEM_ALUResult, MEM_Read_Data_2, MEM_PC;
     wire [4:0] MEM_Reg_Destination;
-    wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite, MEM_Jal;
+    wire MEM_MemWrite, MEM_MemRead, MEM_MemtoReg, MEM_RegWrite, MEM_Jal, MEM_Jr;
     EX_MEM_Register EX_MEM_REG (
         // Input
         // Datapath
@@ -250,7 +250,7 @@ module top_MIPS(
         // Controll Signal
         .EX_MemWrite(EX_MemWrite), .EX_MemRead(EX_MemRead),
         .EX_MemtoReg(EX_MemtoReg), .EX_RegWrite(EX_RegWrite),
-        .EX_Beq(EX_Beq), .EX_Bne(EX_Bne), .EX_Jal(EX_Jal),
+        .EX_Beq(EX_Beq), .EX_Bne(EX_Bne), .EX_Jal(EX_Jal), .EX_Jr(Jr),
     
     
         // Output
@@ -263,7 +263,7 @@ module top_MIPS(
         // Controll Signal
         .MEM_MemWrite(MEM_MemWrite), .MEM_MemRead(MEM_MemRead),
         .MEM_MemtoReg(MEM_MemtoReg), .MEM_RegWrite(MEM_RegWrite),
-        .MEM_Beq(MEM_Beq), .MEM_Bne(MEM_Bne), .MEM_PC(MEM_PC), .MEM_Jal(MEM_Jal)
+        .MEM_Beq(MEM_Beq), .MEM_Bne(MEM_Bne), .MEM_PC(MEM_PC), .MEM_Jal(MEM_Jal), .MEM_Jr(MEM_Jr)
     );
     
 
@@ -334,7 +334,7 @@ module top_MIPS(
         .eo_100(eo_100) 
     );
     
-    //UART
+    // UART
     wire man_clk, error;
     UART_Top_Buffer UART(
         /*  Input  */
@@ -350,7 +350,7 @@ module top_MIPS(
         .error(error), .dout(dout)
     );
     
-    //
+    // Speaker
     sound_gen speaker(
         //input
         .clk(clk), .ev(Branch||Jump||Jr), .rst(reset),
@@ -358,14 +358,23 @@ module top_MIPS(
         .pwm_sound(sound)
     );
     
-    assign D0 = PC_Current[3:0];
-    assign D1 = PC_Current[7:4];
-    assign D2 = PC_Current[11:8];
-    assign D3 = PC_Current[15:12];
-    assign D4 = PC_Current[19:16];
-    assign D5 = PC_Current[23:20];
-    assign D6 = PC_Current[27:24];
-    assign D7 = PC_Current[31:28];
+//    assign D0 = PC_Current[3:0];
+//    assign D1 = PC_Current[7:4];
+//    assign D2 = PC_Current[11:8];
+//    assign D3 = PC_Current[15:12];
+//    assign D4 = PC_Current[19:16];
+//    assign D5 = PC_Current[23:20];
+//    assign D6 = PC_Current[27:24];
+//    assign D7 = PC_Current[31:28];
+    
+    assign D0 = ( SW ) ? ID_Instruction[3:0]   : PC_Current[3:0];
+    assign D1 = ( SW ) ? ID_Instruction[7:4]   : PC_Current[7:4];
+    assign D2 = ( SW ) ? ID_Instruction[11:8]  : PC_Current[11:8];
+    assign D3 = ( SW ) ? ID_Instruction[15:12] : PC_Current[15:12];
+    assign D4 = ( SW ) ? ID_Instruction[19:16] : PC_Current[19:16];
+    assign D5 = ( SW ) ? ID_Instruction[23:20] : PC_Current[23:20];
+    assign D6 = ( SW ) ? ID_Instruction[27:24] : PC_Current[27:24];
+    assign D7 = ( SW ) ? ID_Instruction[31:28] : PC_Current[31:28];
     
     
     /*   For Simulation   */

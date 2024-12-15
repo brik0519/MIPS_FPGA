@@ -32,7 +32,7 @@ module EX_MEM_Register(
     // Controll Signal
     input wire EX_MemWrite, EX_MemRead,
     input wire EX_MemtoReg, EX_RegWrite, 
-    input wire EX_Beq, EX_Bne,
+    input wire EX_Beq, EX_Bne, EX_Jr,
 
 
     /*  Output  */
@@ -45,7 +45,7 @@ module EX_MEM_Register(
     // Controll Signal
     output reg MEM_MemWrite, MEM_MemRead,
     output reg MEM_MemtoReg, MEM_RegWrite, 
-    output reg MEM_Beq, MEM_Bne, MEM_Jal
+    output reg MEM_Beq, MEM_Bne, MEM_Jal, MEM_Jr
 );
 
     always @(posedge clk or posedge reset) begin
@@ -57,7 +57,6 @@ module EX_MEM_Register(
             MEM_Read_Data_2         <= 32'b0;
             MEM_Reg_Destination     <= 5'b0;
             MEM_Zero <=  1'b0;
-            MEM_Jal <= 1'b0;
 
             // Controll Signal
             MEM_MemWrite <= 1'b0;
@@ -67,6 +66,8 @@ module EX_MEM_Register(
             
             MEM_Beq   <= 1'b0;
             MEM_Bne   <= 1'b0;
+            MEM_Jal <= 1'b0;
+            MEM_Jr    <= 1'b0;
         end
 
         else begin
@@ -88,6 +89,7 @@ module EX_MEM_Register(
             MEM_Bne   <= EX_Bne;
             
             MEM_Jal <= EX_Jal;
+            MEM_Jr  <= EX_Jr;
         end
 
     end
