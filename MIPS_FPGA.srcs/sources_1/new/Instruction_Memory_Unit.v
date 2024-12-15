@@ -34,7 +34,7 @@ module Instruction_Memory_Unit(
         Init_Inst = 32'b0;//{6'b111111, 26'd0};
                 case (address)
                     0   : Init_Inst = 32'b0;//{6'b111111, 26'd0};      // Program Start
-                    4   : Init_Inst = 32'h2010_0003;           // ADDI $s0 $0 3
+                    4   : Init_Inst = 32'h216B_0003;           // ADDI $s0 $0 3
                     //8 : NOP
                     //12: NOP
                     //16: NOP

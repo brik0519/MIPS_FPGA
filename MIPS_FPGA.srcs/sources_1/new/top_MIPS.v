@@ -22,23 +22,13 @@
 
 
 module top_MIPS(
-    input wire clk, reset, BTN, BTN2,
-    input wire RxD, SW,
-    
-    output wire CA, CB, CC, CD, CE, CF, CG, 
-    output wire [7:0] AN,
-    output wire [15:0] LED,
-    output wire TxD,
-    
-    output wire sound
-);
-    wire dout;
-    assign LED = {14'b0, dout, SW};
-    
+    input wire clk, reset,
+    output wire sound,
+    output wire [1023:0] registor_out, memory_out,
+    output wire [31:0] ID_Instruction, PC_Current
+);  
     /*  01 Instruction Fetch  */
-    wire PCWrite, eo_10M, DBTN;
-    wire [31:0] PC_Current, PC_Write_Data, PC_Next, PC_Branch, PC_Jump;
-    assign PCWrite = DBTN & eo_10M;
+    wire [31:0] PC_Write_Data, PC_Next, PC_Branch, PC_Jump;
   
 
     
@@ -50,7 +40,7 @@ module top_MIPS(
 
     Program_Counter PC (
         .clk(clk), .reset(reset),
-        .PCWrite(PCWrite), .PC_Write_Data(PC_Write_Data),
+        .PCWrite(1'b1), .PC_Write_Data(PC_Write_Data),
         .PC_Current(PC_Current)
     );
 
@@ -65,7 +55,7 @@ module top_MIPS(
 
 
     /* 02 Instruction Decode */
-    wire [31:0] ID_PC, ID_Instruction;
+    wire [31:0] ID_PC;
     IF_ID_Register IF_ID_REG (
         .clk(clk), .reset(reset), .IF_ID_Write(1'b1),
         .IF_PC(PC_Current), .IF_Instruction(Instruction),
@@ -146,6 +136,7 @@ module top_MIPS(
         .reg28(Register_Wires[927:896]),  .reg29(Register_Wires[959:928]), 
         .reg30(Register_Wires[991:960]),  .reg31(Register_Wires[1023:992])
     );
+    assign registor_out = Register_Wires;
         
 
     wire [31:0] Extended_Imm_16;
@@ -282,6 +273,8 @@ module top_MIPS(
         .memory9(Memory_Wires[319:288]), .memory10(Memory_Wires[351:320]), .memory11(Memory_Wires[383:352])
     );
     
+    assign memory_out[383:0] = Memory_Wires;
+    
     
     wire [31:0] WB_Read_Data, WB_ALU_Result, WB_PC; 
     wire WB_Jal;
@@ -309,74 +302,13 @@ module top_MIPS(
         .sel({WB_Jal, WB_MemtoReg}), .Y(Write_Data) 
     );
     
+  
     
-    /*   I/O Field   */
-    //Button
-    Debounce U0 (
-        .clk(clk), .en(eo_10M), .rstn(reset), .BTN(BTN),
-        .debounced(DBTN)
-    );
+
+
+
     
-    //Seven segment
-    wire [3:0] D0, D1, D2, D3, D4, D5, D6, D7;
-    seven_segment_8_drv U5 (
-        .clk(clk), .reset(reset), 
-        .D0(D0),.D1(D1),.D2(D2),.D3(D3),.D4(D4),.D5(D5),.D6(D6),.D7(D7), 
-        .a(CA), .b(CB), .c(CC), .d(CD), .e(CE), .f(CF), .g(CG), .AN(AN)
-    );
-    
-    //Clock divider for sampling
-    wire eo_100M, eo_1M, eo_100K, eo_10K, eo_1K, eo_100;
-    cnt_100M DIV (
-        .clk(clk), .rstn(reset),
-        .eo_100M(eo_100M), .eo_10M(eo_10M), .eo_1M(eo_1M),
-        .eo_100K(eo_100K), .eo_10K(eo_10K), .eo_1K(eo_1K),
-        .eo_100(eo_100) 
-    );
-    
-    // UART
-    wire man_clk, error;
-    UART_Top_Buffer UART(
-        /*  Input  */
-        .clk(clk), .rst(reset), .din(BTN2),
-        .RxD(RxD),
-        
-        // Data
-        .registor_in(Register_Wires),
-        .memory_in(Memory_Wires),
-        
-        /*  Output  */
-        .TxD(TxD), .man_clk(man_clk), 
-        .error(error), .dout(dout)
-    );
-    
-    // Speaker
-    sound_gen speaker(
-        //input
-        .clk(clk), .ev(Branch||Jump||Jr), .rst(reset),
-        //output
-        .pwm_sound(sound)
-    );
-    
-//    assign D0 = PC_Current[3:0];
-//    assign D1 = PC_Current[7:4];
-//    assign D2 = PC_Current[11:8];
-//    assign D3 = PC_Current[15:12];
-//    assign D4 = PC_Current[19:16];
-//    assign D5 = PC_Current[23:20];
-//    assign D6 = PC_Current[27:24];
-//    assign D7 = PC_Current[31:28];
-    
-    assign D0 = ( SW ) ? ID_Instruction[3:0]   : PC_Current[3:0];
-    assign D1 = ( SW ) ? ID_Instruction[7:4]   : PC_Current[7:4];
-    assign D2 = ( SW ) ? ID_Instruction[11:8]  : PC_Current[11:8];
-    assign D3 = ( SW ) ? ID_Instruction[15:12] : PC_Current[15:12];
-    assign D4 = ( SW ) ? ID_Instruction[19:16] : PC_Current[19:16];
-    assign D5 = ( SW ) ? ID_Instruction[23:20] : PC_Current[23:20];
-    assign D6 = ( SW ) ? ID_Instruction[27:24] : PC_Current[27:24];
-    assign D7 = ( SW ) ? ID_Instruction[31:28] : PC_Current[31:28];
-    
-    
+    assign sound = Branch||Jump||Jr;
     /*   For Simulation   */
 //    reg clk, reset;
 //    assign PCWrite = 1'b1; // for debugging  

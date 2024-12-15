@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1734255425">
-  <File Type="BITSTR-BMM" Name="top_MIPS_bd.bmm"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="top_MIPS_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="top_MIPS_timing_summary_init.rpt"/>
-  <File Type="ROUTE-PWR" Name="top_MIPS_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="top_MIPS.tcl"/>
-  <File Type="OPT-TIMING" Name="top_MIPS_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="top_MIPS_opt.dcp"/>
-  <File Type="ROUTE-PWR-SUM" Name="top_MIPS_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="top_MIPS_reports.tcl"/>
-  <File Type="OPT-DRC" Name="top_MIPS_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="top_MIPS.hwdef"/>
-  <File Type="PWROPT-DCP" Name="top_MIPS_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="top_MIPS_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="top_MIPS_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="top_MIPS_placed.dcp"/>
-  <File Type="PLACE-IO" Name="top_MIPS_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="top_MIPS_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="top_MIPS_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="top_MIPS_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="top_MIPS_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="top_MIPS_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="top_MIPS_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-TIMING" Name="top_MIPS_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="top_MIPS_postplace_pwropt.dcp"/>
-  <File Type="BG-BIN" Name="top_MIPS.bin"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="top_MIPS_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="top_MIPS_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="top_MIPS_drc_physopted.rpt"/>
-  <File Type="BITSTR-MSK" Name="top_MIPS.msk"/>
-  <File Type="PHYSOPT-TIMING" Name="top_MIPS_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="top_MIPS_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="top_MIPS_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="top_MIPS_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="top_MIPS_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="top_MIPS_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="top_MIPS_drc_routed.rpx"/>
-  <File Type="BITSTR-MMI" Name="top_MIPS.mmi"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="top_MIPS_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="top_MIPS_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="top_MIPS_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="top_MIPS_power_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="top_MIPS_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="top_MIPS_route_status.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="top_MIPS_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="top_MIPS_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="top_MIPS_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="top_MIPS_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="top_MIPS_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="top_MIPS_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="top_MIPS_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="top_MIPS_bus_skew_routed.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="top_MIPS_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="top_MIPS_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="top_MIPS_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="top_MIPS_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="top_MIPS_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="top_MIPS_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="top_MIPS_bus_skew_postroute_physopted.pb"/>
-  <File Type="BG-BIT" Name="top_MIPS.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="top_MIPS_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-RBT" Name="top_MIPS.rbt"/>
-  <File Type="BITSTR-NKY" Name="top_MIPS.nky"/>
-  <File Type="PDI-FILE" Name="top_MIPS.pdi"/>
-  <File Type="RCFI_FILE" Name="top_MIPS.rcfi"/>
-  <File Type="CFI_FILE" Name="top_MIPS.cfi"/>
-  <File Type="RNPI_FILE" Name="top_MIPS.rnpi"/>
-  <File Type="NPI_FILE" Name="top_MIPS.npi"/>
-  <File Type="RBD_FILE" Name="top_MIPS.rbd"/>
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1734264070">
+  <File Type="BITSTR-BMM" Name="top_final_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="top_final_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="top_final_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="top_final_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="top_final.tcl"/>
+  <File Type="OPT-TIMING" Name="top_final_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="top_final_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="top_final_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="top_final_reports.tcl"/>
+  <File Type="OPT-DRC" Name="top_final_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="top_final.hwdef"/>
+  <File Type="PWROPT-DCP" Name="top_final_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="top_final_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="top_final_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="top_final_placed.dcp"/>
+  <File Type="PLACE-IO" Name="top_final_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="top_final_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="top_final_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="top_final_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="top_final_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="top_final_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="top_final_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="top_final_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="top_final_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="top_final.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="top_final_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="top_final_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="top_final_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="top_final.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="top_final_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="top_final_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="top_final_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="top_final_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="top_final_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="top_final_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="top_final_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="top_final.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="top_final_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="top_final_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="top_final_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="top_final_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="top_final_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="top_final_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="top_final_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="top_final_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="top_final_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="top_final_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="top_final_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="top_final_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="top_final_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="top_final_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="top_final_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="top_final_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="top_final_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="top_final_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="top_final_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="top_final_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="top_final_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="top_final.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="top_final_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="top_final.rbt"/>
+  <File Type="BITSTR-NKY" Name="top_final.nky"/>
+  <File Type="PDI-FILE" Name="top_final.pdi"/>
+  <File Type="RCFI_FILE" Name="top_final.rcfi"/>
+  <File Type="CFI_FILE" Name="top_final.cfi"/>
+  <File Type="RNPI_FILE" Name="top_final.rnpi"/>
+  <File Type="NPI_FILE" Name="top_final.npi"/>
+  <File Type="RBD_FILE" Name="top_final.rbd"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="top_MIPS.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="top_MIPS.sysdef"/>
-  <File Type="BG-BGN" Name="top_MIPS.bgn"/>
-  <File Type="BG-DRC" Name="top_MIPS.drc"/>
-  <File Type="RDI-RDI" Name="top_MIPS.vdi"/>
+  <File Type="BITSTR-LTX" Name="top_final.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="top_final.sysdef"/>
+  <File Type="BG-BGN" Name="top_final.bgn"/>
+  <File Type="BG-DRC" Name="top_final.drc"/>
+  <File Type="RDI-RDI" Name="top_final.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
@@ -113,13 +113,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/ControlUnit.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/Debounce.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -301,13 +294,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/dff.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/uart/interface.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -357,13 +343,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/uart/transmit.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/top_MIPS.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -371,9 +350,39 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/uart/transmit.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/top_final.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/dff.v">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/Debounce.v">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/uart/top.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UserDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -389,7 +398,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="top_MIPS"/>
+      <Option Name="TopModule" Val="top_final"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
@@ -412,9 +421,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
-      <Desc>Default settings for Implementation.</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>

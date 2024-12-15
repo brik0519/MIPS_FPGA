@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sun Dec 15 18:38:18 2024
-# Process ID: 20588
-# Current directory: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/impl_1
-# Command line: vivado.exe -log top_MIPS.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_MIPS.tcl -notrace
-# Log file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/impl_1/top_MIPS.vdi
-# Journal file: C:/Users/behyeon.kim/Documents/projects/MIPS_FPGA/MIPS_FPGA.runs/impl_1\vivado.jou
+# Start of session at: Sun Dec 15 21:01:43 2024
+# Process ID: 38932
+# Current directory: D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.runs/impl_1
+# Command line: vivado.exe -log top_final.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_final.tcl -notrace
+# Log file: D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.runs/impl_1/top_final.vdi
+# Journal file: D:/Handong/2024.02/DigitalSystemDesign/Github/MIPS_FPGA/MIPS_FPGA.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
-source top_MIPS.tcl -notrace
+source top_final.tcl -notrace
