@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="280600fs"></ZoomStartTime>
-      <ZoomEndTime time="335401fs"></ZoomEndTime>
-      <Cursor1Time time="360100fs"></Cursor1Time>
+      <ZoomStartTime time="363396fs"></ZoomStartTime>
+      <ZoomEndTime time="365387fs"></ZoomEndTime>
+      <Cursor1Time time="361126fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="340"></NameColumnWidth>
-      <ValueColumnWidth column_width="100"></ValueColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="33" />
+   <WVObjectSize size="35" />
    <wvobject fp_name="/top_MIPS/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -101,6 +101,40 @@
       <obj_property name="ElementShortName">ALUCtrl[3:0]</obj_property>
       <obj_property name="ObjectShortName">ALUCtrl[3:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/top_MIPS/reg0" type="array">
+      <obj_property name="ElementShortName">reg0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg5" type="array">
+      <obj_property name="ElementShortName">reg5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg5[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg8" type="array">
+      <obj_property name="ElementShortName">reg8[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg8[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg9" type="array">
+      <obj_property name="ElementShortName">reg9[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg9[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg10" type="array">
+      <obj_property name="ElementShortName">reg10[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg10[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg11" type="array">
+      <obj_property name="ElementShortName">reg11[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg11[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg16" type="array">
+      <obj_property name="ElementShortName">reg16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg16[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/reg31" type="array">
+      <obj_property name="ElementShortName">reg31[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
    <wvobject fp_name="/top_MIPS/Registers_Read_Data_1" type="array">
       <obj_property name="ElementShortName">Registers_Read_Data_1[31:0]</obj_property>
       <obj_property name="ObjectShortName">Registers_Read_Data_1[31:0]</obj_property>
@@ -116,35 +150,6 @@
    <wvobject fp_name="/top_MIPS/Write_Register" type="array">
       <obj_property name="ElementShortName">Write_Register[4:0]</obj_property>
       <obj_property name="ObjectShortName">Write_Register[4:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reg4" type="array">
-      <obj_property name="ElementShortName">reg4[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg4[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reg5" type="array">
-      <obj_property name="ElementShortName">reg5[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg5[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reg8" type="array">
-      <obj_property name="ElementShortName">reg8[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg8[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reg9" type="array">
-      <obj_property name="ElementShortName">reg9[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg9[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reg10" type="array">
-      <obj_property name="ElementShortName">reg10[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg10[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reg16" type="array">
-      <obj_property name="ElementShortName">reg16[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg16[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_MIPS/reg31" type="array">
-      <obj_property name="ElementShortName">reg31[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/top_MIPS/Extended_Imm_16" type="array">
@@ -311,5 +316,9 @@
          <obj_property name="ElementShortName">Jr</obj_property>
          <obj_property name="ObjectShortName">Jr</obj_property>
       </wvobject>
+   </wvobject>
+   <wvobject fp_name="/top_MIPS/memory3" type="array">
+      <obj_property name="ElementShortName">memory3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory3[31:0]</obj_property>
    </wvobject>
 </wave_config>

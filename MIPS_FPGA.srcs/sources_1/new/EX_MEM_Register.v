@@ -24,7 +24,7 @@ module EX_MEM_Register(
     /*  Input   */
     // Datapath
     input wire clk, reset,
-    input wire [31:0] Branch_Add_Result, ALU_Result, EX_PC, EX_Jal,
+    input wire [31:0] Branch_Add_Result, ALU_Result, EX_PC, 
     input wire [31:0] EX_Read_Data_2,
     input wire [4:0] Reg_Destination,
     input wire Zero,
@@ -32,7 +32,7 @@ module EX_MEM_Register(
     // Controll Signal
     input wire EX_MemWrite, EX_MemRead,
     input wire EX_MemtoReg, EX_RegWrite, 
-    input wire EX_Beq, EX_Bne, EX_Jr,
+    input wire EX_Beq, EX_Bne, EX_Jr, EX_Jal,
 
 
     /*  Output  */

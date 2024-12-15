@@ -4,7 +4,10 @@ verilog xil_defaultlib  \
 "../../../../MIPS_FPGA.srcs/sources_1/new/ALUControl.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Adder_Nbit.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/BCD_cnt.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/uart/BSDcnt_cas.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/ControlUnit.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/Debounce.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/uart/Dflipflop.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/EX_MEM_Register.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/ID_EX_Register.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/IF_ID_Register.v" \
@@ -15,12 +18,18 @@ verilog xil_defaultlib  \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Memory_Unit.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Program_Counter.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Registers_Unit.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/uart/Sampling.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/Sign_extention.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/uart/Tflipflop.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/uart/Tpalse.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/uart/clkdiv.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/cnt3.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/cnt_100M.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/decoder.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/dff.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/mux81.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/seven_segment_8_drv.v" \
+"../../../../MIPS_FPGA.srcs/sources_1/new/sound_gen.v" \
 "../../../../MIPS_FPGA.srcs/sources_1/new/top_MIPS.v" \
 
 # compile glbl module

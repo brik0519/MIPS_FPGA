@@ -45,7 +45,7 @@ module Registers_Unit (
     reg [31:0] register [0:31];
     
     integer i;
-    always @(posedge clk or posedge reset) begin
+    always @(negedge clk or posedge reset) begin
         if (reset) begin
             for (i = 0; i < 32; i = i + 1)
                 register[i] <= 32'b0;
